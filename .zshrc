@@ -1,5 +1,4 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -21,6 +20,7 @@ plugins=(
   git
   zsh-syntax-highlighting
   zsh-autosuggestions
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -32,12 +32,11 @@ alias sx='startx'
 alias grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ls='lsd'
 alias la='lsd -a'
-alias zshrc='nvim .zshrc'
+alias zh='nvim .zshrc'
 alias reboot='sudo reboot'
 alias poweroff='sudo poweroff'
 alias rm='sudo rm -r'
 alias addgit='git commit -m'
 alias upgit='git push origin main'
+alias search='sudo xbps-query -Rs'
 
-# Colores
-cat ~/.cache/wal/sequences

@@ -6,12 +6,12 @@ local set = vim.o
 
 set.number = true
 set.relativenumber = true
-set.smartindent = true
 set.incsearch = true
 set.ignorecase = true
 set.smartcase = true
 set.showmatch = true
 set.hidden = true
+set.cursorline = true
 
 -- Copiar Y Pegar
 
@@ -26,3 +26,14 @@ vim.opt.expandtab = true
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
+
+
+
+
+
+
+-- No Recording
+vim.cmd([[
+  set notimeout ttimeout ttimeoutlen=100
+]])
+

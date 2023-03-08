@@ -39,4 +39,4 @@ alias rm='sudo rm -r'
 alias addgit='git commit -m'
 alias upgit='git push origin main'
 alias search='sudo xbps-query -Rs'
-
+alias ping='ping google.com'

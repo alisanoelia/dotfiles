@@ -8,7 +8,12 @@ super + Return
 
 # program launcher
 super + d
-	bash /home/citlali/.config/wm/dmenu.sh
+	bash /home/alisa/.config/wm/dmenu.sh
+
+super + l
+	bash /home/alisa/.config/wm/bloquear.sh
+
+
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -28,7 +33,7 @@ super + w
 
 # alternate between the tiled and monocle layout
 super + m
-	bspc desktop -l next
+        bash /home/alisa/.config/wm/min.sh
 
 # send the newest marked node to the newest preselected node
 super + y

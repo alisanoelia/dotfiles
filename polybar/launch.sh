@@ -22,4 +22,5 @@ polybar battery -c ~/.config/polybar/config.ini &
 
 ## Center bar
 polybar xwindow -c ~/.config/polybar/config.ini &
+polybar temperature -c ~/.config/polybar/config.ini &
 

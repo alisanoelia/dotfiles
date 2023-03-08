@@ -12,6 +12,7 @@ set.smartcase = true
 set.showmatch = true
 set.hidden = true
 set.cursorline = true
+set.syntax = true
 
 -- Copiar Y Pegar
 

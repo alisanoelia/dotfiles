@@ -17,7 +17,7 @@ static int borderpx = 25;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/zsh";
+static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -112,32 +112,32 @@ float alphaOffset = 0.0;
 float alphaUnfocus;
 
 /* Terminal colors (16 first used in escape sequence) */
-static  const char *colorname[] = {
+static   const char *colorname[] = {
 
   /* 8 normal colors */
-  [0] = "#000000", /* black   */
-  [1] = "#B0B0B0", /* red     */
-  [2] = "#C8C8C8", /* green   */
-  [3] = "#D8D8D8", /* yellow  */
-  [4] = "#E8E8E8", /* blue    */
-  [5] = "#F4F4F4", /* magenta */
-  [6] = "#FAFAFA", /* cyan    */
-  [7] = "#f5f5f5", /* white   */
+  [0] = "#121a21", /* black   */
+  [1] = "#5B5F65", /* red     */
+  [2] = "#A36257", /* green   */
+  [3] = "#B79962", /* yellow  */
+  [4] = "#4C689A", /* blue    */
+  [5] = "#88718F", /* magenta */
+  [6] = "#6CADC6", /* cyan    */
+  [7] = "#cad1d5", /* white   */
 
   /* 8 bright colors */
-  [8]  = "#ababab",  /* black   */
-  [9]  = "#B0B0B0",  /* red     */
-  [10] = "#C8C8C8", /* green   */
-  [11] = "#D8D8D8", /* yellow  */
-  [12] = "#E8E8E8", /* blue    */
-  [13] = "#F4F4F4", /* magenta */
-  [14] = "#FAFAFA", /* cyan    */
-  [15] = "#f5f5f5", /* white   */
+  [8]  = "#8d9295",  /* black   */
+  [9]  = "#5B5F65",  /* red     */
+  [10] = "#A36257", /* green   */
+  [11] = "#B79962", /* yellow  */
+  [12] = "#4C689A", /* blue    */
+  [13] = "#88718F", /* magenta */
+  [14] = "#6CADC6", /* cyan    */
+  [15] = "#cad1d5", /* white   */
 
   /* special colors */
   [256] = "#000000", /* background */
-  [257] = "#f5f5f5", /* foreground */
-  [258] = "#f5f5f5",     /* cursor */
+  [257] = "#cad1d5", /* foreground */
+  [258] = "#cad1d5",     /* cursor */
 };
 
 /* Default colors (colorname index)
@@ -145,7 +145,7 @@ static  const char *colorname[] = {
  unsigned int defaultbg = 0;
  unsigned int defaultfg = 257;
  unsigned int defaultcs = 258;
- unsigned int defaultrcs= 258;
+ unsigned int defaultrcs= 259;
  unsigned int background = 256;
 
 /*

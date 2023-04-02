@@ -10,9 +10,11 @@ super + Return
 super + d
 	bash /home/alisa/.config/wm/dmenu.sh
 
-super + l
+super + shift l
 	bash /home/alisa/.config/wm/bloquear.sh
 
+super + p
+        bash /home/alisa/.config/wm/scrot.sh
 
 
 # make sxhkd reload its configuration files:
@@ -33,7 +35,7 @@ super + w
 
 # alternate between the tiled and monocle layout
 super + m
-        bash /home/alisa/.config/wm/min.sh
+        exec /home/alisa/.min/min
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -64,7 +66,7 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
+super + {b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop

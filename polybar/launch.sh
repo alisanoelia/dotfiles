@@ -19,6 +19,7 @@ polybar wlan -c ~/.config/polybar/config.ini &
 polybar cpu -c ~/.config/polybar/config.ini &
 polybar memory -c ~/.config/polybar/config.ini &
 polybar battery -c ~/.config/polybar/config.ini &
+polybar keyboard -c ~/.config/polybar/config.ini &
 
 ## Center bar
 polybar xwindow -c ~/.config/polybar/config.ini &

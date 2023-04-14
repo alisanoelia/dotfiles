@@ -11,6 +11,12 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
+# wyland
+export LIBSEAT_BACKEND="logind"
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
+export MOZ_ENABLE_WAYLAND=1
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -38,5 +44,5 @@ alias poweroff='sudo poweroff'
 alias rm='sudo rm -r'
 alias addgit='git commit -m'
 alias upgit='git push origin main'
-alias search='sudo xbps-query -Rs'
-alias ping='ping google.com'
+alias s='sudo xbps-query -Rs'
+alias actualizar='sudo xbps-install -Su'

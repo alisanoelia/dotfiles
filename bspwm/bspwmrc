@@ -12,7 +12,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule st state=floating focus=true
-bspc rule -a Min desktop='^2'
+bspc rule -a Brave desktop='^2'
 
 xsetroot -cursor_name left_ptr &
 

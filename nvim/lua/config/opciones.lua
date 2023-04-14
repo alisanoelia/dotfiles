@@ -13,6 +13,9 @@ set.showmatch = true
 set.hidden = true
 set.cursorline = true
 set.syntax = true
+set.wrap = false
+set.noremacro = true
+set.signcolumn = 'yes'
 
 -- Copiar Y Pegar
 

@@ -21,12 +21,14 @@ return {
     },
      config = function()
         local lsp = require("lsp-zero")
-        lsp.preset("recommended")
-
-
-        vim.opt.signcolumn = 'yes'
-
-        lsp.ensure_installed({
+        lsp.preset({
+          name =  'minimal',
+          set_lsp_keymaps = true,
+          manage_nvim_cmp = true,
+          suggest_lsp_servers = false,
+        })
+        
+      lsp.ensure_installed({
         'html',
         'pyright',
       })

@@ -4,7 +4,11 @@ return {
   dependencies = {'nvim-lua/plenary.nvim'},
 
   config = function()
-    local builtin = require("telescope.builtin")
-
+    require('telescope').setup{
+      defaults = {
+        prompt_prefix = "󰁕 ",
+        selection_caret = "> ",
+      },
+    }
   end
 }

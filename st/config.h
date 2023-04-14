@@ -9,6 +9,8 @@ static char *font = "JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohin
 static char *font2[] = { "JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true" };
 static int borderpx = 25;
 
+/* Images */ 
+#define ST_ENABLE_XIMAGES
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
@@ -156,7 +158,7 @@ static const char *colorname[] = {
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 4;
 
 /*
  * Default columns and rows numbers

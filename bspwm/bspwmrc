@@ -16,5 +16,7 @@ bspc rule -a Brave desktop='^2'
 
 xsetroot -cursor_name left_ptr &
 
+# Picom
+picom --animations --animation-for-open-window zoom &
 # Polybar
 $HOME/.config/polybar/launch.sh

@@ -5,7 +5,7 @@ return {
         require("lualine").setup(
             {
                 options = {
-                    theme = vim.g.alpha_lualine_color,
+                    theme = 'catppuccin',
                     icons_enabled = true,
                     globalstatus = true,
                 },

@@ -14,8 +14,11 @@ set.hidden = true
 set.cursorline = true
 set.syntax = true
 set.wrap = false
-set.noremacro = true
 set.signcolumn = 'yes'
+set.ttimeout = 0
+set.ttimeoutlen = 0
+set.hlsearch = false
+set.termguicolors = true
 
 -- Copiar Y Pegar
 
@@ -30,13 +33,3 @@ vim.opt.expandtab = true
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
-
-
-
-
-
-
--- No Recording
-vim.cmd([[
-  set notimeout ttimeout ttimeoutlen=100
-]])

@@ -19,18 +19,29 @@ return {
     {'L3MON4D3/LuaSnip'},             -- Required
     {'rafamadriz/friendly-snippets'}, -- Optional
     },
-     config = function()
+    config = function()
         local lsp = require("lsp-zero")
         lsp.preset({
           name =  'minimal',
           set_lsp_keymaps = true,
           manage_nvim_cmp = true,
           suggest_lsp_servers = false,
+          configure_diagnostics = false,
         })
-        
-      lsp.ensure_installed({
-        'html',
-        'pyright',
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        update_in_insert = false,
+        underline = true,
+        severity_sort = false,
+        float = {
+          focusable = false,
+          style = 'minimal',
+          border = 'rounded',
+          source = 'always',
+          header = '',
+          prefix = '',
+        },
       })
 
       lsp.nvim_workspace()

@@ -20,31 +20,30 @@ return {
     {'rafamadriz/friendly-snippets'}, -- Optional
     },
     config = function()
-        local lsp = require("lsp-zero")
-        lsp.preset({
-          name =  'minimal',
-          set_lsp_keymaps = true,
-          manage_nvim_cmp = true,
-          suggest_lsp_servers = false,
-          configure_diagnostics = false,
-        })
-      vim.diagnostic.config({
-        virtual_text = true,
-        signs = true,
-        update_in_insert = false,
-        underline = true,
-        severity_sort = false,
-        float = {
-          focusable = false,
-          style = 'minimal',
-          border = 'rounded',
-          source = 'always',
-          header = '',
-          prefix = '',
+      -- LSP
+      local lsp = require("lsp-zero")
+      lsp.preset({
+        name = "minimal",
+        configure_diagnostics = false,
+        suggest_lsp_servers = true,
+        manage_nvim_cmp = true,
+      })
+      -- CMP
+      local cmp = require("cmp")
+      local cmp_action = require("lsp-zero").cmp_action()
+      cmp.setup({
+        mapping = {
+          ["<CR>"] = cmp.mapping.confirm({select = true}),
+          ["<Tab>"] = cmp_action.luasnip_supertab(),
+        },
+        preselect = "item",
+        window = {
+          completion = cmp.config.window.bordered({
+          scrollbar = false,
+        }),
+          documentation = cmp.config.window.bordered(),
         },
       })
-
-      lsp.nvim_workspace()
-      lsp.setup()
-  end,
+    lsp.setup()
+  end
 }

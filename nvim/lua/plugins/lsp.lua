@@ -27,6 +27,7 @@ return {
         configure_diagnostics = false,
         suggest_lsp_servers = true,
         manage_nvim_cmp = true,
+        set_lsp_keymaps = true,
       })
       -- CMP
       local cmp = require("cmp")

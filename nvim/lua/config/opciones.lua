@@ -19,7 +19,7 @@ set.ttimeout = 0
 set.ttimeoutlen = 0
 set.hlsearch = false
 set.termguicolors = true
-
+set.showmode = false
 -- Copiar Y Pegar
 
 set.clipboard = "unnamedplus"

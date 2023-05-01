@@ -18,6 +18,6 @@ map ("n", "<leader>r", ":RunCode<CR>")
 
 -- Atajos Diagnostic
 map ("n", "de", vim.diagnostic.open_float)
-map ("n", "<leader>gd", vim.lsp.buf.definition)
+map ("n", "gd", vim.lsp.buf.definition)
 map ("n", "gh", vim.lsp.buf.hover)
 

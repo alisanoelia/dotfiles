@@ -6,6 +6,7 @@ return {
     {'neovim/nvim-lspconfig'},             -- Required
     {'williamboman/mason.nvim'},           -- Optional
     {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    {'mason-org/mason-registry'},
 
     -- Autocompletion
     {'hrsh7th/nvim-cmp'},         -- Required

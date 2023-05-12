@@ -158,7 +158,7 @@ static const char *colorname[] = {
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 4;
+static unsigned int cursorshape = 6;
 
 /*
  * Default columns and rows numbers

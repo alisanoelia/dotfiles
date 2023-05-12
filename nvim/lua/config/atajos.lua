@@ -3,6 +3,7 @@ local map = vim.keymap.set
 
 map ('n', 'xx', ':w<CR>')
 map ("n", "qq", ":q<CR>")
+map ("n", "<leader>q", ":q!<CR>")
 map ("n", "ff", ":Telescope find_files hidden=true<CR>")
 map ("n", "rr", ":so<CR>")
 map ("n", "mm", ":Mason<CR>")

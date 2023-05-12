@@ -8,10 +8,10 @@ super + Return
 
 # program launcher
 super + d
-	bash /home/mia/.config/wm/dmenu.sh
+	bash /home/citlali/.config/bin/dmenu.sh
 
-super + shift l
-	bash /home/mia/.config/wm/bloquear.sh
+super + shift + l
+	bash /home/citlali/.config/bin/lock.sh
 
 super + p
         bash /home/mia/.config/wm/scrot.sh

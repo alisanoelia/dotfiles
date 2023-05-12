@@ -1,10 +1,14 @@
+
 return {
-    'akinsho/bufferline.nvim',
-    version = '*',
-    event = 'UIEnter',
-    opts = {
-        options = {
-            mode = 'buffers',
+  "akinsho/bufferline.nvim",
+  event = "VeryLazy",
+  keys = {
+    { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+    { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+  },
+  opts = {
+    options = {
+      mode = 'buffers',
             diagnostics = 'nvim_lsp',
             diagnostics_indicator = function(count, level, diagnostics_dict, context)
                 local s = ' '
@@ -15,6 +19,14 @@ return {
                 end
                 return s
             end,
+      offsets = {
+        {
+          filetype = "neo-tree",
+          text = "Neo-tree",
+          highlight = "Directory",
+          text_align = "left",
         },
+      },
     },
+  },
 }

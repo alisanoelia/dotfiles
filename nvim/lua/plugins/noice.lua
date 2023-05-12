@@ -6,11 +6,6 @@ return {
 	},
 	enabled = true,
 	config = function ()
-		local border_style = {
-			top_left    = "┌", top    = "─",    top_right = "┐",
-			left        = "│",                      right = "│",
-			bottom_left = "└", bottom = "─", bottom_right = "┘",
-		}
 		require("noice").setup({
 			cmdline = {
 				enabled = true, -- enables the Noice cmdline UI
@@ -41,7 +36,6 @@ return {
 				view_error = "notify", -- view for errors
 				view_warn = "notify", -- view for warnings
 				view_history = "messages", -- view for :messages
-				view_search = false,
 				view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
 			},
 			popupmenu = {
@@ -236,8 +230,8 @@ return {
 		vim.notify = require("notify")
 
 		require("notify").setup({
-			background_colour = "Normal",
-			fps = 30,
+			background_colour = "#00000000",
+			fps = 60,
 			icons = {
 				DEBUG = "",
 				ERROR = "",
@@ -249,7 +243,7 @@ return {
 			minimum_width = 50,
 			maximum_width = 50,
 			render = "default",
-			stages = "slide",
+			stages = "fade",
 			timeout = 3000
 		})
 	end

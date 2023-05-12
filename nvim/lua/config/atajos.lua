@@ -16,7 +16,8 @@ map ("n", "<leader>l", "<C-w>l")
 map ("n", "<leader>k", "<C-w>k")
 map ("n", "<leader>d", "<C-d>")
 map ("n", "<leader>r", ":RunCode<CR>")
-map ("n", "ll", ":bn<CR>")
+map ("n", "<leader>bn", ":bn<CR>")
+map ("n", "<leader>bb", ":bb<CR>")
 
 
 

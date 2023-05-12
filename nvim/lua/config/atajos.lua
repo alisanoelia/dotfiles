@@ -16,9 +16,13 @@ map ("n", "<leader>l", "<C-w>l")
 map ("n", "<leader>k", "<C-w>k")
 map ("n", "<leader>d", "<C-d>")
 map ("n", "<leader>r", ":RunCode<CR>")
+map ("n", "ll", ":bn<CR>")
+
+
 
 -- Atajos Diagnostic
 map ("n", "de", vim.diagnostic.open_float)
 map ("n", "gd", vim.lsp.buf.definition)
 map ("n", "gh", vim.lsp.buf.hover)
+
 

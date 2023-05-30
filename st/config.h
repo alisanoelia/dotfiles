@@ -9,7 +9,7 @@ static char *font = "JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohin
 static char *font2[] = { "JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true" };
 static int borderpx = 25;
 
-/* Images */ 
+/* Images */
 #define ST_ENABLE_XIMAGES
 /*
  * What program is execed by st depends of these precedence rules:
@@ -136,7 +136,7 @@ static const char *colorname[] = {
 	"#A6ADC8",
 
   [256] = "#CDD6F4", /* default foreground colour */
-  [257] = "#1E1E2E", /* default background colour */
+  [257] = "#000000", /* default background colour */
   [258] = "#F5E0DC", /*575268*/
 
   };

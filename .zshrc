@@ -43,4 +43,4 @@ alias lg='lazygit'
 
 # Inicio
 shfetch
-echo "Hola, $USER! \n"
+echo "Bienvenido a zsh, \033[1;31m$USER! \n"

@@ -43,4 +43,4 @@ alias lg='lazygit'
 
 # Inicio
 shfetch
-echo 'Hola, alyssa! \n'
+echo "Hola, $USER! \n"

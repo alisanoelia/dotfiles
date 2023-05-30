@@ -16,6 +16,8 @@ bspc rule -a Brave-browser-nightly desktop=^2
 
 xsetroot -cursor_name left_ptr &
 
+# feh
+. ~/.fehbg
 # Picom
 picom --animations --animation-for-open-window zoom &
 # Polybar

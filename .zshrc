@@ -11,12 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# wyland
-export LIBSEAT_BACKEND="logind"
-export XDG_SESSION_TYPE=wayland
-export XDG_CURRENT_DESKTOP=sway
-export MOZ_ENABLE_WAYLAND=1
-
+export BROWSER=firefox
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -31,13 +26,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Example aliases
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sx='startx'
 alias grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ls='lsd'
 alias la='lsd -a'
-alias zh='nvim .zshrc'
+alias zh='nvim ~/.zshrc'
 alias reboot='sudo reboot'
 alias poweroff='sudo poweroff'
 alias rm='sudo rm -r'
@@ -45,3 +38,9 @@ alias addgit='git commit -m'
 alias upgit='git push origin main'
 alias s='sudo xbps-query -Rs'
 alias actualizar='sudo xbps-install -Su'
+alias i='sudo xbps-install -S'
+alias lg='lazygit'
+
+# Inicio
+shfetch
+echo 'Hola, alyssa! \n'

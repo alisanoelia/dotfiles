@@ -47,4 +47,4 @@ alias mkdir='mkdir -pv'
 
 # Inicio
 shfetch
-echo "Bienvenido a zsh, \033[1;31m$USER! \n"
+echo "Bienvenido a $(basename "$SHELL"), \033[1;31m$USER! \n"

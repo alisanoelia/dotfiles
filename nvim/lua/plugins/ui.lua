@@ -21,9 +21,10 @@ return {
       level = 2,
       minimum_width = 50,
       maximum_width = 50,
-      render = "minimal",
+      render = "compact",
       stages = "fade",
-      timeout = 10
+      timeout = 5000,
+      background_colour = "#000000"
     })
 
   end

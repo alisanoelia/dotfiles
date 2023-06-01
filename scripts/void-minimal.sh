@@ -31,6 +31,10 @@ sudo xbps-install -y \
   xauth \
   unzip \
   lazygit \
+  lsd \
+  bat \
+  bottom \
+  zellig \
 
 printf "Vamos bien, ten paciencia ... \n"
 
@@ -112,6 +116,9 @@ cp -rv "$dotfiles/sxhkd" "$config_dir"
 cp -rv "$dotfiles/nvim" "$config_dir"
 cp -rv "$dotfiles/neofetch" "$config_dir"
 cp -rv "$dotfiles/.zshrc" "$HOME"
+cp -rv "$dotfiles/polybar" "$config_dir"
+cp -rv "$dotfiles/rofi" "$config_dir"
+
 
 shfetch_dir="$HOME/shfetch"
 git clone https://github.com/alisanoelia/shfetch

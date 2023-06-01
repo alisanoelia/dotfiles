@@ -26,7 +26,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Example aliases
-alias sx='xinit'
 alias grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ls='lsd'
 alias la='lsd -a'

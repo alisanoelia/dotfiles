@@ -36,6 +36,8 @@ sudo xbps-install -y \
   bottom \
   zellig \
   mesa-dri \
+  wpa_supplicant \
+  dhcpcd \
 
 printf "Vamos bien, ten paciencia ... \n"
 

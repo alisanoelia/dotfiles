@@ -11,7 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-export BROWSER=firefox
+export BROWSER=brave-browser-nightly
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -26,7 +26,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Example aliases
-alias sx='startx'
+alias sx='xinit'
 alias grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ls='lsd'
 alias la='lsd -a'
@@ -47,4 +47,4 @@ alias mkdir='mkdir -pv'
 
 # Inicio
 shfetch
-echo "Bienvenido a $(basename "$SHELL"), \033[1;31m$USER! \n"
+echo "Bienvenido a \033[1;34m$(basename "$SHELL"), \033[1;31m$USER! \n"

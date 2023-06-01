@@ -8,13 +8,13 @@ super + Return
 
 # program launcher
 super + d
-	sh $HOME/.config/rofi/launchers/type-1/launcher.sh
+	sh $HOME/.config/bin/dmenu.sh
 
 super + shift + l
 	sh /home/alyssa/.config/bin/lock.sh
 
 super + p
-        sh /home/alyssa/.config/wm/scrot.sh
+        sh /home/alyssa/.config/bin/scrot.sh
 
 
 # make sxhkd reload its configuration files:

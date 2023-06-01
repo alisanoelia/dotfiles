@@ -35,6 +35,7 @@ sudo xbps-install -y \
   bat \
   bottom \
   zellig \
+  mesa-dri \
 
 printf "Vamos bien, ten paciencia ... \n"
 
@@ -72,7 +73,7 @@ fi
 
 printf "Inicio \n"
 
-sxrc_file="$HOME/.config/sx/sxrc"
+sxrc_file="$HOME/.config/sx/.sxrc"
 
 if [ -e "$sxrc_file" ]; then
   printf "El archivo ya existe.\n"

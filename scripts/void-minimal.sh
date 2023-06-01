@@ -122,11 +122,17 @@ cp -rv "$dotfiles/rofi" "$config_dir"
 
 
 shfetch_dir="$HOME/shfetch"
-git clone https://github.com/alisanoelia/shfetch
-cd "$shfetch_dir"
-sudo make install
-printf  "Se ha instalado shfetch"
+if [ -d "$shfetch_dir" ]; then
+  rm -rfv "$shfetch_dir"
+else
+  printf "no existe shfetch \n"
+  cd "$HOME"
+  git clone https://github.com/alisanoelia/shfetch
+  cd "$shfetch_dir"
+  sudo make install
+  printf  "Se ha instalado shfetch\n"
+fi
 
-printf "Ha finalizado la instalacion ..."
+printf "Ha finalizado la instalacion ...\n"
 sleep 2.0
 exit

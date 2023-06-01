@@ -11,10 +11,10 @@ super + d
 	sh $HOME/.config/rofi/launchers/type-1/launcher.sh
 
 super + shift + l
-	bash /home/alyssa/.config/bin/lock.sh
+	sh /home/alyssa/.config/bin/lock.sh
 
 super + p
-        bash /home/alyssa/.config/wm/scrot.sh
+        sh /home/alyssa/.config/wm/scrot.sh
 
 
 # make sxhkd reload its configuration files:

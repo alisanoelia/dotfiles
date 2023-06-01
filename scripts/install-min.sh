@@ -35,7 +35,7 @@ printf "Convirtiendo paquete \n"
 ./xdeb -Sde min-1.27.0-amd64.deb
 
 printf "Instalando \n"
-sudo xbps-install -Ry binpkgs min-1.27.0_1
+sudo xbps-install -R binpkgs min-1.27.0_1
 
 sleep 0.5
 printf "Configurando \n"

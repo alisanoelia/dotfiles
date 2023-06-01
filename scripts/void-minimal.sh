@@ -30,6 +30,7 @@ sudo xbps-install -y \
   sx \
   xauth \
   unzip \
+  lazygit \
 
 printf "Vamos bien, ten paciencia ... \n"
 
@@ -111,6 +112,12 @@ cp -rv "$dotfiles/sxhkd" "$config_dir"
 cp -rv "$dotfiles/nvim" "$config_dir"
 cp -rv "$dotfiles/neofetch" "$config_dir"
 cp -rv "$dotfiles/.zshrc" "$HOME"
+
+shfetch_dir="$HOME/shfetch"
+git clone https://github.com/alisanoelia/shfetch
+cd "$shfetch_dir"
+sudo make install
+printf  "Se ha instalado shfetch"
 
 printf "Ha finalizado la instalacion ..."
 sleep 2.0

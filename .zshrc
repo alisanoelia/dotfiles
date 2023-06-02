@@ -11,14 +11,15 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-export BROWSER=brave-browser-nightly
+export BROWSER=min
+export VISUAL=nvim
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
- zsh-syntax-highlighting
+  zsh-syntax-highlighting
   zsh-autosuggestions
   z
 )
@@ -43,6 +44,7 @@ alias lg='lazygit'
 alias cp='cp -rv'
 alias mv='mv -v'
 alias mkdir='mkdir -pv'
+alias ht='btm'
 
 # Inicio
 shfetch

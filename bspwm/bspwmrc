@@ -15,12 +15,14 @@ bspc config gapless_monocle      true
 bspc rule -a St state=floating
 bspc rule -a Brave-browser-nightly desktop=^2
 bspc rule -a Min desktop=^3
+bspc rule -a Pictureinpicture state=floating
 
 xsetroot -cursor_name left_ptr &
 
 # feh
-. ~/.fehbg
+#. ~/.fehbg
+hsetroot -fill $HOME/wal.jpg
 # Picom
 picom --animations --animation-for-open-window zoom &
 # Polybar
-$HOME/.config/polybar/launch.sh
+bash $HOME/.config/polybar/launch.sh

@@ -4,7 +4,7 @@ printf "Holaaaa, $USER \n"
 printf "... \n"
 sleep 0.5
 printf "Actualizaremos el sistema\n"
-sudo xbps-install -Sy
+sudo xbps-install -Suy
 
 printf "Sistema actualizado \n"
 printf "Se instalaran los paquetes minimos y necesarios para sowm y bspwm \n"
@@ -34,10 +34,16 @@ sudo xbps-install -y \
   lsd \
   bat \
   bottom \
-  zellig \
+  zellij \
   mesa-dri \
   wpa_supplicant \
   dhcpcd \
+  nodejs \
+  python3-pip \
+  wget \
+  dmenu \
+
+sudo pip3 install flet
 
 printf "Vamos bien, ten paciencia ... \n"
 
@@ -47,6 +53,7 @@ printf "Vamos por la fuente\n"
 
 fonts_dir="$HOME/.fonts"
 
+mkdir "$fonts_dir"
 if [ -d "$fonts_dir" ]; then
   printf "La carpeta de fuentes ya existe.\n"
 
@@ -104,6 +111,7 @@ else
   printf "Se ha creado el acceso directo correctamente.\n"
 fi
 
+sleep 20
 # carpetas
 config_dir="$HOME/.config"
 dotfiles="$HOME/dotfiles"

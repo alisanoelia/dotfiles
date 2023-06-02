@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Verificar el estado actual del sonido
+if amixer -c 1 get Master | grep -q "\[on\]"; then
+    # Si no está muteado, entonces mutea el sonido
+    amixer -c 1 set Master mute
+else
+    # Si está muteado, entonces lo desmutea
+    amixer -c 1 set Master unmute
+fi

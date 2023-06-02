@@ -8,19 +8,34 @@ super + Return
 
 # program launcher
 super + d
-	sh $HOME/.config/bin/dmenu.sh
+	sh $HOME/.config/bin/dmenu
 
 super + shift + l
-	sh /home/alyssa/.config/bin/lock.sh
+	sh /home/alyssa/.config/bin/lock
 
 super + p
-        sh /home/alyssa/.config/bin/scrot.sh
+        sh /home/alyssa/.config/bin/scrot
 
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# Bajar el volumen con F10
+super + F10
+    amixer -c 1 set Master 5%-
+
+# Subir el volumen con F11
+super + F11
+    amixer -c 1 set Master 5%+
+
+super + F9
+    sh /home/alyssa/.config/bin/sound
+
+super + alt + F10
+    bri down
+super + alt + F11
+    bri up
 #
 # bspwm hotkeys
 #

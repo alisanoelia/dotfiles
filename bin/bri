@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case "$1" in
+    up)
+        brightnessctl s +10%;;
+    down)
+        brightnessctl s 10%-;;
+    kbdup)
+        brightnessctl -d smc::kbd_backlight s +20%;;
+    kbddown)
+        brightnessctl -d smc::kbd_backlight s 20%-;;
+esac

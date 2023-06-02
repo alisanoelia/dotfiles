@@ -9,7 +9,7 @@ fi
 printf "Se instalara min-browser \n"
 printf "Instalando dependencias... \n"
 sleep 0.5
-sudo xbps-install -y git wget
+sudo xbps-install -y git wget xz curl
 
 # Verificar si la carpeta ya existe
 if [ -d "$HOME/.min" ]; then

@@ -13,9 +13,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a St state=floating
-bspc rule -a Brave-browser-nightly desktop=^2
-bspc rule -a Min desktop=^3
-bspc rule -a Pictureinpicture state=floating
+bspc rule -a Brave-browser-nightly desktop=^3
+bspc rule -a Min desktop=^2
 
 xsetroot -cursor_name left_ptr &
 

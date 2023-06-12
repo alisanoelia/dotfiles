@@ -8,13 +8,13 @@ super + Return
 
 # program launcher
 super + d
-	sh $HOME/.config/bin/dmenu
+    $HOME/.config/bin/dme
 
 super + shift + l
-	sh /home/alyssa/.config/bin/lock
+    $HOME/.config/bin/lock
 
 super + p
-        sh /home/alyssa/.config/bin/scrot
+    $HOME/.config/bin/scrot
 
 
 # make sxhkd reload its configuration files:
@@ -30,12 +30,12 @@ super + F11
     amixer -c 1 set Master 5%+
 
 super + F9
-    sh /home/alyssa/.config/bin/sound
+    $HOME/.config/bin/sound
 
 super + alt + F10
-    bri down
+    $HOME/.config/bin/bri down
 super + alt + F11
-    bri up
+    $HOME/.config/bin/bri up
 #
 # bspwm hotkeys
 #

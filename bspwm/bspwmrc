@@ -25,4 +25,4 @@ sh $HOME/.config/polybar/launch.sh &
 
 # xsetroot
 xsetroot -cursor_name left_ptr &
-hsetroot -fill $HOME/prueba/output.jpg
+hsetroot -fill $HOME/wallpapers/output.jpg

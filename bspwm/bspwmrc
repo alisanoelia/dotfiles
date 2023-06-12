@@ -23,6 +23,6 @@ picom --animations --animation-for-open-window zoom &
 # Polybar
 sh $HOME/.config/polybar/launch.sh &
 
-# xsetroot
+# hsetroot
 xsetroot -cursor_name left_ptr &
 hsetroot -fill $HOME/wallpapers/output.jpg

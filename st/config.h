@@ -68,6 +68,18 @@ static unsigned int blinktimeout = 800;
 static unsigned int cursorthickness = 2;
 
 /*
+ * 1: render most of the lines/blocks characters without using the font for
+ *    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
+ *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+ * 0: disable (render all U25XX glyphs normally from the font).
+ */
+const int boxdraw = 1;
+const int boxdraw_bold = 0;
+
+/* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
+const int boxdraw_braille = 0;
+
+/*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
  * it
  */
@@ -95,44 +107,38 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"#45475A",
-	"#F38BA8",
-	"#A6E3A1",
-	"#F9E2AF",
-	"#89B4FA",
-	"#F5C2E7",
-	"#94E2D5",
-	"#BAC2DE",
-
-	/* 8 bright colors */
-	"#585B70",
-	"#F38BA8",
-	"#A6E3A1",
-	"#F9E2AF",
-	"#89B4FA",
-	"#F5C2E7",
-	"#94E2D5",
-	"#A6ADC8",
-
-  [256] = "#ffffff", /* default foreground colour */
-  [257] = "#0B0F10", /* default background colour */
-  [258] = "#F5E0DC", /*575268*/
-
-  };
+    "#26233a",
+    "#eb6f92",
+    "#9ccfd8",
+    "#f6c177",
+    "#31748f",
+    "#c4a7e7",
+    "#ebbcba",
+    "#e0def4",
+    "#6e6a86",
+    "#eb6f92",
+    "#9ccfd8",
+    "#f6c177",
+    "#31748f",
+    "#c4a7e7",
+    "#ebbcba",
+    "#e0def4",
+    [255] = 0,
+    /* more colors can be added after 255 to use with DefaultXX */
+    [256] = "#191724",
+};
 
 
 /*
+ * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-  unsigned int defaultfg = 256;
-  unsigned int defaultbg = 257;
-  unsigned int defaultcs = 258;
-  unsigned int defaultrcs = 258;
-  unsigned int background = 257;
+unsigned int defaultbg = 256;
+unsigned int defaultfg = 7;
+unsigned int defaultcs = 7;
+unsigned int defaultrcs = 7;
 
-/*
- * Default shape of cursor
+/* Default shape of cursor
  * 2: Block ("█")
  * 4: Underline ("_")
  * 6: Bar ("|")
@@ -197,7 +203,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ MODKEY,               XK_c,           clipcopy,       {.i =  0} },
 	{ MODKEY,               XK_v,           clippaste,      {.i =  0} },
-	{ TERMMOD,              XK_V,           selpaste,       {.i =  0} },
+	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },

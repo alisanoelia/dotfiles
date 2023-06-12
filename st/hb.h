@@ -2,6 +2,13 @@
 #include <hb.h>
 #include <hb-ft.h>
 
-void hbunloadfonts();
-void hbtransform(XftGlyphFontSpec *, const Glyph *, size_t, int, int);
+typedef struct {
+  hb_buffer_t *buffer;
+  hb_glyph_info_t *glyphs;
+  hb_glyph_position_t *positions;
+  unsigned int count;
+} HbTransformData;
 
+void hbunloadfonts();
+void hbtransform(HbTransformData *, XftFont *, const Glyph *, int, int);
+void hbcleanup(HbTransformData *);

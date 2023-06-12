@@ -12,16 +12,17 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a St state=floating
+bspc rule -a st-256color state=floating
 bspc rule -a Brave-browser-nightly desktop=^3
 bspc rule -a Min desktop=^2
+bspc rule -a Virt-manager desktop=^5
 
-xsetroot -cursor_name left_ptr &
-
-# feh
-#. ~/.fehbg
-hsetroot -fill $HOME/wal.jpg
-# Picom
+# picom
 picom --animations --animation-for-open-window zoom &
+
 # Polybar
-bash $HOME/.config/polybar/launch.sh
+sh $HOME/.config/polybar/launch.sh &
+
+# xsetroot
+xsetroot -cursor_name left_ptr &
+hsetroot -fill $HOME/prueba/output.jpg

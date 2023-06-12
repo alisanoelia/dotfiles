@@ -1,10 +1,10 @@
 return {
-  "catppuccin/nvim", name = "catppuccin",
-
+  'rose-pine/neovim',
   lazy = false,
     priority=1000,
     config = function()
-        require("catppuccin").setup({
+        require("lazy").setup({
+          { 'rose-pine/neovim', name = 'rose-pine' },
             no_italic = false, -- Force no italic
             no_bold = false, -- Force no bold
             styles = {
@@ -22,6 +22,6 @@ return {
               operators = {},
             },
         })
-        vim.cmd.colorscheme("catppuccin")
+        vim.cmd.colorscheme("rose-pine")
     end
 }

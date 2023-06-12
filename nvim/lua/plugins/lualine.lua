@@ -2,10 +2,9 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function()
-        require("lualine").setup(
-            {
+        require("lualine").setup({
                 options = {
-                    theme = 'catppuccin',
+                    theme = 'rose-pine',
                     icons_enabled = true,
                     globalstatus = true,
                 },

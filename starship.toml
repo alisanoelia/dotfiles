@@ -1,0 +1,51 @@
+# ~/.config/starship.toml
+
+format = """
+$directory\
+    $rust\
+    $lua\
+    $c\
+    $nodejs\
+    $python\
+    $golang\
+    $custom\
+    $package\
+    $git_branch\
+    $git_commit\
+    $git_state\
+    $git_metrics\
+    $git_status\
+    $hg_branch\
+    $cmd_duration\
+    -> """
+
+add_newline = false
+
+[python]
+format = 'via [$symbol$version](bold white)'
+symbol = ' '
+
+[lua]
+symbol = " "
+
+[c]
+symbol = ' '
+
+[golang]
+symbol = ' '
+
+[git_status]
+deleted = 'X'
+
+[cmd_duration]
+format = "[$duration]($style) "
+
+[custom.css]
+format = '$symbol'
+detect_extensions = ['css']
+symbol = ' '
+
+[custom.html]
+format = "$symbol"
+detect_extensions = ['html']
+symbol = ' '

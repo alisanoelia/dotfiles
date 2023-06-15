@@ -16,7 +16,7 @@ f() {
     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
 }
 
-eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)" > /dev/null 2>&1
 
 plugins=(
  zsh-syntax-highlighting
@@ -51,3 +51,7 @@ alias nv='nvim'
 
 shfetch
 echo "Bienvenido a \033[1;34m$(basename "$SHELL"), \033[1;31m$USER! \n"
+
+
+eval "$(starship init zsh)"
+ssh-add ~/.ssh/alyssa > /dev/null 2>&1

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+count_installed_packages() {
+    # Utilizamos el comando 'xbps-query' para obtener la lista de paquetes instalados
+    packages=$(xbps-query -l | awk '{print $2}')
+
+    # Contamos el número de paquetes en la lista
+    count=$(echo "$packages" | wc -l)
+
+    echo "$count"
+}
+
+# Llamamos a la función para obtener el número de paquetes instalados
+num_packages=$(count_installed_packages)
+
+echo "$num_packages"

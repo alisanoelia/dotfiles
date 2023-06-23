@@ -11,12 +11,15 @@ export EDITO=nvim
 
 export PATH="$HOME/.config/bin:$PATH"
 
+export RUST_BACKTRACE=full
+
 f() {
     fff "$@"
     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
 }
 
-eval "$(ssh-agent -s)" > /dev/null 2>&1
+eval "$(ssh-agent -s)" > /dev/null
+ssh-add ~/.ssh/alyssa > /dev/null 2>&1
 
 plugins=(
  zsh-syntax-highlighting
@@ -54,4 +57,3 @@ echo "Bienvenido a \033[1;34m$(basename "$SHELL"), \033[1;31m$USER! \n"
 
 
 eval "$(starship init zsh)"
-ssh-add ~/.ssh/alyssa > /dev/null 2>&1

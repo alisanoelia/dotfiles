@@ -1,6 +1,10 @@
 #!/bin/sh
-qemu-system-x86_64 --enable-kvm \
-  -vga qxl \
+qemu-system-x86_64 \
+  -M q35 \
+  -cpu host \
+  -enable-kvm \
+  -vga virtio \
+  -display sdl,show-cursor=on \
   -smp 2 \
   -m 2G \
   -device AC97 \

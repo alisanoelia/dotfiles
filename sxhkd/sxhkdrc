@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + d
-    $HOME/.config/bin/dme
+    dmenu_run
 
 super + F12
     $HOME/.config/bin/lock

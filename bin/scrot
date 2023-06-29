@@ -1,18 +1,9 @@
 #!/bin/sh
+output_dir="$HOME/screenshots"
+output_file="$output_dir/screenshot_$(date '+%Y%m%d_%H%M%S').png"
 
-# Directorio de destino para las capturas de pantalla
-destination_dir="/home/alyssa/screenshots/"
+# Crea el directorio de screenshots si no existe
+mkdir -p "$output_dir"
 
-# Verificar si el directorio de destino existe, de lo contrario, crearlo
-if [ ! -d "$destination_dir" ]; then
-  mkdir "$destination_dir"
-fi
-
-# Nombre de archivo basado en la fecha y hora actual
-filename="$(date +'%Y%m%d_%H%M%S').png"
-
-# Ruta completa del archivo de destino
-destination_path="$destination_dir/$filename"
-
-# Capturar la captura de pantalla y guardarla en el directorio de destino
-scrot "$destination_path"
+import -window root "$output_file"
+echo "Captura de pantalla guardada en: $output_file"

@@ -1,0 +1,2 @@
+#!/bin/sh
+betterlockscreen -u "$1"

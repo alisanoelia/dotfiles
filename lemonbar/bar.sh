@@ -27,7 +27,7 @@ Title() {
 }
 
 Disco() {
-  d=$(df -h | awk '$6 == "/" {print $3}')
+  d=$(df -h | awk '$6 == "/" {print $4}')
   echo "$d"
 }
 

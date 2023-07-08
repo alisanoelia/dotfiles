@@ -1,3 +1,0 @@
-#!/bin/sh
-
-xautolock -time 1 -locker "slock -m 'Locked :) Hello, Alyssa'" -corners 000- -detectsleep &

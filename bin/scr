@@ -1,9 +1,0 @@
-#!/bin/sh
-output_dir="$HOME/screenshots"
-output_file="$output_dir/screenshot_$(date '+%Y%m%d_%H%M%S').png"
-
-# Crea el directorio de screenshots si no existe
-mkdir -p "$output_dir"
-
-import -window root "$output_file"
-echo "Captura de pantalla guardada en: $output_file"

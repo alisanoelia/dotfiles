@@ -12,7 +12,8 @@ Date() {
 
 Batery() {
   BATERY=$(cat /sys/class/power_supply/BATT/capacity)
-  echo "$BATERY"
+  STATUS=$(cat /sys/class/power_supply/BATT/status)
+  echo "$BATERY% $STATUS"
 }
 
 Title() {
@@ -78,7 +79,7 @@ LocalIP() {
 
 # Ejecutar Lemonbar con la configuración de colores y posición
 while true; do
-  echo " %{l} $(Xbps) | $(LocalIP) | $(Wifi) %{c}$(Title) %{r} MAYUS $(Mayus) | VOL $(Alsa) | DISK $(Disco) | BAT $(Batery)% | $(Date) $(Clock) "
+  echo " %{l} $(Xbps) | $(LocalIP) | $(Wifi) %{c}$(Title) %{r} MAYUS $(Mayus) | VOL $(Alsa) | DISK $(Disco) | BAT $(Batery) | $(Date) $(Clock) "
   sleep 5
 
   # Actualizar Xbps cada 30 minutos (1800 segundos)

@@ -1,7 +1,6 @@
 #!/bin/sh
 
 Workspace() {
-  # Agrega aquí la lógica para obtener y mostrar los nombres de los espacios de trabajo
   workspaces=("st" "min" "mpv" "virt")
   current_ws=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
   output=""

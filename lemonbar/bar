@@ -1,0 +1,60 @@
+#!/usr/bin/bash
+
+# Colors
+
+b="%{B-}"
+c1="%{B#285c59}"
+c2="%{B#eb4034}"
+c3="%{B#2eab5c}"
+c4="%{B#317091}"
+
+#
+
+Workspace() {
+  w=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+  if [ "$w" -eq 0 ]; then
+    echo -e " $c1 st $b min  mpv virt "
+  elif [ "$w" -eq 1 ]; then
+    echo -e " st $c1 min $b mpv virt "
+  elif [ "$w" -eq 2 ]; then
+    echo -e " st  min $c1 mpv $b virt "
+  elif [ "$w" -eq 3 ]; then
+    echo -e " st min mpv $c1 virt $b "
+  else
+    echo " st  min  mpv virt "
+  fi
+}
+
+Hora() {
+  h=$(date +'%I:%M %p')
+  echo -e "$c3 $h $b"
+}
+
+Wifi() {
+  if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+    echo "$c4 Connected $b"
+  else
+    echo "$c4 Disconnected $b"
+  fi
+}
+
+Batery() {
+  BATERY=$(cat /sys/class/power_supply/BATT/capacity)
+  STATUS=$(cat /sys/class/power_supply/BATT/status)
+  echo "$c2 $BATERY% $STATUS $b"
+}
+
+Title() {
+  len=$(echo -n "$(xdotool getwindowfocus getwindowname)" | wc -m)
+  max_len=70
+  if [ "$len" -gt "$max_len" ];then
+    echo -n "$(xdotool getwindowfocus getwindowname | cut -c 1-$max_len)..."
+  else
+    echo -n "$(xdotool getwindowfocus getwindowname)"
+  fi
+}
+
+while true; do
+  echo -e "%{l}$(Workspace) %{c} $(Title) %{r} $(Batery) | $(Wifi) | $(Hora)"
+  sleep 0.1
+done | lemonbar -p -f "JetBrains Mono Nerd Font:size=8" -B "#111111" &

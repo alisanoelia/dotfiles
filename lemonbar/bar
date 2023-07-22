@@ -26,12 +26,12 @@ Workspace() {
 }
 
 Hora() {
-  h=$(date +'%I:%M %p')
+  h=$(date +'%A %d-%m-%Y %I:%M %p')
   echo -e "$c3 $h $b"
 }
 
 Wifi() {
-  if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+  if ping -q -c 1 -W 2 8.8.8.8 >/dev/null; then
     echo "$c4 Connected $b"
   else
     echo "$c4 Disconnected $b"

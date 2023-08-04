@@ -10,21 +10,21 @@ c3="%{B#9e3909}"
 #
 Hora() {
   h=$(date +'%A %d-%m-%Y %I:%M %p')
-  echo -e "$c3 $h $b"
+  echo "$c3  $h $b"
 }
 
 Wifi() {
   if ping -q -c 1 -W 2 8.8.8.8 >/dev/null; then
-    echo "$c1 Connected $b"
+    echo "$c1  Connected $b"
   else
-    echo "$c1 Disconnected $b"
+    echo "$c1  Disconnected $b"
   fi
 }
 
 Batery() {
   BATERY=$(cat /sys/class/power_supply/BATT/capacity)
   STATUS=$(cat /sys/class/power_supply/BATT/status)
-  echo "$c2 $BATERY% $STATUS $b"
+  echo "$c2  $BATERY% $STATUS $b"
 }
 
 Title() {
@@ -40,4 +40,4 @@ Title() {
 while true; do
   echo "%{l} %{c} $(Title) %{r} $(Batery) | $(Wifi) | $(Hora)"
   sleep 5s
-done | lemonbar -d -p -f "JetBrains Mono Nerd Font:size=8" -B "#000000" &
+done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#000000" &

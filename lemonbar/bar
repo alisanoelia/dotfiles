@@ -1,23 +1,22 @@
 #!/usr/bin/bash
 
 # Colors
-
-c1="%{B#a93437}"
 b="%{B-}"
+c1="%{B#732f5b}"
 c2="%{B#362b40}"
 c3="%{B#9e3909}"
+c4="%{B#224173}"
 
-#
 Hora() {
   h=$(date +'%A %d-%m-%Y %I:%M %p')
-  echo "$c3  $h $b"
+  echo "$c3 󰥔 $h $b"
 }
 
 Wifi() {
   if ping -q -c 1 -W 2 8.8.8.8 >/dev/null; then
-    echo "$c1  Connected $b"
+    echo "$c1 󰖩 Connected $b"
   else
-    echo "$c1  Disconnected $b"
+    echo "$c1 󰖩 Disconnected $b"
   fi
 }
 
@@ -37,7 +36,31 @@ Title() {
   fi
 }
 
+Workspaces() {
+	ACTUAL=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+	case $ACTUAL in
+		0)
+			echo " $c4 I $b II III IV V "
+		;;
+
+		1)
+			echo " I $c4 II $b III IV V"
+		;;
+
+		2)
+			echo " I II $c4 III $b IV V"
+		;;
+		3)
+			echo " I II III $c4 IV $b V"
+		;;
+
+		4)
+			echo " I II III IV $c4 V $b "
+		;;
+	esac
+}
+
 while true; do
-  echo "%{l} %{c} $(Title) %{r} $(Batery) | $(Wifi) | $(Hora)"
-  sleep 5s
+  echo "%{l}$(Workspaces) %{c}$(Title) %{r}$(Batery) | $(Wifi) | $(Hora)"
+  sleep 0.1s
 done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#000000" &

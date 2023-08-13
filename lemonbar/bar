@@ -40,27 +40,26 @@ Workspaces() {
 	ACTUAL=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
 	case $ACTUAL in
 		0)
-			echo " $c4 I $b II III IV V "
+			echo "$c4  $b 󰖟     "
 		;;
 
 		1)
-			echo " I $c4 II $b III IV V"
+			echo "  $c4 󰖟 $b    "
 		;;
 
 		2)
-			echo " I II $c4 III $b IV V"
+			echo "   󰖟 $c4  $b  "
 		;;
 		3)
-			echo " I II III $c4 IV $b V"
+			echo "   󰖟   $c4  $b "
 		;;
+                4)
+              		echo "   󰖟     "
 
-		4)
-			echo " I II III IV $c4 V $b "
-		;;
 	esac
 }
 
 while true; do
   echo "%{l}$(Workspaces) %{c}$(Title) %{r}$(Batery) | $(Wifi) | $(Hora)"
-  sleep 0.1s
+  sleep 1s
 done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#000000" &

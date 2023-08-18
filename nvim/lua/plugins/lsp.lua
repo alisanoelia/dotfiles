@@ -1,6 +1,6 @@
 return {
   'VonHeikemen/lsp-zero.nvim',
-  branch = 'v1.x',
+  branch = 'v2.x',
   dependencies = {
     -- LSP Support
     {'neovim/nvim-lspconfig'},             -- Required
@@ -19,33 +19,55 @@ return {
     -- Snippets
     {'L3MON4D3/LuaSnip'},             -- Required
     {'rafamadriz/friendly-snippets'}, -- Optional
-    },
-    config = function()
-      -- LSP
-      local lsp = require("lsp-zero")
-      lsp.preset({
-        name = "minimal",
-        configure_diagnostics = false,
-        suggest_lsp_servers = true,
-        manage_nvim_cmp = true,
-        set_lsp_keymaps = true,
-      })
-      -- CMP
-      local cmp = require("cmp")
-      local cmp_action = require("lsp-zero").cmp_action()
-      cmp.setup({
-        mapping = {
-          ["<CR>"] = cmp.mapping.confirm({select = true}),
-          ["<Tab>"] = cmp_action.luasnip_supertab(),
-        },
-        preselect = "item",
-        window = {
-          completion = cmp.config.window.bordered({
+  },
+  config = function()
+    -- LSP
+    local lsp = require("lsp-zero")
+    lsp.preset({
+      name = "minimal",
+      configure_diagnostics = false,
+      suggest_lsp_servers = true,
+      manage_nvim_cmp = true,
+      set_lsp_keymaps = true,
+    })
+    -- CMP
+    local cmp = require("cmp")
+    local cmp_action = require("lsp-zero").cmp_action()
+    cmp.setup({
+      mapping = {
+        ["<CR>"] = cmp.mapping.confirm({select = true}),
+        ["<Tab>"] = cmp_action.luasnip_supertab(),
+      },
+      preselect = "item",
+      completion = {
+        completeopt = 'menu,menuone,noinsert',
+      },
+      window = {
+        completion = cmp.config.window.bordered({
           scrollbar = false,
         }),
-          documentation = cmp.config.window.bordered(),
-        },
-      })
+        documentation = cmp.config.window.bordered(),
+      },
+    })
+    lsp.set_sign_icons({
+      error = '✘',
+      warn = '▲',
+      hint = '⚑',
+      info = ''
+    })
+
+    vim.diagnostic.config({
+      virtual_text = true,
+      severity_sort = true,
+      float = {
+        style = 'minimal',
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+      },
+    })
+    
     lsp.setup()
   end
 }

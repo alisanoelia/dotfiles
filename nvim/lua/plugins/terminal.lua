@@ -4,7 +4,7 @@ return {
         config = function()
                 require('toggleterm').setup({
         -- open_mapping = 'tt',
-        direction = 'horizontal',
+        direction = 'float',
         shade_terminals = true
  })
 end,

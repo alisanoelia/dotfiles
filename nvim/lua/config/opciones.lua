@@ -1,7 +1,5 @@
 vim.g.mapleader = " "
 
-
--- Opciones Personales
 local set = vim.o
 
 set.number = true
@@ -22,18 +20,13 @@ set.termguicolors = true
 set.showmode = false
 vim.opt.path:append { '**' }
 
-
--- Copiar Y Pegar
-
 set.clipboard = "unnamedplus"
 
 set.backup = false
 set.errorbells = false
 set.swapfile = false
 
--- Indentation
 set.expandtab = true
 set.softtabstop = 2
 set.shiftwidth = 2
 set.smartindent = true
-

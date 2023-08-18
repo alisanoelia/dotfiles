@@ -20,6 +20,9 @@ set.ttimeoutlen = 0
 set.hlsearch = false
 set.termguicolors = true
 set.showmode = false
+vim.opt.path:append { '**' }
+
+
 -- Copiar Y Pegar
 
 set.clipboard = "unnamedplus"
@@ -29,9 +32,8 @@ set.errorbells = false
 set.swapfile = false
 
 -- Indentation
-vim.opt.expandtab = true
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.smartindent = true
+set.expandtab = true
+set.softtabstop = 2
+set.shiftwidth = 2
+set.smartindent = true
 
--- pruebas notify

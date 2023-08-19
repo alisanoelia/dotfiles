@@ -1,4 +1,5 @@
 local opt = vim.opt
+local bo = vim.bo
 
 opt.number = true
 opt.relativenumber = true
@@ -18,12 +19,11 @@ opt.smartcase = true
 opt.hidden = true
 opt.ignorecase = true
 opt.hlsearch = false
-opt.hlsearch = true
 opt.incsearch = true
 
 opt.swapfile = false
 opt.autoread = true
-vim.bo.autoread = true
+bo.autoread = true
 
 opt.cursorline = true
 

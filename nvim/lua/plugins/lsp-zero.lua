@@ -17,21 +17,29 @@ return {
     {'hrsh7th/cmp-nvim-lua'},     -- Optional
 
     -- Snippets
-    {'L3MON4D3/LuaSnip'},             -- Required
+    {'L3MON4D3/LuaSnip'}, -- Required
+    {'rafamadriz/friendly-snippets'}, -- Optional
   },
   config = function()
     -- LSP
     local lsp = require("lsp-zero")
     lsp.preset({
-      name = "minimal",
+      name = "recommended",
       configure_diagnostics = false,
       suggest_lsp_servers = true,
       manage_nvim_cmp = true,
       set_lsp_keymaps = true,
     })
+    lsp.on_attach(function(client, bufnr)
+      lsp.default_keymaps({buffer = bufnr})
+    end)
+
     -- CMP
     local cmp = require("cmp")
     local cmp_action = require("lsp-zero").cmp_action()
+    require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+    require('luasnip.loaders.from_vscode').lazy_load()
+
     cmp.setup({
       mapping = {
         ["<CR>"] = cmp.mapping.confirm({select = true}),
@@ -46,6 +54,29 @@ return {
           scrollbar = false,
         }),
         documentation = cmp.config.window.bordered(),
+      },
+      sources = {
+        {name = 'nvim_lsp'},
+        {name = 'buffer'},
+        {name = 'luasnip'}
+      },
+      formatting = {
+        -- changing the order of fields so the icon is the first
+        fields = {'menu', 'abbr', 'kind'},
+
+        -- here is where the change happens
+        format = function(entry, item)
+          local menu_icon = {
+            nvim_lsp = 'λ',
+            luasnip = '⋗',
+            buffer = 'Ω',
+            path = '🖫',
+            nvim_lua = 'Π',
+          }
+
+          item.menu = menu_icon[entry.source.name]
+          return item
+        end,
       },
     })
     lsp.set_sign_icons({
@@ -66,7 +97,6 @@ return {
         prefix = '',
       },
     })
-    
     lsp.setup()
   end
 }

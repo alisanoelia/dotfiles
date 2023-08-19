@@ -28,7 +28,7 @@ return {
       configure_diagnostics = false,
       suggest_lsp_servers = true,
       manage_nvim_cmp = true,
-      set_lsp_keymaps = true,
+      set_lsp_keymaps = false,
     })
     lsp.on_attach(function(client, bufnr)
       lsp.default_keymaps({buffer = bufnr})

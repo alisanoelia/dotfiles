@@ -1,7 +1,8 @@
 return {
   "nvim-tree/nvim-tree.lua",
+  dependencies = {"nvim-tree/nvim-web-devicons"},
 
-  config = function ()
+  config = function()
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
@@ -18,7 +19,7 @@ return {
         custom = { '^.git$', '^node_modules$' }
       },
       git = {
-        enable = false
+        enable = false,
       },
       log = {
         enable = true,
@@ -31,10 +32,10 @@ return {
         show_on_dirs = false,
         debounce_delay = 50,
         icons = {
-          hint = '',
-          info = '',
-          warning = '',
-          error = ''
+          error = '✘',
+          warning = '▲',
+          hint = '⚑',
+          info = ''
         }
       },
       on_attach = function(bufnr)
@@ -52,7 +53,5 @@ return {
           { desc = 'toggle', buffer = bufnr, noremap = true, silent = true, nowait = true })
       end
     })
-
-    vim.keymap.set('n', '<c-e>', '<cmd>NvimTreeToggle<cr>')
   end
 }

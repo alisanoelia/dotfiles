@@ -7,7 +7,7 @@ opt.relativenumber = true
 opt.scrolloff = 5
 opt.sidescrolloff = 5
 
-opt.clipboard = "unnamedplus"
+opt.clipboard = 'unnamedplus'
 
 opt.tabstop = 2
 opt.softtabstop = 2
@@ -39,6 +39,5 @@ opt.termguicolors = true
 opt.list = true
 
 opt.foldmethod = "indent"
--- opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.wo.foldlevel = 1
 vim.wo.foldminlines= 2

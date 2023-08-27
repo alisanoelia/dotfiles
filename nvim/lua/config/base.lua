@@ -12,7 +12,7 @@ opt.clipboard = "unnamedplus"
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.shiftwidth = 2
-opt.expandtab = true
+opt.expandtab = false
 
 opt.ignorecase = true
 opt.smartcase = true
@@ -35,3 +35,10 @@ opt.path:append { '**' }
 opt.showmode = false
 
 opt.termguicolors = true
+
+opt.list = true
+
+opt.foldmethod = "indent"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo.foldlevel = 1
+vim.wo.foldminlines= 2

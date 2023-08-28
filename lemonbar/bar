@@ -23,7 +23,19 @@ Wifi() {
 Batery() {
   BATERY=$(cat /sys/class/power_supply/BATT/capacity)
   STATUS=$(cat /sys/class/power_supply/BATT/status)
-  echo "$c2  $BATERY% $STATUS $b"
+
+  if [ "$BATERY" -ge 90 ]; then
+    ICON=""
+  elif [ "$BATERY" -ge 70 ]; then
+    ICON=""
+  elif [ "$BATERY" -ge 40 ]; then
+    ICON=""
+  elif [ "$BATERY" -ge 20 ]; then
+    ICON=""
+  else
+    ICON=""   
+	fi
+  echo "$c2 $ICON $BATERY% $STATUS $b"
 }
 
 Title() {
@@ -42,19 +54,17 @@ Workspaces() {
 		0)
 			echo "$c4  $b 󰖟     "
 		;;
-
 		1)
 			echo "  $c4 󰖟 $b    "
 		;;
-
 		2)
 			echo "   󰖟 $c4  $b  "
 		;;
 		3)
 			echo "   󰖟   $c4  $b "
-			;;
-		4)
-			echo "   󰖟     "
+		;;
+    4)
+      echo "   󰖟     "
 
 	esac
 }

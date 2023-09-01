@@ -13,10 +13,21 @@ Hora() {
 }
 
 Wifi() {
-  if ping -q -c 1 -W 2 8.8.8.8 >/dev/null; then
-    echo "$c1 󰖩 Connected $b"
+  SSID=$(iwgetid -r)
+
+  if [ -z "$SSID" ]; then
+    # Si no hay SSID, estás conectado por cable
+    if ping -q -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
+			echo "$c1 󰈀 Cable $b"
+		else
+      echo "$c1 󰈂 Disconnected $b"
+		fi
   else
-    echo "$c1 󰖩 Disconnected $b"
+    if ping -q -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
+      echo "$c1 󰖩 $SSID $b"
+    else
+      echo "$c1 󰖪 Disconnected $b"
+    fi
   fi
 }
 
@@ -36,16 +47,6 @@ Batery() {
     ICON=""   
 	fi
   echo "$c2 $ICON $BATERY% $STATUS $b"
-}
-
-Title() {
-  len=$(echo -n "$(xdotool getwindowfocus getwindowname)" | wc -m)
-  max_len=70
-  if [ "$len" -gt "$max_len" ];then
-    echo -n "$(xdotool getwindowfocus getwindowname | cut -c 1-$max_len)..."
-  else
-    echo -n "$(xdotool getwindowfocus getwindowname)"
-  fi
 }
 
 Workspaces() {
@@ -69,7 +70,17 @@ Workspaces() {
 	esac
 }
 
+Title() {
+  len=$(echo -n "$(xdotool getwindowfocus getwindowname)" | wc -m)
+  max_len=70
+  if [ "$len" -gt "$max_len" ];then
+    echo -n "$(xdotool getwindowfocus getwindowname | cut -c 1-$max_len)..."
+  else
+    echo -n "$(xdotool getwindowfocus getwindowname)"
+  fi
+}
+
 while true; do
-  echo "%{l}$(Workspaces) %{c}$(Title) %{r}$(Batery) | $(Wifi) | $(Hora)"
+  echo "%{l}$(Workspaces) | $(Title) %{r}$(Batery) | $(Wifi) | $(Hora)"
   sleep 1s
-done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#000000" &
+done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#1a1b1c"  -g 900x20+233+5 

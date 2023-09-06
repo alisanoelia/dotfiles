@@ -1,36 +1,57 @@
-#!/usr/bin/bash
+#!/bin/sh
+
+. "${HOME}/.cache/wal/colors.sh"
+
+
+c4
 
 # Colors
 b="%{B-}"
-c1="%{B#732f5b}"
-c2="%{B#362b40}"
-c3="%{B#9e3909}"
-c4="%{B#224173}"
+c0="%{B$color0}"
+c1="%{B$color1}"
+c2="%{B$color2}"
+c3="%{B$color3}"
+c4="%{B$color4}"
+c5="%{B$color5}"
+c6="%{B$color6}"
+c7="%{B$color7}"
+c8="%{B$color8}"
+c9="%{B$color9}"
+c10="%{B$color10}"
+c11="%{B$color11}"
+c12="%{B$color12}"
+c13="%{B$color13}"
+c14="%{B$color14}"
+c15="%{B$color15}"
 
 Hora() {
   h=$(date +'%A %d-%m-%Y %I:%M %p')
-  echo "$c3 󰥔 $h $b"
+  echo "$c1 󰥔 $h $b"
 }
 
 Wifi() {
-  SSID=$(iwgetid -r)
+	SSID=$(iwgetid -r)
 
   if [ -z "$SSID" ]; then
     # Si no hay SSID, estás conectado por cable
     if ping -q -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
-			echo "$c1 󰈀 Cable $b"
-		else
-      echo "$c1 󰈂 Disconnected $b"
-		fi
+      echo "$c5 󰈀 Cable $b"
+    else
+      echo "$c5 󰈂 Disconnected $b"
+    fi
   else
     if ping -q -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
-      echo "$c1 󰖩 $SSID $b"
+      echo "$c5 󰖩 $SSID $b"
     else
-      echo "$c1 󰖪 Disconnected $b"
+      echo "$c5 󰖪 Disconnected $b"
     fi
   fi
 }
 
+IP() {
+	local_ip=$(ip addr show | grep "inet " | awk '{split($2, a, "/"); print a[1]}' | grep -v "127.0.0.1")
+	echo "$c2 $local_ip $b"
+}
 Batery() {
   BATERY=$(cat /sys/class/power_supply/BATT/capacity)
   STATUS=$(cat /sys/class/power_supply/BATT/status)
@@ -45,42 +66,47 @@ Batery() {
     ICON=""
   else
     ICON=""   
-	fi
-  echo "$c2 $ICON $BATERY% $STATUS $b"
+  fi
+  echo "$c12 $ICON $BATERY% $STATUS $b"
 }
 
 Workspaces() {
-	ACTUAL=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
-	case $ACTUAL in
-		0)
-			echo "$c4  $b 󰖟     "
-		;;
-		1)
-			echo "  $c4 󰖟 $b    "
-		;;
-		2)
-			echo "   󰖟 $c4  $b  "
-		;;
-		3)
-			echo "   󰖟   $c4  $b "
-		;;
+  ACTUAL=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+  case $ACTUAL in
+    0)
+      echo "$c4  $b 󰖟     "
+    ;;
+    1)
+      echo "  $c4 󰖟 $b    "
+    ;;
+    2)
+      echo "   󰖟 $c4  $b  "
+    ;;
+    3)
+      echo "   󰖟   $c4  $b "
+    ;;
     4)
       echo "   󰖟     "
-
-	esac
+    ;;
+  esac
 }
 
 Title() {
   len=$(echo -n "$(xdotool getwindowfocus getwindowname)" | wc -m)
-  max_len=70
-  if [ "$len" -gt "$max_len" ];then
+  max_len=20
+  if [ "$len" -gt "$max_len" ]; then
     echo -n "$(xdotool getwindowfocus getwindowname | cut -c 1-$max_len)..."
   else
     echo -n "$(xdotool getwindowfocus getwindowname)"
   fi
 }
 
+Disk() {
+	disk=$(df -h | grep "sda2" | awk '{print $4}')
+	echo "$c8  $disk $b"
+}
+
 while true; do
-  echo "%{l}$(Workspaces) | $(Title) %{r}$(Batery) | $(Wifi) | $(Hora)"
-  sleep 1s
-done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#1a1b1c"  -g 900x20+233+5 
+	echo "%{l}$(Workspaces) | $(Title) %{r}$(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora)"
+	sleep 1s
+done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#1a1b1c"  -g 900x20+233+5 & 

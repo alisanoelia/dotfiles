@@ -24,7 +24,7 @@ return {
     -- LSP
     local lsp = require("lsp-zero")
     lsp.preset({
-      name = "minimal",
+      name = "recommended",
       configure_diagnostics = false,
       suggest_lsp_servers = true,
       manage_nvim_cmp = {
@@ -48,6 +48,8 @@ return {
     local cmp_action = require("lsp-zero").cmp_action()
     local lspkind = require 'lspkind'
     require('luasnip.loaders.from_vscode').lazy_load()
+		require('luasnip').filetype_extend("javascript", { "javascriptreact" })
+		require('luasnip').filetype_extend("javascript", { "html" })
 
     cmp.setup({
       mapping = {

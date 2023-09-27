@@ -5,5 +5,5 @@ return {
     require('toggleterm').setup({
       direction = 'float'
      })
-  end
+	end
 }

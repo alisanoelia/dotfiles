@@ -1,49 +1,46 @@
 return {
   'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
+  branch = 'v3.x',
   dependencies = {
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {'williamboman/mason.nvim'},           -- Optional
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
-    {'mason-org/mason-registry'},
+    -- LSP and mason
+    {'neovim/nvim-lspconfig'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
 
     -- Autocompletion
-    {'hrsh7th/nvim-cmp'},         -- Required
-    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-    {'hrsh7th/cmp-buffer'},       -- Optional
-    {'hrsh7th/cmp-path'},         -- Optional
-    {'saadparwaiz1/cmp_luasnip'}, -- Optional
-    {'hrsh7th/cmp-nvim-lua'},     -- Optional
-    {"hrsh7th/cmp-cmdline"},
+    {'hrsh7th/nvim-cmp'},
+    {'saadparwaiz1/cmp_luasnip'},
+		{'hrsh7th/cmp-buffer'},
+		{'hrsh7th/cmp-path'},
+		{'hrsh7th/cmp-nvim-lsp'},
     -- Snippets
-    {'L3MON4D3/LuaSnip'}, -- Required
-    {'rafamadriz/friendly-snippets'}, -- Optional
-  },
-  config = function()
-    -- LSP
-    local lsp = require("lsp-zero")
-    lsp.preset({
-      name = "recommended",
-      configure_diagnostics = false,
-      suggest_lsp_servers = true,
-      manage_nvim_cmp = {
-        set_format = false,
-      },
-      set_lsp_keymaps = false,
-    })
-    lsp.on_attach(function(client, bufnr)
-      lsp.default_keymaps({buffer = bufnr})
-    end)
-    lsp.set_sign_icons({
-      error = '✘',
-      warn = '▲',
-      hint = '⚑',
-      info = ''
-    })
-    lsp.setup()
+    {'L3MON4D3/LuaSnip'},
+    {'rafamadriz/friendly-snippets'},
+	},
+	config = function()
 
-    -- CMP
+		--LSP and Mason
+		local lsp_zero = require('lsp-zero')
+
+		lsp_zero.on_attach(function(client, bufnr)
+			lsp_zero.default_keymaps({buffer = bufnr})
+
+		end)
+
+		lsp_zero.set_sign_icons({
+			error = '✘',
+			warn = '▲',
+			hint = '⚑',
+			info = '»'
+		})
+
+		require('mason').setup({})
+		require('mason-lspconfig').setup({
+			handlers = {
+				lsp_zero.default_setup,
+			}
+		})
+		-- CMP
     local cmp = require("cmp")
     local lspkind = require 'lspkind'
     require('luasnip.loaders.from_vscode').lazy_load()
@@ -57,18 +54,6 @@ return {
 					cmp.select_next_item()
 				elseif require("luasnip").expand_or_jumpable() then
 					vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-				else
-					fallback()
-				end
-				end, {
-					"i",
-					"s",
-			}),
-			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				elseif require("luasnip").jumpable(-1) then
-					vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
 				else
 					fallback()
 				end
@@ -109,22 +94,6 @@ return {
 					return lspkind.cmp_format({ with_text = true })(entry, vim_item)
 				end
 			}
-		})
-
-		cmp.setup.cmdline({ '/', '?' }, {
-			mapping = map,
-			sources = {
-				{ name = 'buffer' }
-			}
-		})
-
-		cmp.setup.cmdline(':', {
-			mapping = map,
-			sources = cmp.config.sources({
-				{ name = 'path' }
-			}, {
-					{ name = 'cmdline' }
-				})
 		})
 
 		vim.diagnostic.config({

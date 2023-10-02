@@ -44,12 +44,6 @@ return {
     local cmp = require("cmp")
 		local cmp_action = require('lsp-zero').cmp_action()
     require('luasnip.loaders.from_vscode').lazy_load()
-		local map = {
-			["<CR>"] = cmp.mapping.confirm {
-				behavior = cmp.ConfirmBehavior.Insert,
-				select = true,
-			},
-		}
 
 		cmp.setup({
 			mapping = cmp.mapping.preset.insert({

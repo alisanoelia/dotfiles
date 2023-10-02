@@ -42,29 +42,21 @@ return {
 		})
 		-- CMP
     local cmp = require("cmp")
-    local lspkind = require 'lspkind'
+		local cmp_action = require('lsp-zero').cmp_action()
     require('luasnip.loaders.from_vscode').lazy_load()
 		local map = {
 			["<CR>"] = cmp.mapping.confirm {
 				behavior = cmp.ConfirmBehavior.Insert,
 				select = true,
 			},
-			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif require("luasnip").expand_or_jumpable() then
-					vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-				else
-					fallback()
-				end
-				end, {
-					"i",
-					"s",
-			}),
 		}
 
 		cmp.setup({
-			mapping = map,
+			mapping = cmp.mapping.preset.insert({
+				['<CR>'] = cmp.mapping.confirm({select = true}),
+				['<Tab>'] = cmp_action.tab_complete(),
+				['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+			}),
 			preselect = "item",
 			completion = {
 				completeopt = 'menu,menuone,noinsert',
@@ -82,17 +74,12 @@ return {
 				{name = 'path'}
 			},
 			formatting = {
-				format = function(entry, vim_item)
-					if vim.tbl_contains({ 'path' }, entry.source.name) then
-						local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
-						if icon then
-							vim_item.kind = icon
-							vim_item.kind_hl_group = hl_group
-							return vim_item
-						end
-					end
-					return lspkind.cmp_format({ with_text = true })(entry, vim_item)
-				end
+				fields = {'abbr', 'kind', 'menu'},
+				format = require('lspkind').cmp_format({
+					mode = 'symbol_text', -- show only symbol annotations
+					maxwidth = 50, -- prevent the popup from showing more than provided characters
+					-- ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+				})
 			}
 		})
 

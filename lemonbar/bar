@@ -2,9 +2,6 @@
 
 . "${HOME}/.cache/wal/colors.sh"
 
-
-c4
-
 # Colors
 b="%{B-}"
 c0="%{B$color0}"

@@ -3,13 +3,12 @@ export LANG=en_US.UTF-8
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 export BROWSER=min
 export VISUAL=nvim
-export EDITO=nvim
+export EDITOR=nvim
 
-export PATH="$HOME/.config/bin:$PATH"
 
 export RUST_BACKTRACE=full
 
@@ -22,7 +21,7 @@ eval "$(ssh-agent -s)" > /dev/null
 ssh-add ~/.ssh/alyssa > /dev/null 2>&1
 
 plugins=(
- zsh-syntax-highlighting
+  zsh-syntax-highlighting
   zsh-autosuggestions
   z
 )
@@ -52,8 +51,8 @@ alias w3m="w3m -o ext_image_viewer=1"
 alias feh='feh -B white'
 alias nv='nvim'
 
-shfetch
-echo "Bienvenido a \033[1;34m$(basename "$SHELL"), \033[1;31m$USER! \n"
+## shfetch
+## echo "Bienvenido a \033[1;34m$(basename "$SHELL"), \033[1;31m$USER! \n"
 
 
-eval "$(starship init zsh)"
+## eval "$(starship init zsh)"

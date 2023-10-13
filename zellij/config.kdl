@@ -1,0 +1,49 @@
+// Mapings
+
+keybinds clear-defaults=true {
+    shared_except "normal" {
+        bind "Esc" { SwitchToMode "Normal"; }
+    }
+    shared {
+        bind "Alt m"  { SwitchToMode "resize"; }
+        bind "Alt ["  { NewPane "Right"; }
+        bind "Alt ]"  { NewPane "Down"; }
+        bind "Alt f"  { ToggleFloatingPanes; SwitchToMode "Normal"; }
+        bind "Alt w"  { CloseFocus; }
+        bind "Alt h"  { MoveFocusOrTab "Left";  }
+        bind "Alt l"  { MoveFocusOrTab "Right"; }
+        bind "Alt k"  { MoveFocus      "Up";    }
+        bind "Alt j"  { MoveFocus      "Down";  }
+        bind "Alt t"  { NewTab; SwitchToMode "RenameTab"; TabNameInput 0; }
+        bind "Alt r"  { SwitchToMode "RenameTab"; TabNameInput 0; }
+        bind "Alt x"  { CloseTab; }
+        bind "Alt 1"  { GoToTab 1; }
+        bind "Alt 2"  { GoToTab 2; }
+    }
+    resize {
+        bind "h" "Left" { Resize "Increase Left"; }
+        bind "j" "Down" { Resize "Increase Down"; }
+        bind "k" "Up" { Resize "Increase Up"; }
+        bind "l" "Right" { Resize "Increase Right"; }
+        bind "=" "+" { Resize "Increase"; }
+        bind "-" { Resize "Decrease"; }
+    }
+}
+
+// Theme
+
+theme "catppuccin-mocha"
+
+// Plugings
+
+plugins {
+    tab-bar { path "tab-bar"; }
+    status-bar { path "status-bar"; }
+    strider { path "strider"; }
+    compact-bar { path "compact-bar"; }
+    session-manager { path "session-manager"; }
+}
+
+// Options
+
+pane_frames false

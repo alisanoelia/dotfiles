@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. "${HOME}/.cache/wal/colors.sh"
+. "$HOME/.config/lemonbar/colors.sh"
 
 # Colors
 b="%{B-}"
@@ -64,7 +64,7 @@ Batery() {
   else
     ICON=""   
   fi
-  echo "$c12 $ICON $BATERY% $STATUS $b"
+  echo "$c15 $ICON $BATERY% $STATUS $b"
 }
 
 Workspaces() {
@@ -103,7 +103,12 @@ Disk() {
 	echo "$c8  $disk $b"
 }
 
+User() {
+  user=$(echo $USER)
+  echo "$c4  $user $b" 
+}
+
 while true; do
-	echo "%{l}$(Workspaces) | $(Title) %{r}$(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora)"
+  echo "%{l}$(Workspaces) | $(Title) %{r}$(User) | $(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora)"
 	sleep 1s
-done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#1a1b1c"  -g 900x20+233+5 & 
+done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#1a1b1c" -F "#ffffff"  -g 950x20+233+5 & 

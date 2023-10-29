@@ -36,7 +36,7 @@ opt.showmode = false
 
 opt.termguicolors = true
 
-opt.list = true
+opt.list = false
 
 opt.foldmethod = "indent"
 vim.wo.foldlevel = 1

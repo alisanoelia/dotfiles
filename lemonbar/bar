@@ -111,4 +111,4 @@ User() {
 while true; do
   echo "%{l}$(Workspaces) | $(Title) %{r}$(User) | $(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora)"
 	sleep 1s
-done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=8" -B "#1a1b1c" -F "#ffffff"  -g 950x20+233+5 & 
+done | lemonbar -d -p -f "UbuntuMono Nerd Font:size=10" -B "#f1f1f1" -F "#111111"  -g 950x20+233+5 & 

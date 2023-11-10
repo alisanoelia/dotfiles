@@ -39,6 +39,6 @@ opt.termguicolors = true
 
 opt.list = false
 
-opt.foldmethod = "indent"
-vim.wo.foldlevel = 1
-vim.wo.foldminlines= 2
+-- opt.foldmethod = "indent"
+-- vim.wo.foldlevel = 1
+-- vim.wo.foldminlines= 2

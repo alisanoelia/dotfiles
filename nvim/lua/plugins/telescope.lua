@@ -5,7 +5,7 @@ return {
   config = function()
     require('telescope').setup{
       defaults = {
-        prompt_prefix = "󰁕 ",
+        prompt_prefix = "> ",
         selection_caret = "> ",
         file_ignore_patterns = { "node_modelues", "yarn.lock" },
         dynamic_preview_title = true,

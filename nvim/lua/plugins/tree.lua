@@ -1,11 +1,8 @@
 return {
 	"nvim-tree/nvim-tree.lua",
-	dependencies = {"nvim-tree/nvim-web-devicons"},
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 
 	config = function()
-		vim.g.loaded_netrw = 1
-		vim.g.loaded_netrwPlugin = 1
-
 		require("nvim-tree").setup({
 			renderer = {
 				indent_markers = {
@@ -14,8 +11,8 @@ return {
 				icons = {
 					glyphs = {
 						folder = {
-							arrow_closed = "", -- arrow when folder is closed
-							arrow_open = "", -- arrow when folder is open
+							arrow_closed = ">", -- arrow when folder is closed
+							arrow_open = "-", -- arrow when folder is open
 						},
 					},
 				},
@@ -39,7 +36,7 @@ return {
 				end
 				api.config.mappings.default_on_attach(bufnr)
 
-				vim.keymap.set('n', 's',     api.node.open.vertical, opts('Open: Vertical Split'))
+				vim.keymap.set('n', 's', api.node.open.vertical, opts('Open: Vertical Split'))
 			end
 		})
 	end

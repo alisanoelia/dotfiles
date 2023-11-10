@@ -23,7 +23,7 @@ c15="%{B$color15}"
 
 Hora() {
   h=$(date +'%A %d-%m-%Y %I:%M %p')
-  echo "$c1 󰥔 $h $b"
+  echo "󰥔 $h"
 }
 
 Wifi() {
@@ -32,22 +32,22 @@ Wifi() {
   if [ -z "$SSID" ]; then
     # Si no hay SSID, estás conectado por cable
     if ping -q -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
-      echo "$c5 󰈀 Cable $b"
+      echo "󰈀 Cable"
     else
-      echo "$c5 󰈂 Disconnected $b"
+      echo "󰈂 Disconnected"
     fi
   else
     if ping -q -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
-      echo "$c5 󰖩 $SSID $b"
+      echo "󰖩 $SSID"
     else
-      echo "$c5 󰖪 Disconnected $b"
+      echo "󰖪 Disconnected"
     fi
   fi
 }
 
 IP() {
 	local_ip=$(ip addr show | grep "inet " | awk '{split($2, a, "/"); print a[1]}' | grep -v "127.0.0.1")
-	echo "$c2 $local_ip $b"
+	echo "$local_ip"
 }
 Batery() {
   BATERY=$(cat /sys/class/power_supply/BATT/capacity)
@@ -64,23 +64,23 @@ Batery() {
   else
     ICON=""   
   fi
-  echo "$c15 $ICON $BATERY% $STATUS $b"
+  echo "$ICON $BATERY% $STATUS"
 }
 
 Workspaces() {
   ACTUAL=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
   case $ACTUAL in
     0)
-      echo "$c4  $b 󰖟     "
+      echo "$c0  $b 󰖟     "
     ;;
     1)
-      echo "  $c4 󰖟 $b    "
+      echo "  $c0 󰖟 $b    "
     ;;
     2)
-      echo "   󰖟 $c4  $b  "
+      echo "   󰖟 $c0  $b  "
     ;;
     3)
-      echo "   󰖟   $c4  $b "
+      echo "   󰖟   $c0  $b "
     ;;
     4)
       echo "   󰖟     "
@@ -90,7 +90,7 @@ Workspaces() {
 
 Title() {
   len=$(echo -n "$(xdotool getwindowfocus getwindowname)" | wc -m)
-  max_len=20
+  max_len=15
   if [ "$len" -gt "$max_len" ]; then
     echo -n "$(xdotool getwindowfocus getwindowname | cut -c 1-$max_len)..."
   else
@@ -100,15 +100,15 @@ Title() {
 
 Disk() {
 	disk=$(df -h | grep "sda2" | awk '{print $4}')
-	echo "$c8  $disk $b"
+	echo " $disk"
 }
 
 User() {
   user=$(echo $USER)
-  echo "$c4  $user $b" 
+  echo " $user" 
 }
 
 while true; do
-  echo "%{l}$(Workspaces) | $(Title) %{r}$(User) | $(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora)"
+  echo "%{l}$(Workspaces) | $(Title) %{r}$(User) | $(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora) "
 	sleep 1s
-done | lemonbar -d -p -f "UbuntuMono Nerd Font:size=10" -B "#f1f1f1" -F "#111111"  -g 950x20+233+5 & 
+done | lemonbar -d -p -f "UbuntuMono Nerd Font:size=10" -B "#141b1e" -F "#ffffff"  -g 950x20+233+5 & 

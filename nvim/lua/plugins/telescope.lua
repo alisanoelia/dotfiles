@@ -1,5 +1,5 @@
 return {
-  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+  'nvim-telescope/telescope.nvim', tag = '0.1.4',
   dependencies = {'nvim-lua/plenary.nvim'},
 
   config = function()
@@ -23,5 +23,9 @@ return {
           }
         }
     }
-  end
+		local map = vim.keymap.set
+		local telescope = require('telescope.builtin')
+		map('n', 'ff', telescope.find_files, {})
+		map('n', 'fg', telescope.git_commits, {})
+	end
 }

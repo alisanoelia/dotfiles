@@ -4,19 +4,21 @@ return {
 	dependencies = { 'arkav/lualine-lsp-progress' },
 
 	config = function()
+		local lazy_status = require("lazy.status")
+
 		require('lualine').setup {
 			options = {
 				icons_enabled = true,
 				theme = 'auto',
-				component_separators = { left = '', right = '' },
+				component_separators = { left = '', right = '' },
 				section_separators = { left = '', right = '' },
 				disabled_filetypes = {
 					statusline = {},
 					winbar = {},
 				},
 				ignore_focus = {},
-				always_divide_middle = true,
-				globalstatus = false,
+				always_divide_middle = false,
+				globalstatus = true,
 				refresh = {
 					statusline = 1000,
 					tabline = 1000,
@@ -27,7 +29,7 @@ return {
 				lualine_a = { 'mode' },
 				lualine_b = { {'filename', path = 3 }},
 				lualine_c = { 'diagnostics', 'branch', },
-				lualine_x = { 'diff', 'fileformat' },
+				lualine_x = { 'diff', 'fileformat', { lazy_status.updates, cond = lazy_status.has_updates} },
 				lualine_y = { 'lsp_progress', 'filetype' },
 				lualine_z = { 'location' }
 			},

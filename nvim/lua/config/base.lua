@@ -23,9 +23,10 @@ opt.incsearch = true
 
 opt.swapfile = false
 opt.autoread = true
-bo.autoread = true
 
 opt.cursorline = true
+
+opt.smartindent = true
 
 opt.wrap = false
 opt.signcolumn = 'yes'

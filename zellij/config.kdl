@@ -35,7 +35,7 @@ keybinds clear-defaults=true {
 
 // Theme
 
-theme "catppuccin-mocha"
+// theme "catppuccin-mocha"
 
 // Plugings
 

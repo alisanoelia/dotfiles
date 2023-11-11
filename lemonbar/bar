@@ -3,6 +3,7 @@
 . "$HOME/.config/lemonbar/colors.sh"
 
 # Colors
+background=$background
 b="%{B-}"
 c0="%{B$color0}"
 c1="%{B$color1}"
@@ -71,16 +72,16 @@ Workspaces() {
   ACTUAL=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
   case $ACTUAL in
     0)
-      echo "$c0  $b 󰖟     "
+      echo "$c3  $b 󰖟     "
     ;;
     1)
-      echo "  $c0 󰖟 $b    "
+      echo "  $c3 󰖟 $b    "
     ;;
     2)
-      echo "   󰖟 $c0  $b  "
+      echo "   󰖟 $c3  $b  "
     ;;
     3)
-      echo "   󰖟   $c0  $b "
+      echo "   󰖟   $c3  $b "
     ;;
     4)
       echo "   󰖟     "
@@ -111,4 +112,4 @@ User() {
 while true; do
   echo "%{l}$(Workspaces) | $(Title) %{r}$(User) | $(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora) "
 	sleep 1s
-done | lemonbar -d -p -f "UbuntuMono Nerd Font:size=10" -B "#141b1e" -F "#ffffff"  -g 950x20+233+5 & 
+done | lemonbar -d -p -f "RobotoMono Nerd Font:size=8" -B $background -F "#ffffff"  -g 950x20+233+5 & 

@@ -33,11 +33,24 @@ return {
 			info = '»'
 		})
 
-		require('mason').setup({})
+		require('mason').setup({
+			ui = {
+				border = "rounded",
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗"
+				},
+				width = 0.7,
+				height = 0.7,
+			},
+
+
+		})
 		require('mason-lspconfig').setup({
 			handlers = {
 				lsp_zero.default_setup,
-			}
+			},
 		})
 		-- CMP
 		local cmp = require("cmp")

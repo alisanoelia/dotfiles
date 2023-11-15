@@ -46,7 +46,7 @@ return {
 
 				lualine_x = {},
 
-				lualine_y = { lsp, lazyUpdates.updates },
+				lualine_y = { lsp, { lazyUpdates.updates, cond = lazyUpdates.has_updates} },
 
 				lualine_z = { file_size, 'progress' },
 			},

@@ -1,7 +1,7 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	config = function()
-		local lazy_status = require("lazy.status")
+		local lazyUpdates = require("lazy.status")
 
 		local function lsp()
 			local active_clients = vim.lsp.get_active_clients()
@@ -30,19 +30,27 @@ return {
 		require('lualine').setup {
 			options = {
 				icons_enabled = true,
-				theme = 'auto',
-				component_separators = { left = '▎', right = '▎' },
+				theme = "catppuccin",
+				component_separators = { left = '>', right = '>' },
 				section_separators = { left = '', right = '' },
 				globalstatus = true,
 			},
 			sections = {
 				lualine_a = { 'mode' },
-				lualine_b = { { 'filename', path = 3 }, 'filetype' },
-				lualine_c = { 'diagnostics', 'branch', 'diff' },
+				lualine_b = {
+					{ function()
+						return '󰉋 '
+					end },
+					{ 'filename', path = 4 }, 'filetype' },
+				lualine_c = { 'branch', 'diagnostics', 'diff' },
+
 				lualine_x = {},
-				lualine_y = { lsp, { lazy_status.updates, cond = lazy_status.has_updates } },
+
+				lualine_y = { lsp, lazyUpdates.updates },
+
 				lualine_z = { file_size, 'progress' },
 			},
+
 			extensions = { 'nvim-tree' },
 		}
 	end

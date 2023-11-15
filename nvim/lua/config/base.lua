@@ -4,6 +4,8 @@ local bo = vim.bo
 opt.number = true
 opt.relativenumber = true
 
+showmode = true
+
 opt.scrolloff = 5
 opt.sidescrolloff = 5
 

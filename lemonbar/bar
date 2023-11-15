@@ -112,4 +112,4 @@ User() {
 while true; do
   echo "%{l}$(Workspaces) | $(Title) %{r}$(User) | $(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora) "
 	sleep 1s
-done | lemonbar -d -p -f "RobotoMono Nerd Font:size=8" -B $background -F "#ffffff"  -g 950x20+233+5 & 
+done | lemonbar -d -p -f "IosevkaTerm Nerd Font:size=8" -B $background -F "#ffffff"  -g 950x20+233+5 & 

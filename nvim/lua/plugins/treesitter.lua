@@ -26,6 +26,7 @@ return {
 			trim_scope = 'outer',     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
 			mode = 'topline',          -- Line used to calculate context. Choices: 'cursor', 'topline'
 			separator = '-',
+			cursor = false,
 			zindex = 20,     -- The Z-index of the context window
 		}
 end

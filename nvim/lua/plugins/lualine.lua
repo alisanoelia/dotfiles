@@ -10,7 +10,7 @@ return {
 				local client = active_clients[1]
 				return icon .. client.messages.name
 			else
-				return "No hay clientes LSP activos."
+				return "No hay clientes LSP activos"
 			end
 		end
 

@@ -1,2 +1,3 @@
-## xinput float 16
+picom --animations --animation-for-open-window zoom &
+setwall ~/wallpapers/drew.jpg
 exec bspwm

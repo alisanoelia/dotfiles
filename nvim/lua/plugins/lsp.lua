@@ -38,7 +38,7 @@ return {
 		maps("n", "gd", vim.lsp.buf.definition)
 		maps("n", "gh", vim.lsp.buf.hover)
 
-		lsp_zero.on_attach(function(_, bufnr)
+		lsp_zero.on_attach(function(client, bufnr)
 			lsp_zero.default_keymaps({ buffer = bufnr })
 		end)
 
@@ -94,13 +94,12 @@ return {
 				{ name = 'buffer' },
 				{ name = 'luasnip' },
 				{ name = 'path' },
-				{ name = 'cmdline' },
 			},
 			formatting = {
 				fields = { 'abbr', 'kind', 'menu' },
 				format = require('lspkind').cmp_format({
 					mode = 'symbol_text', -- show only symbol annotations
-					maxwidth = 50,     -- prevent the popup from showing more than provided characters
+					maxwidth = 30,   -- prevent the popup from showing more than provided characters
 				})
 			}
 		})

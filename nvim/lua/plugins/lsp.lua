@@ -82,13 +82,19 @@ return {
 		})
 
 		cmp.setup({
-			mapping = map,
 			window = {
-				completion = cmp.config.window.bordered({
+				completion = {
+					completeopt = "menu,menuone",
+					border = "rounded",
 					scrollbar = false,
-				}),
-				documentation = cmp.config.window.bordered(),
+					winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
+				},
+				documentation = {
+					border = "rounded",
+					winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
+				}
 			},
+			mapping = map,
 			sources = {
 				{ name = 'nvim_lsp' },
 				{ name = 'buffer' },
@@ -99,7 +105,6 @@ return {
 				fields = { 'abbr', 'kind', 'menu' },
 				format = require('lspkind').cmp_format({
 					mode = 'symbol_text', -- show only symbol annotations
-					maxwidth = 30,   -- prevent the popup from showing more than provided characters
 				})
 			}
 		})

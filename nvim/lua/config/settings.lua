@@ -1,5 +1,4 @@
 local opt = vim.opt
-vim.g.mapleader = " "
 
 opt.number = true
 opt.relativenumber = true
@@ -23,7 +22,7 @@ opt.hlsearch = false
 opt.incsearch = true
 
 opt.swapfile = false
-opt.autoread = true
+opt.autoread = false
 
 opt.cursorline = true
 

@@ -1,8 +1,16 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
-	main = "ibl",
 	lazy = true,
+	main = "ibl",
 	config = function()
-		require('ibl').setup()
+		require('ibl').setup({
+			indent = {
+				char = "|",
+				smart_indent_cap = true,
+			},
+			scope = {
+				enabled = true
+			}
+		})
 	end
 }

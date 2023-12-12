@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+vim.g.mapleader = " "
 
 map('i', 'jk', '<ESC>')
 map('n', 'qq', ':q! <cr>')

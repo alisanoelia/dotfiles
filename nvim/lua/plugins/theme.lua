@@ -1,55 +1,51 @@
 return {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	priority = 1000,
+	"EdenEast/nightfox.nvim",
 
 	config = function()
-		require("catppuccin").setup({
-			flavour = "mocha", -- latte, frappe, macchiato, mocha
-			background = {  -- :h background
-				light = "latte",
-				dark = "mocha",
-			},
-			transparent_background = false, -- disables setting the background color.
-			show_end_of_buffer = false,  -- shows the '~' characters after the end of buffers
-			term_colors = false,         -- sets terminal colors (e.g. `g:terminal_color_0`)
-			dim_inactive = {
-				enabled = false,           -- dims the background color of inactive window
-				shade = "dark",
-				percentage = 0.15,         -- percentage of the shade to apply to the inactive window
-			},
-			no_italic = false,           -- Force no italic
-			no_bold = false,             -- Force no bold
-			no_underline = false,        -- Force no underline
-			styles = {                   -- Handles the styles of general hi groups (see `:h highlight-args`):
-				comments = { "italic" },   -- Change the style of comments
-				conditionals = { "italic" },
-				loops = {},
-				functions = { "italic" },
-				keywords = { "italic" },
-				strings = {},
-				variables = {},
-				numbers = {},
-				booleans = {},
-				properties = {},
-				types = {},
-				operators = {},
-			},
-			integrations = {
-				indent_blankline = {
-					enabled = true,
-					colored_indent_levels = false,
+		require('nightfox').setup({
+			options = {
+				styles = {      -- Style to be applied to different syntax groups
+					comments = "italic", -- Value is any valid attr-list value `:help attr-list`
+					conditionals = "italic",
+					constants = "NONE",
+					functions = "NONE",
+					keywords = "italic",
+					numbers = "NONE",
+					operators = "NONE",
+					strings = "NONE",
+					types = "italic",
+					variables = "italic",
 				},
-				cmp = true,
-				fidget = true,
-				gitsigns = true,
-				nvimtree = true,
-				treesitter = true,
-				notify = false,
-				navic = { enabled = true, custom_bg = "lualine" },
 			},
 		})
-		-- setup must be called before loading
-		vim.cmd.colorscheme "catppuccin"
-	end
+
+		vim.cmd("colorscheme terafox")
+	end,
 }
+
+-- return {
+-- 	'navarasu/onedark.nvim',
+-- 	config = function()
+-- 		-- Lua
+-- 		require('onedark').setup {
+-- 			style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+-- 			transparent = true,
+--
+-- 			code_style = {
+-- 				comments = 'italic',
+-- 				keywords = 'italic',
+-- 				functions = 'none',
+-- 				strings = 'none',
+-- 				variables = 'none'
+-- 			},
+--
+-- 			-- Plugins Config --
+-- 			diagnostics = {
+-- 				darker = true, -- darker colors for diagnostic
+-- 				undercurl = true, -- use undercurl instead of underline for diagnostics
+-- 				background = true, -- use background color for virtual text
+-- 			},
+-- 		}
+-- 		vim.cmd("colorscheme onedark")
+-- 	end
+-- }

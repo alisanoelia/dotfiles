@@ -1,4 +1,0 @@
-return {
-	"segeljakt/vim-silicon"
-}
-

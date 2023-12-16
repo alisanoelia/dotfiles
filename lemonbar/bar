@@ -1,9 +1,9 @@
 #!/bin/sh
 
-. "$HOME/.config/lemonbar/colors.sh"
+. "$HOME/.config/lemonbar/tokyo.sh"
 
 # Colors
-background=$background
+background=$defaultbg
 b="%{B-}"
 c0="%{B$color0}"
 c1="%{B$color1}"
@@ -91,7 +91,7 @@ Workspaces() {
 
 Title() {
   len=$(echo -n "$(xdotool getwindowfocus getwindowname)" | wc -m)
-  max_len=15
+  max_len=25
   if [ "$len" -gt "$max_len" ]; then
     echo -n "$(xdotool getwindowfocus getwindowname | cut -c 1-$max_len)..."
   else
@@ -109,7 +109,12 @@ User() {
   echo " $user" 
 }
 
+Updates() {
+	updates=$(xbps-install -nu | wc -l)
+	echo "󰏔 $updates"
+}
+
 while true; do
-  echo "%{l}$(Workspaces) | $(Title) %{r}$(User) | $(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora) "
+	echo "%{l}$(Workspaces) | $(Title) %{r}$(Updates) | $(User) | $(Disk) | $(Batery) | $(Wifi) | $(IP) | $(Hora) "
 	sleep 1s
-done | lemonbar -d -p -f "IosevkaTerm Nerd Font:size=8" -B $background -F "#ffffff"  -g 950x20+233+5 & 
+done | lemonbar -d -p -f "JetBrainsMono Nerd Font:size=9" -B $background -F "#ffffff"  -g 1050x20+150+5 & 

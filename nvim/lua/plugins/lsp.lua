@@ -51,7 +51,7 @@ return {
 
 		require('mason').setup({
 			ui = {
-				border = "rounded",
+				-- border = "rounded",
 				icons = {
 					package_installed = "✓",
 					package_pending = "➜",
@@ -85,13 +85,12 @@ return {
 			window = {
 				completion = {
 					completeopt = "menu,menuone",
-					border = "rounded",
+					-- border = "rounded",
 					scrollbar = false,
-					winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
+					-- winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
 				},
 				documentation = {
-					border = "rounded",
-					winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
+					-- winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
 				}
 			},
 			mapping = map,

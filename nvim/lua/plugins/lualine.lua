@@ -30,10 +30,9 @@ return {
 		require('lualine').setup {
 			options = {
 				icons_enabled = true,
-				theme = "onedark",
-				component_separators = { left = '>', right = '>' },
-				section_separators = { left = '', right = '' },
-				globalstatus = true,
+				theme = "tokyonight",
+				component_separators = { left = '>', right = '<' },
+				section_separators = { left = '', right = '' },
 			},
 			sections = {
 				lualine_a = { 'mode' },

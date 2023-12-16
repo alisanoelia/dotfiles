@@ -1,51 +1,16 @@
 return {
-	"EdenEast/nightfox.nvim",
-
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
 	config = function()
-		require('nightfox').setup({
-			options = {
-				styles = {      -- Style to be applied to different syntax groups
-					comments = "italic", -- Value is any valid attr-list value `:help attr-list`
-					conditionals = "italic",
-					constants = "NONE",
-					functions = "NONE",
-					keywords = "italic",
-					numbers = "NONE",
-					operators = "NONE",
-					strings = "NONE",
-					types = "italic",
-					variables = "italic",
-				},
-			},
+		require("tokyonight").setup({
+			style = "night",     -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+			light_style = "day", -- The theme is used when the background is set to light
+			transparent = false, -- Enable this to disable setting the background color
+			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
+			lualine_bold = true,
 		})
 
-		vim.cmd("colorscheme terafox")
-	end,
+		vim.cmd [[colorscheme tokyonight]]
+	end
 }
-
--- return {
--- 	'navarasu/onedark.nvim',
--- 	config = function()
--- 		-- Lua
--- 		require('onedark').setup {
--- 			style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
--- 			transparent = true,
---
--- 			code_style = {
--- 				comments = 'italic',
--- 				keywords = 'italic',
--- 				functions = 'none',
--- 				strings = 'none',
--- 				variables = 'none'
--- 			},
---
--- 			-- Plugins Config --
--- 			diagnostics = {
--- 				darker = true, -- darker colors for diagnostic
--- 				undercurl = true, -- use undercurl instead of underline for diagnostics
--- 				background = true, -- use background color for virtual text
--- 			},
--- 		}
--- 		vim.cmd("colorscheme onedark")
--- 	end
--- }

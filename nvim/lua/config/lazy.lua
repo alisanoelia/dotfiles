@@ -12,5 +12,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
-	checker = { enabled = true }
+	install = {
+		missing = true,
+		colorscheme = { "everforest" }
+	},
+	checker = {
+		enabled = true,
+		notify = false
+	},
+	ui = {
+		border = "rounded"
+	}
 })

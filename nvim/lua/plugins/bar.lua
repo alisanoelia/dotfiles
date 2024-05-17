@@ -1,14 +1,14 @@
 return {
-  "utilyre/barbecue.nvim",
+	"utilyre/barbecue.nvim",
 	lazy = false,
 	prioity = 5000,
-  dependencies = {
-    "SmiteshP/nvim-navic",
-    "nvim-tree/nvim-web-devicons",
-  },
-  config = function()
-     require("barbecue").setup({
-			  theme = 'tokyonight',
+	dependencies = {
+		"SmiteshP/nvim-navic",
+		"nvim-tree/nvim-web-devicons",
+	},
+	config = function()
+		require("barbecue").setup({
+			theme = 'tokyonight',
 		})
-  end
+	end
 }

@@ -95,18 +95,18 @@ return {
 			},
 			mapping = map,
 			sources = {
+				{ name = 'codeium' },
 				{ name = 'nvim_lsp' },
 				{ name = 'buffer' },
 				{ name = 'luasnip' },
 				{ name = 'path' },
-				{ name = 'dictionary' },
 			},
-			formatting = {
-				fields = { 'abbr', 'kind', 'menu' },
-				format = require('lspkind').cmp_format({
-					mode = 'symbol_text', -- show only symbol annotations
-				})
-			}
+			-- 	formatting = {
+			-- 		fields = { 'abbr', 'kind', 'menu' },
+			-- 		format = require('lspkind').cmp_format({
+			-- 			mode = 'symbol_text', -- show only symbol annotations
+			-- 		})
+			-- 	}
 		})
 
 		-- Use buffer source for `/`.
@@ -115,16 +115,15 @@ return {
 			sources = {
 				{ name = "buffer" },
 			},
-		})
+		});
 
-		-- Use cmdline & path source for ':'.
 		cmp.setup.cmdline(":", {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = cmp.config.sources({
 				{ name = "path" },
 				{ name = "cmdline" },
 			}),
-		})
+		});
 
 		vim.diagnostic.config({
 			virtual_text = true,

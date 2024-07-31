@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 pkill sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
@@ -6,26 +6,28 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 bspc monitor -d 1 2 3 4 5
 
 bspc config border_width          0
-bspc config window_gap            20
+bspc config window_gap            15
 bspc config top_padding           20
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a st-256color state=floating
-bspc rule -a Min desktop=^2
+bspc rule -a st-256color state=floating rectangle 1024x720+0+0 center=true 
+bspc rule -a XTerm state=floating sticky=off
+bspc rule -a obsidian state=floating sticky=off
+bspc rule -a Min state=floating desktop=^2 rectangle 1600x900+0+0 center=true
 
 # Polybar
 # sh $HOME/.config/polybar/launch.sh &
-sudo pkill lemonbar
-sudo pkill lemonbar
-sudo pkill lemonbar
-pkill lemonbar
-pkill lemonbar
-pkill lemonbar
-
-bash $HOME/.config/lemonbar/bar
+# sudo pkill lemonbar
+# sudo pkill lemonbar
+# sudo pkill lemonbar
+# pkill lemonbar
+# pkill lemonbar
+# pkill lemonbar
+#
+# bash $HOME/.config/lemonbar/bar
 
 # xsetroot
 xsetroot -cursor_name left_ptr &

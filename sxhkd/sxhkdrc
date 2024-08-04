@@ -11,11 +11,14 @@ super + d
     dmenu_run
 
 super + F12
-    $HOME/.config/bin/lock
+   lock 
 
 super + p
-    $HOME/.config/bin/scrot
+    scr
 
+# center
+super + c
+		center
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -23,14 +26,14 @@ super + Escape
 
 # Bajar el volumen con F10
 super + F10
-    amixer -c 1 set Master 5%-
+    amixer set Master 5%-
 
 # Subir el volumen con F11
 super + F11
-    amixer -c 1 set Master 5%+
+    amixer set Master 5%+
 
 super + F9
-    $HOME/.config/bin/sound
+		amixer set Master toggle
 
 super + alt + F10
     $HOME/.config/bin/bri down

@@ -14,8 +14,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a st-256color state=floating rectangle 1024x720+0+0 center=true 
-bspc rule -a XTerm state=floating sticky=off
-bspc rule -a obsidian state=floating sticky=off
+bspc rule -a XTerm state=floating 
+bspc rule -a obsidian state=floating center=true
 bspc rule -a Min state=floating desktop=^2 rectangle 1600x900+0+0 center=true
 
 # Polybar

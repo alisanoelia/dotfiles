@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + d
-    dmenu_run
+    dmenu_run -p "asha: "
 
 super + F12
    lock 
@@ -25,14 +25,14 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 # Bajar el volumen con F10
-super + F10
+super + 9
     amixer set Master 5%-
 
 # Subir el volumen con F11
-super + F11
+super + 0
     amixer set Master 5%+
 
-super + F9
+super + 8
 		amixer set Master toggle
 
 super + alt + F10

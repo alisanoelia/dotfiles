@@ -1,7 +1,7 @@
 return {
 	'echasnovski/mini.nvim',
 	config = function()
-		require('mini.ai').setup()
+		-- require('mini.ai').setup()
 		require('mini.animate').setup()
 		require('mini.comment').setup()
 		-- require('mini.cursorword').setup()
@@ -10,5 +10,6 @@ return {
 		})
 		require('mini.pairs').setup()
 		require('mini.surround').setup()
+		-- require('mini.fuzzy').setup()
 	end
 }

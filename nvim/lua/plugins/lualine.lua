@@ -6,7 +6,7 @@ return {
 		local function lsp()
 			local active_clients = vim.lsp.get_active_clients()
 			if #active_clients > 0 then
-				local icon = ' '
+				local icon = ''
 				local client = active_clients[1]
 				return icon .. client.messages.name
 			else
@@ -32,24 +32,25 @@ return {
 				icons_enabled = true,
 				-- theme = "everforest",		
 				theme = "auto",
-				component_separators = { left = '>', right = '<' },
+				component_separators = { left = '', right = '' },
 				-- section_separators = { left = '', right = '' },
 				section_separators = { left = '', right = '' },
 			},
 			sections = {
 				lualine_a = { 'mode' },
 				lualine_b = {
-					{ function()
-						return '󰉋 '
-					end },
-					{ 'filename', path = 4 }, 'filetype' },
+					-- { function()
+					-- 	return '󰉋 '
+					-- end },
+					-- { 'filename', path = 4 }, 'filetype'
+				},
 				lualine_c = { 'branch', 'diagnostics', 'diff' },
 
-				lualine_x = {},
+				lualine_x = { { lazyUpdates.updates, cond = lazyUpdates.has_updates } },
 
-				lualine_y = { lsp, { lazyUpdates.updates, cond = lazyUpdates.has_updates} },
+				lualine_y = {},
 
-				lualine_z = { file_size, 'progress' },
+				lualine_z = { lsp },
 			},
 
 			extensions = { 'nvim-tree' },

@@ -23,12 +23,12 @@ return {
 		{ 'onsails/lspkind.nvim' },
 
 		-- others
-		{ "folke/neodev.nvim" },
+		-- { "folke/neodev.nvim" },
 	},
 
 	config = function()
 		-- neodev
-		require("neodev").setup()
+		-- require("neodev").setup()
 
 		--LSP and Mason
 		local lsp_zero = require('lsp-zero')
@@ -87,10 +87,10 @@ return {
 					completeopt = "menu,menuone",
 					-- border = "rounded",
 					scrollbar = false,
-					-- winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
+					winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
 				},
 				documentation = {
-					-- winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
+					winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
 				}
 			},
 			mapping = map,

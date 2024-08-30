@@ -7,7 +7,7 @@ return {
 			filetype = {
 				java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
 				python = "python3 -u",
-				typescript = "deno run",
+				typescript = "node run",
 				rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
 				go = "go run",
 			},

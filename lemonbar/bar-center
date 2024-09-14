@@ -50,7 +50,20 @@ User() {
 	echo -n "$Orange $(hostname) $b" 
 }
 
+Center() {
+	x=$(xdotool getdisplaygeometry | awk '{print $1}')
+	c=$(($x - 1000))
+	echo $c
+}
+
+Left() {
+	x=$(xdotool getdisplaygeometry | awk '{print $1}')
+	center=$(($x - 1000))
+	a=$(($center / 2))
+	echo $a
+}
+
 while true; do
 	echo "%{l}$(User) $(Name) %{c}$(Date)%{r} Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
 	sleep 0.1s
-done | lemonbar -B "#081d21" -f "JetBrains Mono Nerd Font:style:Bold:size=8" &
+done | lemonbar -B "#081D21" -f "MartianMono Nerd Font:style:Regular:size=7" -g $(Center)x20+$(Left)+10 &

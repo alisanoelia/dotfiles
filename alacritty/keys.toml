@@ -1,0 +1,8 @@
+[keyboard]
+
+bindings = [
+
+	{ key = "c", mods = "Alt", action = "Copy" },
+	{ key = "v", mods = "Alt", action = "Paste" },
+
+]

@@ -38,7 +38,14 @@ Cpu() {
 }
 
 Name() {
-		printf '%s' "$(xdotool getwindowfocus getwindowname | awk '{print substr($0, 1, 30)}')"
+    window_name=$(xdotool getwindowfocus getwindowname)
+    if [ ${#window_name} -gt 20 ]; then
+        # Truncar a 30 caracteres y agregar '...'
+        printf '%.20s...\n' "$window_name"
+    else
+        # Mostrar el nombre completo si tiene menos de 30 caracteres
+        printf '%s\n' "$window_name"
+    fi
 }
 
 Cap() {
@@ -50,20 +57,37 @@ User() {
 	echo -n "$Orange $(hostname) $b" 
 }
 
+Workspaces() {
+    desktops=$(bspc query -D --names)
+    current=$(bspc query -D -d focused --names)
+
+    output=""
+
+    for desktop in $desktops; do
+        if [ "$desktop" = "$current" ]; then
+            output="$output %{F#7f8d8a}[$desktop]%{F-} "
+        else
+            output="$output $desktop "
+        fi
+    done
+
+    echo "$output"
+}
+
 Center() {
 	x=$(xdotool getdisplaygeometry | awk '{print $1}')
-	c=$(($x - 1000))
+	c=$(($x - 800))
 	echo $c
 }
 
 Left() {
 	x=$(xdotool getdisplaygeometry | awk '{print $1}')
-	center=$(($x - 1000))
+	center=$(($x - 1100))
 	a=$(($center / 2))
 	echo $a
 }
 
 while true; do
-	echo "%{l}$(User) $(Name) %{c}$(Date)%{r} Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
+	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r} Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
 	sleep 0.1s
-done | lemonbar -B "#081D21" -f "MartianMono Nerd Font:style:Regular:size=7" -g $(Center)x20+$(Left)+10 &
+done | lemonbar -B "#081d21" -f "MartianMono Nerd Font:style:Regular:size=7" -g $(Center)x20+$(Left)+10 &

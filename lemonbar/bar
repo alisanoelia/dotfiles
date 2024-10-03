@@ -50,7 +50,24 @@ User() {
 	echo -n "$Orange $(hostname) $b" 
 }
 
+Workspaces() {
+    desktops=$(bspc query -D --names)
+    current=$(bspc query -D -d focused --names)
+
+    output=""
+
+    for desktop in $desktops; do
+        if [ "$desktop" = "$current" ]; then
+            output="$output %{F#7f8d8a}[$desktop]%{F-} "
+        else
+            output="$output $desktop "
+        fi
+    done
+
+    echo "$output"
+}
+
 while true; do
-	echo "%{l}$(User) $(Name) %{c}$(Date)%{r} Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
+	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r} Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
 	sleep 0.1s
-done | lemonbar -B "#081d21" -f "JetBrains Mono Nerd Font:style:Bold:size=8" &
+done | lemonbar -B "#09171a" -f "MartianMono Nerd Font:style:Bold:size=6" -g 1920x20+0+0 &

@@ -3,7 +3,6 @@
 pkill sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-
 status=$(xrandr | grep "DP-0" | awk '{print $2}')
 
 if [ "$status" = "connected" ]; then

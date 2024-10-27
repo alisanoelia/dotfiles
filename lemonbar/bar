@@ -3,11 +3,11 @@
 SEP="|"
 
 b="%{B-}"
-Green="%{B#667651}"
-Red="%{B#91615e}"
+Green="%{B#5c7a53}"
+Red="%{B#915a5a}"
 Yellow="%{B#a18a5d}"
 Orange="%{B#997459}"
-Aqua="%{B#7f8d8a}"
+Aqua="%{B#5f8787}"
 
 Date() {
   h=$(date +'%A, %d.%m.%Y %I:%M %P')
@@ -70,4 +70,4 @@ Workspaces() {
 while true; do
 	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r} Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
 	sleep 0.1s
-done | lemonbar -B "#09171a" -f "MartianMono Nerd Font:style:Bold:size=6" -g 1920x20+0+0 &
+done | lemonbar -B "#071113" -F "#f4ebd7" -f "MartianMono Nerd Font:style:Bold:size=6" -g 1920x20+0+0 &

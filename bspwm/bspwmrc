@@ -3,6 +3,7 @@
 pkill sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+
 status=$(xrandr | grep "DP-0" | awk '{print $2}')
 
 if [ "$status" = "connected" ]; then
@@ -32,6 +33,8 @@ bspc rule -a Alacritty state=floating
 bspc rule -a obsidian state=floating center=true
 bspc rule -a Min state=floating desktop=^2 rectangle 1600x900+0+0 center=true
 bspc rule -a mpv state=floating center=true
+bspc rule -a Nsxiv state=floating center=true
+bspc rule -a Qemu-system-x86_64 desktop=^5 
 
 # Polybar
 # sh $HOME/.config/polybar/launch.sh &

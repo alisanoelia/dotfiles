@@ -1,0 +1,94 @@
+#!/bin/sh -e
+
+# Cargar los colores generados por pywal
+. ~/.cache/wal/colors.sh
+
+# Separador
+SEP="|"
+
+# Fondos y textos generados por pywal
+b="%{B-}"
+Green="%{B${color2}}"  # Pywal color 2 (verde)
+Red="%{B${color1}}"    # Pywal color 1 (rojo)
+Yellow="%{B${color3}}" # Pywal color 3 (amarillo)
+Orange="%{B${color4}}" # Pywal color 4 (naranja)
+Aqua="%{B${color6}}"   # Pywal color 6 (cyan)
+
+# Funciones con los colores dinámicos
+Date() {
+  h=$(date +'%A, %d.%m.%Y %I:%M')
+  echo "$h"
+}
+
+Volume() {
+    state=$(amixer get Master | awk '$0~/%/{print $6}' | tr -d '[]')
+    v=$(amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]')
+    
+    if [ "$state" = "off" ]; then
+        echo -n "$Yellow Muted $b"
+    else
+        echo -n "$Yellow $v $b"
+    fi
+}
+
+Memory() {
+	m=$(free -m | awk '/Mem:/ {printf "%d", $3}')
+	echo -n "$Green $m $b"
+}
+
+Cpu() {
+	c=$(top -bn1 | grep "Cpu(s)" | \
+						sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | \
+						awk '{print 100 - $1"%"}')
+	echo -n "$Red $c $b"
+}
+
+Name() {
+		printf '%s' "$(xdotool getwindowfocus getwindowname | awk '{print substr($0, 1, 30)}')"
+}
+
+Cap() {
+	cap=$(xset q | awk '/Caps Lock/ {print $4}')
+	echo -n "$Aqua $cap $b"
+}
+
+User() {
+	echo -n "$Orange $(hostname) $b" 
+}
+
+Workspaces() {
+    desktops=$(bspc query -D --names)
+    current=$(bspc query -D -d focused --names)
+
+    output=""
+
+    for desktop in $desktops; do
+        if [ "$desktop" = "$current" ]; then
+            output="$output %{F#${color7}}[$desktop]%{F-} "
+        else
+            output="$output $desktop "
+        fi
+    done
+
+    echo "$output"
+}
+
+Weather() {
+    apikey="a6ddb4c90df49648c247b53742d3eee5"
+    ciudadFix="Cúcuta"
+
+    url="https://api.openweathermap.org/data/2.5/weather?q=${ciudadFix},co&appid=${apikey}&units=metric&lang=es"
+    temperature=$(curl -s "$url" | jq '.main.temp' 2>/dev/null)
+
+    if [ -z "$temperature" ]; then
+        echo "Error al obtener la temperatura"
+    else
+        temp_integer=$(printf "%.0f" "$temperature")
+        echo "$Orange ${temp_integer}°C $b"
+    fi
+}
+
+while true; do
+	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r}Temp $(Weather) Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
+	sleep 0.1s
+done | lemonbar -B "${color0}" -F "${color7}" -f "MartianMono Nerd Font:style:Bold:size=6.5" -g 1920x20+0+0 &

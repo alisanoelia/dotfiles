@@ -24,3 +24,4 @@ dotfiles used on Void Linux
 - [ ] add new dmenu
 - [ ] add development environment for React Native
 - [ ] update zsh config
+- [x] add weather for lemonbar

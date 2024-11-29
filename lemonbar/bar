@@ -10,7 +10,8 @@ Orange="%{B#997459}"
 Aqua="%{B#5f8787}"
 
 Date() {
-  h=$(date +'%A, %d.%m.%Y %I:%M %P')
+  # h=$(date +'%A, %d.%m.%Y %I:%M %P')
+  h=$(date +'%A, %d.%m.%Y %I:%M')
   echo "$h"
 }
 
@@ -67,7 +68,22 @@ Workspaces() {
     echo "$output"
 }
 
+Weather() {
+    apikey="a6ddb4c90df49648c247b53742d3eee5"
+    ciudadFix="Cúcuta"
+
+    url="https://api.openweathermap.org/data/2.5/weather?q=${ciudadFix},co&appid=${apikey}&units=metric&lang=es"
+    temperature=$(curl -s "$url" | jq '.main.temp' 2>/dev/null)
+
+    if [ -z "$temperature" ]; then
+        echo "Error al obtener la temperatura"
+    else
+        temp_integer=$(printf "%.0f" "$temperature")
+        echo "$Orange ${temp_integer}°C $b"
+    fi
+}
+
 while true; do
-	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r} Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
+	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r}Temp $(Weather) Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
 	sleep 0.1s
-done | lemonbar -B "#071113" -F "#f4ebd7" -f "MartianMono Nerd Font:style:Bold:size=6" -g 1920x20+0+0 &
+done | lemonbar -B "#101516" -F "#d0d0d0" -f "MartianMono Nerd Font:style:Bold:size=6.5" -g 1920x20+0+0 &

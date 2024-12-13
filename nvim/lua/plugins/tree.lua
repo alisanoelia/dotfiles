@@ -36,7 +36,7 @@ return {
 				end
 				api.config.mappings.default_on_attach(bufnr)
 
-				vim.keymap.set('n', 's', api.node.open.vertical, opts('Open: Vertical Split'))
+				vim.keymap.set('n', '<leader>s', api.node.open.vertical, opts('Open: Vertical Split'))
 			end
 		})
 	end

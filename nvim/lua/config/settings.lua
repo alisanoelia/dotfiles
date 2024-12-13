@@ -1,5 +1,9 @@
 local opt = vim.opt
 
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+
+
 opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
@@ -41,7 +45,8 @@ opt.mouse = 'a'
 opt.fillchars = { eob = " " }
 
 -- opt.guicursor = ""
-vim.o.guicursor = table.concat({
+
+opt.guicursor = table.concat({
 	"n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
 	"i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
 	"r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100"

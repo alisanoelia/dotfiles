@@ -10,7 +10,7 @@ return {
 				local client = active_clients[1]
 				return icon .. client.messages.name
 			else
-				return "No hay clientes LSP activos"
+				return "not lsp"
 			end
 		end
 
@@ -30,8 +30,8 @@ return {
 		require('lualine').setup {
 			options = {
 				icons_enabled = true,
-				-- theme = "everforest",		
-				theme = "auto",
+				-- theme = "pywal16-nvim",
+				theme = "solarized-osaka",
 				component_separators = { left = '', right = '' },
 				-- section_separators = { left = '', right = '' },
 				section_separators = { left = '', right = '' },
@@ -42,13 +42,15 @@ return {
 					-- { function()
 					-- 	return '󰉋 '
 					-- end },
-					-- { 'filename', path = 4 }, 'filetype'
+					{ 'filename', path = 4 },
 				},
 				lualine_c = { 'branch', 'diagnostics', 'diff' },
 
-				lualine_x = { { lazyUpdates.updates, cond = lazyUpdates.has_updates } },
+				lualine_x = {
+					-- 'filetype'
+				},
 
-				lualine_y = {},
+				lualine_y = { { lazyUpdates.updates, cond = lazyUpdates.has_updates } },
 
 				lualine_z = { lsp },
 			},

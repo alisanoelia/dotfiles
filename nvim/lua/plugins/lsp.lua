@@ -2,7 +2,7 @@
 
 return {
 	'VonHeikemen/lsp-zero.nvim',
-	branch = 'v3.x',
+	branch = 'v4.x',
 	dependencies = {
 		-- LSP and mason
 		{ 'neovim/nvim-lspconfig' },
@@ -23,12 +23,12 @@ return {
 		{ 'onsails/lspkind.nvim' },
 
 		-- others
-		-- { "folke/neodev.nvim" },
+		{ "folke/neodev.nvim" },
 	},
 
 	config = function()
 		-- neodev
-		-- require("neodev").setup()
+		require("neodev").setup({})
 
 		--LSP and Mason
 		local lsp_zero = require('lsp-zero')
@@ -101,12 +101,12 @@ return {
 				{ name = 'luasnip' },
 				{ name = 'path' },
 			},
-			-- 	formatting = {
-			-- 		fields = { 'abbr', 'kind', 'menu' },
-			-- 		format = require('lspkind').cmp_format({
-			-- 			mode = 'symbol_text', -- show only symbol annotations
-			-- 		})
-			-- 	}
+			-- formatting = {
+			-- 	fields = { 'abbr','menu', 'kind' },
+			-- 	format = require('lspkind').cmp_format({
+			-- 		mode = 'symbol_text', -- show only symbol annotations
+			-- 	})
+			-- }
 		})
 
 		-- Use buffer source for `/`.

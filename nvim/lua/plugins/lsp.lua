@@ -1,4 +1,7 @@
+-- plugin for autocomplete lsp protocol
+
 ---@diagnostic disable: undefined-global
+---@diagnostic disable: unused-local
 
 return {
 	'VonHeikemen/lsp-zero.nvim',
@@ -23,12 +26,12 @@ return {
 		{ 'onsails/lspkind.nvim' },
 
 		-- others
-		{ "folke/neodev.nvim" },
+		-- { "folke/neodev.nvim" },
 	},
 
 	config = function()
 		-- neodev
-		require("neodev").setup({})
+		-- require("neodev").setup({})
 
 		--LSP and Mason
 		local lsp_zero = require('lsp-zero')
@@ -63,6 +66,8 @@ return {
 		})
 
 		require('mason-lspconfig').setup({
+			automatic_installation = true,
+			ensure_installed = { "lua_ls" },
 			handlers = {
 				lsp_zero.default_setup,
 			},
@@ -131,7 +136,8 @@ return {
 			float = {
 				style = 'minimal',
 				border = 'rounded',
-				source = 'always',
+				-- source = 'always',
+				source = 'if_many',
 				header = '',
 				prefix = '',
 			},

@@ -1,6 +1,10 @@
 [font]
-size = 8
+size = 7.3
+
+# [font.normal]
+# family = "MartianMono Nerd Font"
+# style = "Bold"
 
 [font.normal]
-family = "Martian Mono Nerd Font"
+family = "MartianMono Nerd Font"
 style = "Regular"

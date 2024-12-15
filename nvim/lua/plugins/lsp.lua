@@ -25,14 +25,9 @@ return {
 		{ 'rafamadriz/friendly-snippets' },
 		{ 'onsails/lspkind.nvim' },
 
-		-- others
-		-- { "folke/neodev.nvim" },
 	},
 
 	config = function()
-		-- neodev
-		-- require("neodev").setup({})
-
 		--LSP and Mason
 		local lsp_zero = require('lsp-zero')
 		local maps = vim.keymap.set
@@ -73,10 +68,18 @@ return {
 			},
 		})
 
-		-- CMP
+		-- Snippets	
+
+		require('luasnip.loaders.from_vscode').lazy_load()
+		require('luasnip.loaders.from_snipmate').lazy_load()
+		require 'luasnip'.filetype_extend('javascript', { 'javascriptreact' })
+		require 'luasnip'.filetype_extend('typescript', { 'typescriptreact' })
+
+
+		-- cmp
+
 		local cmp = require("cmp")
 		local cmp_action = require('lsp-zero').cmp_action()
-		require('luasnip.loaders.from_vscode').lazy_load()
 
 		local map = cmp.mapping.preset.insert({
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -104,6 +107,8 @@ return {
 				{ name = 'nvim_lsp' },
 				{ name = 'buffer' },
 				{ name = 'luasnip' },
+				{ name = 'friendly-snippets' },
+				{ name = 'nvim_lsp_signature_help' },
 				{ name = 'path' },
 			},
 			-- formatting = {

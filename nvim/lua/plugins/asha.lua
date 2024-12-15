@@ -1,4 +1,5 @@
 -- config colorscheme
+-- new colorscheme is available
 
 return {
 	'alisanoelia/asha-nvim',

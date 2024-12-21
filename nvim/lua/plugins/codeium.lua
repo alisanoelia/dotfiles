@@ -2,7 +2,7 @@
 
 return {
 	"Exafunction/codeium.nvim",
-	lazy = false,
+	lazy = true,
 	config = function()
 		require('codeium').setup({
 			enable_chat = true,

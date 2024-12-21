@@ -3,7 +3,7 @@
 
 return {
 	'alisanoelia/asha-nvim',
-	lazy = true,
+	enabled = false,
 	config = function()
 		require("asha").setup({
 			background = "hard",

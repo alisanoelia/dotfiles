@@ -1,13 +1,11 @@
+-- everblush color scheme
+---@diagnostic disable: undefined-global
+
 return {
 	'Everblush/nvim',
-	lazy = true,	
+	enabled = false,
 	config = function()
-		require('everblush').setup({
-    transparent_background = true,
-    nvim_tree = {
-        contrast = false,
-    },
-	})
-	vim.cmd[[colorscheme everblush]]
+		require('everblush').setup {}
+		vim.cmd [[ colorscheme everblush ]]
 	end
 }

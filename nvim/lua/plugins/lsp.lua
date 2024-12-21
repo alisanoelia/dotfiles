@@ -1,4 +1,6 @@
--- plugin for autocomplete lsp protocol
+-- cmp for Autocompletion
+-- luasnip for snippets
+-- lsp-zero for lsp configuration
 
 ---@diagnostic disable: undefined-global
 ---@diagnostic disable: unused-local
@@ -103,7 +105,7 @@ return {
 			},
 			mapping = map,
 			sources = {
-				{ name = 'codeium' },
+				-- { name = 'codeium' },
 				{ name = 'nvim_lsp' },
 				{ name = 'buffer' },
 				{ name = 'luasnip' },

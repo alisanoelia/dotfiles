@@ -1,5 +1,7 @@
+---@diagnostic disable: undefined-global
+
 return {
-"mfussenegger/nvim-lint",
+	"mfussenegger/nvim-lint",
 	config = function()
 		require("lint").linters_by_ft = {
 			-- lua = { "stylua" },

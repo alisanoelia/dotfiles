@@ -1,8 +1,8 @@
 -- config colorscheme
--- new colorscheme is available
+---@diagnostic disable: undefined-global
 
 return {
-	'alisanoelia/asha-nvim',
+	"alisanoelia/asha-nvim",
 	enabled = false,
 	config = function()
 		require("asha").setup({
@@ -11,6 +11,6 @@ return {
 			italics = true,
 		})
 		-- vim.g.everforest_diagnostic_line_highlight = 1
-		vim.cmd [[colorscheme asha]]
-	end
+		vim.cmd([[colorscheme asha]])
+	end,
 }

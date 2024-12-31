@@ -6,34 +6,33 @@
 ---@diagnostic disable: unused-local
 
 return {
-	'VonHeikemen/lsp-zero.nvim',
-	branch = 'v4.x',
+	"VonHeikemen/lsp-zero.nvim",
+	branch = "v4.x",
 	dependencies = {
 		-- LSP and mason
-		{ 'neovim/nvim-lspconfig' },
-		{ 'williamboman/mason.nvim' },
-		{ 'williamboman/mason-lspconfig.nvim' },
+		{ "neovim/nvim-lspconfig" },
+		{ "williamboman/mason.nvim" },
+		{ "williamboman/mason-lspconfig.nvim" },
 
 		-- Autocompletion
-		{ 'hrsh7th/nvim-cmp' },
-		{ 'saadparwaiz1/cmp_luasnip' },
-		{ 'hrsh7th/cmp-buffer' },
-		{ 'hrsh7th/cmp-path' },
-		{ 'hrsh7th/cmp-nvim-lsp' },
-		{ 'hrsh7th/cmp-cmdline' },
+		{ "hrsh7th/nvim-cmp" },
+		{ "saadparwaiz1/cmp_luasnip" },
+		{ "hrsh7th/cmp-buffer" },
+		{ "hrsh7th/cmp-path" },
+		{ "hrsh7th/cmp-nvim-lsp" },
+		{ "hrsh7th/cmp-cmdline" },
 
 		-- Snippets
-		{ 'L3MON4D3/LuaSnip' },
-		{ 'rafamadriz/friendly-snippets' },
-		{ 'onsails/lspkind.nvim' },
-
+		{ "L3MON4D3/LuaSnip" },
+		{ "rafamadriz/friendly-snippets" },
+		{ "onsails/lspkind.nvim" },
 	},
 
 	config = function()
 		--LSP and Mason
-		local lsp_zero = require('lsp-zero')
+		local lsp_zero = require("lsp-zero")
 		local maps = vim.keymap.set
-		maps('n', 'f=', ':LspZeroFormat <cr>')
+		maps("n", "f=", ":LspZeroFormat <cr>")
 		maps("n", "de", vim.diagnostic.open_float)
 		maps("n", "gd", vim.lsp.buf.definition)
 		maps("n", "gh", vim.lsp.buf.hover)
@@ -43,26 +42,26 @@ return {
 		end)
 
 		lsp_zero.set_sign_icons({
-			error = '✘',
-			warn = '▲',
-			hint = '⚑',
-			info = '»'
+			error = "✘",
+			warn = "▲",
+			hint = "⚑",
+			info = "»",
 		})
 
-		require('mason').setup({
+		require("mason").setup({
 			ui = {
 				-- border = "rounded",
 				icons = {
 					package_installed = "✓",
 					package_pending = "➜",
-					package_uninstalled = "✗"
+					package_uninstalled = "✗",
 				},
 				width = 0.7,
 				height = 0.7,
 			},
 		})
 
-		require('mason-lspconfig').setup({
+		require("mason-lspconfig").setup({
 			automatic_installation = true,
 			ensure_installed = { "lua_ls" },
 			handlers = {
@@ -70,22 +69,21 @@ return {
 			},
 		})
 
-		-- Snippets	
+		-- Snippets
 
-		require('luasnip.loaders.from_vscode').lazy_load()
-		require('luasnip.loaders.from_snipmate').lazy_load()
-		require 'luasnip'.filetype_extend('javascript', { 'javascriptreact' })
-		require 'luasnip'.filetype_extend('typescript', { 'typescriptreact' })
-
+		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_snipmate").lazy_load()
+		require("luasnip").filetype_extend("javascript", { "javascriptreact" })
+		require("luasnip").filetype_extend("typescript", { "typescriptreact" })
 
 		-- cmp
 
 		local cmp = require("cmp")
-		local cmp_action = require('lsp-zero').cmp_action()
+		local cmp_action = require("lsp-zero").cmp_action()
 
 		local map = cmp.mapping.preset.insert({
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
-			['<Tab>'] = cmp_action.tab_complete(),
+			["<Tab>"] = cmp_action.tab_complete(),
 			["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 			["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 			["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -101,17 +99,17 @@ return {
 				},
 				documentation = {
 					winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
-				}
+				},
 			},
 			mapping = map,
 			sources = {
-				-- { name = 'codeium' },
-				{ name = 'nvim_lsp' },
-				{ name = 'buffer' },
-				{ name = 'luasnip' },
-				{ name = 'friendly-snippets' },
-				{ name = 'nvim_lsp_signature_help' },
-				{ name = 'path' },
+				{ name = "codeium" },
+				{ name = "nvim_lsp" },
+				{ name = "buffer" },
+				{ name = "luasnip" },
+				{ name = "friendly-snippets" },
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "path" },
 			},
 			-- formatting = {
 			-- 	fields = { 'abbr','menu', 'kind' },
@@ -127,7 +125,7 @@ return {
 			sources = {
 				{ name = "buffer" },
 			},
-		});
+		})
 
 		cmp.setup.cmdline(":", {
 			mapping = cmp.mapping.preset.cmdline(),
@@ -135,19 +133,19 @@ return {
 				{ name = "path" },
 				{ name = "cmdline" },
 			}),
-		});
+		})
 
 		vim.diagnostic.config({
 			virtual_text = true,
 			severity_sort = true,
 			float = {
-				style = 'minimal',
-				border = 'rounded',
+				style = "minimal",
+				border = "rounded",
 				-- source = 'always',
-				source = 'if_many',
-				header = '',
-				prefix = '',
+				source = "if_many",
+				header = "",
+				prefix = "",
 			},
 		})
-	end
+	end,
 }

@@ -3,7 +3,6 @@
 -- lsp-zero for lsp configuration
 
 ---@diagnostic disable: undefined-global
----@diagnostic disable: unused-local
 
 return {
 	"VonHeikemen/lsp-zero.nvim",
@@ -37,7 +36,7 @@ return {
 		maps("n", "gd", vim.lsp.buf.definition)
 		maps("n", "gh", vim.lsp.buf.hover)
 
-		lsp_zero.on_attach(function(client, bufnr)
+		lsp_zero.on_attach(function(_, bufnr)
 			lsp_zero.default_keymaps({ buffer = bufnr })
 		end)
 
@@ -70,11 +69,7 @@ return {
 		})
 
 		-- Snippets
-
 		require("luasnip.loaders.from_vscode").lazy_load()
-		require("luasnip.loaders.from_snipmate").lazy_load()
-		require("luasnip").filetype_extend("javascript", { "javascriptreact" })
-		require("luasnip").filetype_extend("typescript", { "typescriptreact" })
 
 		-- cmp
 
@@ -103,20 +98,21 @@ return {
 			},
 			mapping = map,
 			sources = {
-				{ name = "codeium" },
 				{ name = "nvim_lsp" },
 				{ name = "buffer" },
 				{ name = "luasnip" },
-				{ name = "friendly-snippets" },
-				{ name = "nvim_lsp_signature_help" },
 				{ name = "path" },
+				{ name = "nvim_lua" },
+				{ name = "calc" },
 			},
-			-- formatting = {
-			-- 	fields = { 'abbr','menu', 'kind' },
-			-- 	format = require('lspkind').cmp_format({
-			-- 		mode = 'symbol_text', -- show only symbol annotations
-			-- 	})
-			-- }
+			formatting = {
+				fields = { "abbr", "kind", "menu" },
+				format = require("lspkind").cmp_format({
+					mode = "symbol",
+					maxwidth = 50,
+					ellipsis_char = "...",
+				}),
+			},
 		})
 
 		-- Use buffer source for `/`.

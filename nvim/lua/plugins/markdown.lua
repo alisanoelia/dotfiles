@@ -2,6 +2,7 @@ return {
 	"iamcco/markdown-preview.nvim",
 	"MeanderingProgrammer/markdown.nvim",
 	enabled = true,
+	event = "VeryLazy",
 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 	ft = { "markdown" },
 	build = "cd app && npm install && git restore .",

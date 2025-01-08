@@ -1,10 +1,10 @@
--- plugin for autocomplete 
+-- plugin for autocomplete
 
 return {
 	"Exafunction/codeium.nvim",
-	lazy = true,
+	event = "InsertEnter",
 	config = function()
-		require('codeium').setup({
+		require("codeium").setup({
 			enable_chat = true,
 			enable_cmp_source = false,
 			virtual_text = {
@@ -14,12 +14,11 @@ return {
 					accept = "<C-k>",
 					next = "<C-]>",
 					prev = "<C-[>",
-				}
+				},
 			},
 		})
-	end
+	end,
 }
-
 
 -- error plenary plugin
 

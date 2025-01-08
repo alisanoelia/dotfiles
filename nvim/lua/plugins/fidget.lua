@@ -1,7 +1,11 @@
 return {
 	"j-hui/fidget.nvim",
-	lazy = false,
+	enabled = false,
 	config = function()
-		require("fidget").setup({})
-	end
+		require("fidget").setup({
+			text = {
+				spinner = "pipe",
+			},
+		})
+	end,
 }

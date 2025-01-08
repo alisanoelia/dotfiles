@@ -1,38 +1,56 @@
+-- Telescope.nvim plugin
+---@diagnostic disable: undefined-global
+
 return {
 	"nvim-telescope/telescope.nvim",
-	event = 'VeryLazy',
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
 		{
-			'nvim-telescope/telescope-fzf-native.nvim',
-			build = 'make'
-		} },
-	opts = {
-		defaults = {
-			file_ignore_patterns = {
-				"node_modules",
-				"android",
-			}
-		},
-		extensions = {
-			fzf = {
-				fuzzy = true,               -- false will only do exact matching
-				override_generic_sorter = true, -- override the generic sorter
-				override_file_sorter = true, -- override the file sorter
-				case_mode = "smart_case",   -- or "ignore_case" or "respect_case"
-			},
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
 		},
 	},
-	config = function(_, opts)
-		require('telescope').setup(opts)
-		require('telescope').load_extension('fzf')
+	config = function()
+		require("telescope").setup({
+			defaults = {
+				file_ignore_patterns = {
+					"node_modules",
+					"android",
+				},
+				mappings = {
+					i = {
+						["vs"] = require("telescope.actions").select_vertical,
+					},
+					n = {
+						["vs"] = require("telescope.actions").select_vertical,
+					},
+				},
+			},
+			extensions = {
+				fzf = {
+					fuzzy = true,              -- false will only do exact matching
+					override_generic_sorter = true, -- override the generic sorter
+					override_file_sorter = true, -- override the file sorter
+					case_mode = "smart_case",  -- or "ignore_case" or "respect_case"
+				},
+				file_browser = {
+					-- theme = "ivy",
+					hijack_netrw = true,
+				},
+			},
+		})
+
+		-- Load extensions
+		require("telescope").load_extension("fzf")
+		require("telescope").load_extension("file_browser")
 	end,
+
 	keys = {
 		{
 			"<leader>gf",
 			function()
-				require('telescope.builtin').git_files({ show_untracked = true })
+				require("telescope.builtin").git_files({ show_untracked = true })
 			end,
 			desc = "Telescope Git Files",
 		},
@@ -41,33 +59,33 @@ return {
 			function()
 				require("telescope.builtin").buffers()
 			end,
-			desc = "Telescope buffers",
+			desc = "Telescope Buffers",
 		},
 		{
 			"<leader>gs",
 			function()
 				require("telescope.builtin").git_status()
 			end,
-			desc = "Telescope Git status",
+			desc = "Telescope Git Status",
 		},
 		{
 			"<leader>gc",
 			function()
 				require("telescope.builtin").git_bcommits()
 			end,
-			desc = "Telescope Git status",
+			desc = "Telescope Git Commits",
 		},
 		{
 			"<leader>gb",
 			function()
 				require("telescope.builtin").git_branches()
 			end,
-			desc = "Telescope Git branches",
+			desc = "Telescope Git Branches",
 		},
 		{
 			"<leader>fl",
 			function()
-				require('telescope.builtin').find_files()
+				require("telescope.builtin").find_files()
 			end,
 			desc = "Telescope Find Files",
 		},
@@ -76,14 +94,17 @@ return {
 			function()
 				require("telescope.builtin").help_tags()
 			end,
-			desc = "Telescope Help"
+			desc = "Telescope Help Tags",
 		},
 		{
-			"<leader>br",
+			";f",
 			function()
-				require("telescope").extensions.file_browser.file_browser({ path = "%:h:p", select_buffer = true })
+				require("telescope").extensions.file_browser.file_browser({
+					path = "%:h:p",
+					select_buffer = true,
+				})
 			end,
-			desc = "Telescope file browser"
-		}
-	},
+			desc = "Telescope File Browser",
+		},
+	}
 }

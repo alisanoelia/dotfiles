@@ -2,6 +2,7 @@
 
 return {
 	"mfussenegger/nvim-lint",
+	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
 	config = function()
 		require("lint").linters_by_ft = {
 			javascript = { "eslint_d" },

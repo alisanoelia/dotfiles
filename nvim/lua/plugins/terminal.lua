@@ -1,9 +1,11 @@
 return {
-  'akinsho/toggleterm.nvim',
-  config = function()
-    require('toggleterm').setup({
-      -- direction = 'float'
-      direction = 'horizontal',
-     })
-	end
+	"akinsho/toggleterm.nvim",
+	event = "VeryLazy",
+	lazy = true,
+	config = function()
+		require("toggleterm").setup({
+			-- direction = 'float'
+			direction = "horizontal",
+		})
+	end,
 }

@@ -6,7 +6,7 @@ return {
 		local function lsp()
 			local active_clients = vim.lsp.get_active_clients()
 			if #active_clients > 0 then
-				local icon = ''
+				local icon = ""
 				local client = active_clients[1]
 				return icon .. client.messages.name
 			else
@@ -15,8 +15,8 @@ return {
 		end
 
 		local function file_size()
-			local size = vim.fn.getfsize(vim.fn.expand('%:p'))
-			local suffixes = { 'B', 'KB', 'MB', 'GB', 'TB' }
+			local size = vim.fn.getfsize(vim.fn.expand("%:p"))
+			local suffixes = { "B", "KB", "MB", "GB", "TB" }
 			local i = 1
 
 			while size > 1024 do
@@ -24,28 +24,28 @@ return {
 				i = i + 1
 			end
 
-			return string.format('%.2f %s', size, suffixes[i])
+			return string.format("%.2f %s", size, suffixes[i])
 		end
 
-		require('lualine').setup {
+		require("lualine").setup({
 			options = {
 				icons_enabled = true,
 				-- theme = "pywal16-nvim",
 				-- theme = "solarized-osaka",
-        theme = "auto",	
-				component_separators = { left = '', right = '' },
+				theme = "auto",
+				component_separators = { left = "", right = "" },
 				-- section_separators = { left = '', right = '' },
-				section_separators = { left = '', right = '' },
+				section_separators = { left = "", right = "" },
 			},
 			sections = {
-				lualine_a = { 'mode' },
+				lualine_a = { "mode" },
 				lualine_b = {
 					-- { function()
 					-- 	return '󰉋 '
 					-- end },
-					{ 'filename', path = 4 },
+					{ "filename", path = 4 },
 				},
-				lualine_c = { 'branch', 'diagnostics', 'diff' },
+				lualine_c = { "branch", "diagnostics", "diff" },
 
 				lualine_x = {
 					-- 'filetype'
@@ -56,7 +56,7 @@ return {
 				lualine_z = { lsp },
 			},
 
-			extensions = { 'nvim-tree' },
-		}
-	end
+			extensions = { "nvim-tree" },
+		})
+	end,
 }

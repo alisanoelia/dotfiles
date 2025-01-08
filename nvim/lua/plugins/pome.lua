@@ -53,8 +53,8 @@ return {
 					sapphire = "#89b482",
 					blue = "#7daea3",
 					lavender = "#7daea3",
-					-- text = "#ebdbb2",
-					text = "#dadada",
+					-- text = "#dfd6b7",
+					text = "#b7b7b7",
 					subtext0 = "#a0a0a0",
 					subtext1 = "#909090",
 					overlay0 = "#808080",
@@ -63,9 +63,9 @@ return {
 					surface0 = "#171e22",
 					surface1 = "#1f262d",
 					surface2 = "#262d36",
-					base = "#141b1c",
-					mantle = "#141b1c",
-					crust = "#141b1c",
+					base = "#131b1c",
+					mantle = "#131b1c",
+					crust = "#131b1c",
 				},
 			},
 			transparent_background = true,
@@ -89,7 +89,6 @@ return {
 			highlight_overrides = {
 				all = function(colors)
 					return {
-
 
 						CmpItemMenu = { fg = colors.surface2 },
 						CursorLineNr = { fg = colors.text },

@@ -3,7 +3,7 @@ return {
 	build = ":TSUpdate",
 
 	config = function()
-		require 'nvim-treesitter.configs'.setup {
+		require("nvim-treesitter.configs").setup({
 			ensure_installed = { "lua", "luadoc", "vim" },
 			sync_install = true,
 			auto_install = true,
@@ -14,6 +14,6 @@ return {
 			indent = {
 				enable = true,
 			},
-		}
-	end
+		})
+	end,
 }

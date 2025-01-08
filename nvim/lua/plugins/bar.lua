@@ -1,6 +1,6 @@
 return {
 	"utilyre/barbecue.nvim",
-	lazy = true,
+	enabled = false,
 	prioity = 5000,
 	dependencies = {
 		"SmiteshP/nvim-navic",
@@ -8,5 +8,5 @@ return {
 	},
 	config = function()
 		require("barbecue").setup()
-	end
+	end,
 }

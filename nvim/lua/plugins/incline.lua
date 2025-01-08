@@ -1,3 +1,5 @@
+-- config for incline.nvim
+
 ---@diagnostic disable: undefined-global
 
 return {
@@ -5,12 +7,19 @@ return {
 	event = "VeryLazy",
 	config = function()
 		require("incline").setup({
-			highlight = {
-				groups = {
-					InclineNormal = { guibg = "#d8a657", guifg = "#1a1a1a", gui = "bold" },
-					InclineNormalNC = { guifg = "#d8a657", guibg = "#1a1a1a", gui = "bold" },
-				},
-			},
+			render = function(props)
+				local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+				local modified = vim.bo[props.buf].modified
+				return {
+					" ",
+					modified and { "+ ", guifg = "#111111", gui = "bold" } or "",
+					filename,
+					" ",
+					guibg = "#d8a657",
+					guifg = "#111111",
+					gui = "bold",
+				}
+			end,
 		})
 	end,
 }

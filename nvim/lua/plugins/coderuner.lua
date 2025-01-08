@@ -1,8 +1,10 @@
 return {
-	'CRAG666/code_runner.nvim',
-	dependencies = { 'nvim-lua/plenary.nvim' },
+	"CRAG666/code_runner.nvim",
+	dependencies = { "nvim-lua/plenary.nvim" },
+	lazy = true,
+	event = "VeryLazy",
 	config = function()
-		require('code_runner').setup({
+		require("code_runner").setup({
 			-- put here the commands by filetype
 			filetype = {
 				java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
@@ -12,5 +14,5 @@ return {
 				go = "go run",
 			},
 		})
-	end
+	end,
 }

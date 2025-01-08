@@ -1,8 +1,7 @@
 #!/bin/sh
 
 pkill sxhkd
-pgrep -x sxhkd > /dev/null || sxhkd &
-
+pgrep -x sxhkd >/dev/null || sxhkd &
 
 status=$(xrandr | grep "DP-0" | awk '{print $2}')
 
@@ -13,39 +12,27 @@ else
 	bspc monitor -d 1 2 3 4 5 6 7
 fi
 
-bspc config border_width          0
-# bspc config focused_border_color "#a18a5d"
-# bspc config normal_border_color "#7f8d8a"
+bspc config border_width 1
+bspc config focused_border_color "#dfd8b7"
+bspc config normal_border_color "#282828"
 
-bspc config window_gap            20
-bspc config top_padding           20
-bspc config bottom_padding        0
+bspc config window_gap 20
+bspc config top_padding 20
+bspc config bottom_padding 0
 
 bspc config focus_follows_pointer true
 bspc config pointer_follows_monitor true
 
-bspc config split_ratio          0.50
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config split_ratio 0.50
+bspc config borderless_monocle true
+bspc config gapless_monocle true
 
-bspc rule -a st-256color state=floating center=true 
-bspc rule -a Alacritty state=floating 
+bspc rule -a st-256color state=floating center=true
+bspc rule -a Alacritty state=floating
 bspc rule -a obsidian state=floating center=true
 bspc rule -a Min state=floating desktop=^2 rectangle 1600x900+0+0 center=true
 bspc rule -a mpv state=floating center=true
 bspc rule -a Nsxiv state=floating center=true
-bspc rule -a Qemu-system-x86_64 desktop=^5 
+bspc rule -a Qemu-system-x86_64 desktop=^5
 
-# Polybar
-# sh $HOME/.config/polybar/launch.sh &
-# sudo pkill lemonbar
-# sudo pkill lemonbar
-# sudo pkill lemonbar
-# pkill lemonbar
-# pkill lemonbar
-# pkill lemonbar
-#
-# bash $HOME/.config/lemonbar/bar
-
-# xsetroot
 xsetroot -cursor_name left_ptr &

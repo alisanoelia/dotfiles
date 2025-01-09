@@ -1,4 +1,3 @@
-
 -- Lazy loading of plugins
 ---@diagnostic disable: undefined-global
 
@@ -22,7 +21,7 @@ require("lazy").setup("plugins", {
 	},
 	checker = {
 		enabled = true,
-		notify = false
+		notify = false,
 	},
 	-- ui = {
 	-- 	border = "rounded"

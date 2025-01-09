@@ -3,11 +3,12 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	enabled = true,
 	config = function()
 		require("nvim-tree").setup({
 			renderer = {
 				indent_markers = {
-					enable = false,
+					enable = true,
 				},
 				icons = {
 					glyphs = {

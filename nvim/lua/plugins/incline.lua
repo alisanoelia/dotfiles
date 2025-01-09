@@ -1,5 +1,4 @@
 -- config for incline.nvim
-
 ---@diagnostic disable: undefined-global
 
 return {
@@ -16,7 +15,7 @@ return {
 					filename,
 					" ",
 					guibg = "#d8a657",
-					guifg = "#111111",
+					guifg = "#121212",
 					gui = "bold",
 				}
 			end,

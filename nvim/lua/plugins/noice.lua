@@ -19,7 +19,6 @@ return {
 			},
 			presets = {
 				bottom_search = true,
-
 				command_palette = false,
 				long_message_to_split = true,
 				inc_rename = true,
@@ -44,7 +43,8 @@ return {
 			fps = 75,
 			stages = "fade",
 			render = "minimal",
-			background_colour = "#1e222a",
+			-- background_colour = "#1e222a",
+			background_colour = "#ffffff",
 			timeout = 1000,
 			top_down = true,
 			icons = {

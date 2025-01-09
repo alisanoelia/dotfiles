@@ -1,6 +1,6 @@
 return {
 	"echasnovski/mini.nvim",
-	event = "VeryLazy",
+	-- event = "VeryLazy",
 	config = function()
 		require("mini.animate").setup()
 		require("mini.comment").setup()

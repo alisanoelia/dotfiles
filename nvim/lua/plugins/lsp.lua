@@ -105,14 +105,14 @@ return {
 				{ name = "nvim_lua" },
 				{ name = "calc" },
 			},
-			formatting = {
-				fields = { "abbr", "kind", "menu" },
-				format = require("lspkind").cmp_format({
-					mode = "symbol",
-					maxwidth = 50,
-					ellipsis_char = "...",
-				}),
-			},
+			-- formatting = {
+			-- 	fields = { "abbr", "kind", "menu" },
+			-- 	format = require("lspkind").cmp_format({
+			-- 		mode = "symbol",
+			-- 		maxwidth = 50,
+			-- 		ellipsis_char = "...",
+			-- 	}),
+			-- },
 		})
 
 		-- Use buffer source for `/`.

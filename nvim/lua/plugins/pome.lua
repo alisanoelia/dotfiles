@@ -1,3 +1,6 @@
+-- Theme pome
+----@diagnostic disable: undefined-global
+
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
@@ -90,7 +93,7 @@ return {
 				all = function(colors)
 					return {
 
-						CmpItemMenu = { fg = colors.surface2 },
+						CmpItemMenu = { fg = colors.overlay0 },
 						CursorLineNr = { fg = colors.text },
 						FloatBorder = { bg = colors.base, fg = colors.surface0 },
 						GitSignsChange = { fg = colors.peach },

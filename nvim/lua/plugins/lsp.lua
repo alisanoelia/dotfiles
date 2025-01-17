@@ -40,11 +40,18 @@ return {
 			lsp_zero.default_keymaps({ buffer = bufnr })
 		end)
 
+		-- lsp_zero.set_sign_icons({
+		-- 	error = "✘",
+		-- 	warn = "▲",
+		-- 	hint = "⚑",
+		-- 	info = "»",
+		-- })
+
 		lsp_zero.set_sign_icons({
-			error = "✘",
-			warn = "▲",
-			hint = "⚑",
-			info = "»",
+			error = ">",
+			warn = "!",
+			hint = "?",
+			info = "",
 		})
 
 		require("mason").setup({
@@ -105,14 +112,14 @@ return {
 				{ name = "nvim_lua" },
 				{ name = "calc" },
 			},
-			-- formatting = {
-			-- 	fields = { "abbr", "kind", "menu" },
-			-- 	format = require("lspkind").cmp_format({
-			-- 		mode = "symbol",
-			-- 		maxwidth = 50,
-			-- 		ellipsis_char = "...",
-			-- 	}),
-			-- },
+			formatting = {
+				fields = { "kind", "abbr", "menu" },
+				format = require("lspkind").cmp_format({
+					mode = "symbol",
+					maxwidth = 50,
+					ellipsis_char = "...",
+				}),
+			},
 		})
 
 		-- Use buffer source for `/`.
@@ -133,7 +140,7 @@ return {
 
 		vim.diagnostic.config({
 			virtual_text = true,
-			severity_sort = true,
+			severity_sort = false,
 			float = {
 				style = "minimal",
 				border = "rounded",

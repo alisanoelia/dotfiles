@@ -17,13 +17,12 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
 	install = {
 		missing = true,
-		-- colorscheme = { "everforest" }
 	},
 	checker = {
 		enabled = true,
 		notify = false,
 	},
-	-- ui = {
-	-- 	border = "rounded"
-	-- }
+	ui = {
+		border = "rounded",
+	},
 })

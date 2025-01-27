@@ -1,3 +1,5 @@
+-- avante plugin for nvim
+
 return {
 	"yetone/avante.nvim",
 	event = "VeryLazy",

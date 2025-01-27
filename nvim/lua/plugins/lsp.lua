@@ -1,62 +1,16 @@
--- cmp for Autocompletion
--- luasnip for snippets
--- lsp-zero for lsp configuration
-
 ---@diagnostic disable: undefined-global
 
 return {
-	"VonHeikemen/lsp-zero.nvim",
-	branch = "v4.x",
+	"williamboman/mason.nvim",
 	dependencies = {
-		-- LSP and mason
-		{ "neovim/nvim-lspconfig" },
-		{ "williamboman/mason.nvim" },
-		{ "williamboman/mason-lspconfig.nvim" },
-
-		-- Autocompletion
-		{ "hrsh7th/nvim-cmp" },
-		{ "saadparwaiz1/cmp_luasnip" },
-		{ "hrsh7th/cmp-buffer" },
-		{ "hrsh7th/cmp-path" },
-		{ "hrsh7th/cmp-nvim-lsp" },
-		{ "hrsh7th/cmp-cmdline" },
-
-		-- Snippets
-		{ "L3MON4D3/LuaSnip" },
-		{ "rafamadriz/friendly-snippets" },
-		{ "onsails/lspkind.nvim" },
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
 	},
 
 	config = function()
-		--LSP and Mason
-		local lsp_zero = require("lsp-zero")
-		local maps = vim.keymap.set
-		maps("n", "f=", ":LspZeroFormat <cr>")
-		maps("n", "de", vim.diagnostic.open_float)
-		maps("n", "gd", vim.lsp.buf.definition)
-		maps("n", "gh", vim.lsp.buf.hover)
-
-		lsp_zero.on_attach(function(_, bufnr)
-			lsp_zero.default_keymaps({ buffer = bufnr })
-		end)
-
-		-- lsp_zero.set_sign_icons({
-		-- 	error = "✘",
-		-- 	warn = "▲",
-		-- 	hint = "⚑",
-		-- 	info = "»",
-		-- })
-
-		lsp_zero.set_sign_icons({
-			error = ">",
-			warn = "!",
-			hint = "?",
-			info = "",
-		})
-
 		require("mason").setup({
 			ui = {
-				-- border = "rounded",
+				border = "rounded",
 				icons = {
 					package_installed = "✓",
 					package_pending = "➜",
@@ -66,88 +20,43 @@ return {
 				height = 0.7,
 			},
 		})
+		require("mason-lspconfig").setup({})
 
-		require("mason-lspconfig").setup({
-			automatic_installation = true,
-			ensure_installed = { "lua_ls" },
-			handlers = {
-				lsp_zero.default_setup,
-			},
+		local lspconfig = require("lspconfig")
+
+		require("mason-lspconfig").setup_handlers({
+			function(server_name)
+				lspconfig[server_name].setup({})
+			end,
 		})
 
-		-- Snippets
-		require("luasnip.loaders.from_vscode").lazy_load()
+		-- config lsp maps
+		local map = vim.keymap.set
 
-		-- cmp
+		map("n", "de", vim.diagnostic.open_float)
+		map("n", "gd", vim.lsp.buf.definition)
+		map("n", "gh", vim.lsp.buf.hover)
 
-		local cmp = require("cmp")
-		local cmp_action = require("lsp-zero").cmp_action()
+		-- copy error lsp float
+		map("n", "<leader>ce", [[:lua YankDiagnosticError()<CR>]], { noremap = true, silent = true })
 
-		local map = cmp.mapping.preset.insert({
-			["<CR>"] = cmp.mapping.confirm({ select = true }),
-			["<Tab>"] = cmp_action.tab_complete(),
-			["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-			["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-			["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-		})
-
-		cmp.setup({
-			window = {
-				completion = {
-					completeopt = "menu,menuone",
-					-- border = "rounded",
-					scrollbar = false,
-					winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
-				},
-				documentation = {
-					winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
-				},
-			},
-			mapping = map,
-			sources = {
-				{ name = "nvim_lsp" },
-				{ name = "buffer" },
-				{ name = "luasnip" },
-				{ name = "path" },
-				{ name = "nvim_lua" },
-				{ name = "calc" },
-			},
-			formatting = {
-				fields = { "kind", "abbr", "menu" },
-				format = require("lspkind").cmp_format({
-					mode = "symbol",
-					maxwidth = 50,
-					ellipsis_char = "...",
-				}),
-			},
-		})
-
-		-- Use buffer source for `/`.
-		cmp.setup.cmdline("/", {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = {
-				{ name = "buffer" },
-			},
-		})
-
-		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = cmp.config.sources({
-				{ name = "path" },
-				{ name = "cmdline" },
-			}),
-		})
-
+		function YankDiagnosticError()
+			vim.diagnostic.open_float()
+			vim.diagnostic.open_float()
+			local win_id = vim.fn.win_getid() -- get the window ID of the floating window
+			vim.cmd("normal! j") -- move down one row
+			vim.cmd("normal! VG") -- select everything from that row down
+			vim.cmd("normal! y") -- yank selected text
+			vim.api.nvim_win_close(win_id, true) -- close the floating window by its ID
+		end
+		-- config diagnostic
 		vim.diagnostic.config({
-			virtual_text = true,
-			severity_sort = false,
 			float = {
-				style = "minimal",
-				border = "rounded",
-				-- source = 'always',
-				source = "if_many",
-				header = "",
+				border = "single",
+				source = "always",
+				header = false,
 				prefix = "",
+				scope = "line",
 			},
 		})
 	end,

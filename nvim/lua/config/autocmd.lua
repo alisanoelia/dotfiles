@@ -1,9 +1,4 @@
--- vim.api.nvim_create_autocmd("VimLeave", {
--- 	callback = function()
--- 		vim.cmd("set guicursor=")
--- 		print("\x1b[ q") -- Restablece el cursor al predeterminado
--- 	end,
--- })
+---@diagnostic disable: undefined-global
 
 vim.cmd([[
     augroup RestoreCursorShapeOnExit
@@ -12,7 +7,6 @@ vim.cmd([[
 				autocmd VimLeave * set guicursor=a:ver40-blinkon500-blinkoff500
     augroup END
 ]])
-
 
 -- vim.cmd([[
 --     augroup RestoreCursorShapeOnExit

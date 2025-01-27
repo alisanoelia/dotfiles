@@ -1,10 +1,12 @@
 [font]
-size = 7.3
+size = 10.1
+offset = { x = -1, y = 0 } 
+glyph_offset = { x = -1, y = 0 }
+
+[font.normal]
+family = "GeistMono Nerd Font"
+style = "Auto"
 
 # [font.normal]
 # family = "MartianMono Nerd Font"
-# style = "Bold"
-
-[font.normal]
-family = "MartianMono Nerd Font"
-style = "Regular"
+# style = "Auto"

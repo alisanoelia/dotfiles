@@ -2,9 +2,10 @@ general.live_config_reload = true
 
 [env]
 TERM = "xterm-256color"
+WINIT_X11_SCALE_FACTOR = "1.0"
 
 [cursor]
-blink_interval = 500
+blink_interval = 200
 unfocused_hollow = false
 
 [cursor.style]
@@ -18,7 +19,7 @@ save_to_clipboard = true
 [window]
 decorations = "full"
 dynamic_title = true
-opacity = 1
+opacity = 1.0
 
 [window.padding]
 x = 30

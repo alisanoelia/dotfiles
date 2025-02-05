@@ -1,8 +1,8 @@
 [keyboard]
 
 bindings = [
-
 	{ key = "c", mods = "Alt", action = "Copy" },
 	{ key = "v", mods = "Alt", action = "Paste" },
-
+	{ key = "-", mods = "Alt", action = "DecreaseFontSize" },
+	{ key = "+", mods = "Alt", action = "IncreaseFontSize" },
 ]

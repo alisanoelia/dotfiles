@@ -21,7 +21,7 @@ return {
 			},
 
 			format_on_save = {
-				pattern = ".lua,*.graphql,*.css,*.html,*.json,*.yaml,*.md,*.gql,*.rs, *.js, *.ts, *.jsx, *.tsx, *.sh",
+				pattern = "*.lua,*.graphql,*.css,*.html,*.json,*.yaml,*.md,*.gql,*.rs,*.js,*.ts,*.jsx,*.tsx,*.sh",
 				timeout_ms = 10000,
 				async = false,
 				lsp_fallback = true,

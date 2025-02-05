@@ -1,4 +1,6 @@
+-- lualine config
 ---@diagnostic disable: undefined-global
+---@autor: asha
 
 return {
 	"nvim-lualine/lualine.nvim",
@@ -29,6 +31,11 @@ return {
 			return string.format("%.2f %s", size, suffixes[i])
 		end
 
+		local function codeium()
+			local status = require("codeium.virtual_text").status_string()
+			return " " .. status
+		end
+
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
@@ -47,7 +54,7 @@ return {
 					-- end },
 					{ "filename", path = 4 },
 				},
-				lualine_c = { "branch", "diagnostics", "diff" },
+				lualine_c = { "branch", "diagnostics", "diff", codeium },
 
 				lualine_x = {
 					-- 'filetype'

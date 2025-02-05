@@ -1,6 +1,6 @@
 general.import = [
-	"~/.config/alacritty/colorschemes/pome.toml", 
-	"~/.config/alacritty/fonts.toml", 
-  "~/.config/alacritty/config.toml",
-	"~/.config/alacritty/keys.toml"
+	"~/.config/alacritty/colorschemes/material.toml",
+	"~/.config/alacritty/fonts.toml",
+	"~/.config/alacritty/config.toml",
+	"~/.config/alacritty/keys.toml",
 ]

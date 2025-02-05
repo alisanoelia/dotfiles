@@ -1,14 +1,14 @@
--- setup copilot in lua for neovim
+-- setup copilot in lua for neovima
 
 return {
 	"zbirenbaum/copilot.lua",
-	enabled = false,
+	enabled = true,
 	cmd = "Copilot",
-	event = { "InsertEnter" },
+	event = "InsertEnter",
 	config = function()
 		require("copilot").setup({
 			suggestion = {
-				enabled = true,
+				enabled = false,
 				auto_trigger = true,
 				hide_during_completion = false,
 				debounce = 0,

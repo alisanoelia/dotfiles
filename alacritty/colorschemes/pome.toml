@@ -7,9 +7,12 @@
 # foreground = "#dadada"
 # background = '#191b1c'
 background = '#131516'
+# background = '#111213'
+# background = '#1b1d1e'
 # foreground = '#ECE7D5'
 # foreground = '#d7c9ae'
-foreground = '#eae0d2'
+# foreground = '#eae0d2'
+foreground = '#ebdbb2'
 
 [colors.normal]
 black = '#191b1c'

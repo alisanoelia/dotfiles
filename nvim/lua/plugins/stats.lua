@@ -1,7 +1,10 @@
 return {
 	"nvzone/typr",
-	event = "BufRead",
+	event = "VeryLazy",
 	cmd = "TyprStats",
 	dependencies = "nvzone/volt",
-	opts = {},
+	opts = {
+		typr = "typr",
+		volt = "volt",
+	},
 }

@@ -6,7 +6,8 @@ return {
 	version = "*",
 	opts = {
 		keymap = {
-			["<Cr>"] = { "accept", "fallback" },
+			preset = "enter",
+			-- ["<Cr>"] = { "accept", "fallback" },
 			["<Tab>"] = { "select_next", "fallback" },
 		},
 		completion = {
@@ -19,7 +20,6 @@ return {
 			menu = {
 				border = "rounded",
 				scrollbar = false,
-				-- winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
 			},
 			documentation = {
 				auto_show = true,
@@ -27,7 +27,6 @@ return {
 				window = {
 					border = "rounded",
 					scrollbar = false,
-					-- winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
 				},
 			},
 		},

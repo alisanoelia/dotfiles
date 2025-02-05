@@ -5,7 +5,7 @@ TERM = "xterm-256color"
 WINIT_X11_SCALE_FACTOR = "1.0"
 
 [cursor]
-blink_interval = 200
+blink_interval = 400
 unfocused_hollow = false
 
 [cursor.style]
@@ -19,7 +19,7 @@ save_to_clipboard = true
 [window]
 decorations = "full"
 dynamic_title = true
-opacity = 1.0
+opacity = 0.8
 
 [window.padding]
 x = 30

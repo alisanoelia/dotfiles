@@ -40,12 +40,12 @@ return {
 			},
 		})
 		require("notify").setup({
+
 			fps = 75,
 			stages = "fade",
 			render = "minimal",
-			-- background_colour = "#1e222a",
-			background_colour = "#ffffff",
-			timeout = 1000,
+			background_colour = "#131516",
+			timeout = 50,
 			top_down = true,
 			icons = {
 				ERROR = "",

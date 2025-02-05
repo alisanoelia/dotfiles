@@ -21,7 +21,7 @@ return {
 					filename,
 					" ",
 					guibg = "#d8a657",
-					guifg = "#121212",
+					guifg = "#101214",
 					gui = "bold",
 				}
 			end,

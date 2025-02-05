@@ -1,58 +1,54 @@
-#!/bin/sh
+#!/bin/sh -e
 
 SEP="|"
 
 b="%{B-}"
-f="%{F-}"
-bg="%{B#e2cca9}"
-fg="%{F#282828}"
+Green="%{B#5c7a53}"
+Red="%{B#915a5a}"
+Yellow="%{B#a18a5d}"
+Orange="%{B#997459}"
+Aqua="%{B#5f8787}"
 
 Date() {
+	# h=$(date +'%A, %d.%m.%Y %I:%M %P')
 	h=$(date +'%A, %d.%m.%Y %I:%M')
 	echo "$h"
 }
 
 Volume() {
-	state=$(amixer get Master 2>/dev/null | awk '$0~/%/{print $6}' | tr -d '[]')
-	v=$(amixer get Master 2>/dev/null | awk '$0~/%/{print $4}' | tr -d '[]')
+	state=$(amixer get Master | awk '$0~/%/{print $6}' | tr -d '[]')
+	v=$(amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]')
 
 	if [ "$state" = "off" ]; then
-		echo -n "$bg Muted $b"
-	elif [ -n "$v" ]; then
-		echo -n "$bg$fg $v $f$b"
+		echo -n "$Yellow Muted $b"
 	else
-		echo -n "$bg$fg Vol Error $f$b"
+		echo -n "$Yellow $v $b"
 	fi
 }
 
 Memory() {
 	m=$(free -m | awk '/Mem:/ {printf "%d", $3}')
-	echo -n "$bg$fg ${m}MB $f$b"
+	echo -n "$Green $m $b"
 }
 
 Cpu() {
 	c=$(top -bn1 | grep "Cpu(s)" |
 		sed "s/.*, *\([0-9.]*\)%* id.*/\1/" |
 		awk '{print 100 - $1"%"}')
-	echo -n "$bg$fg $c $f$b"
+	echo -n "$Red $c $b"
 }
 
 Name() {
-	window_name=$(xdotool getwindowfocus getwindowname 2>/dev/null)
-	if [ -n "$window_name" ]; then
-		printf '%s' "$(echo "$window_name" | awk '{print substr($0, 1, 30)}')"
-	else
-		echo "No Window"
-	fi
+	printf '%s' "$(xdotool getwindowfocus getwindowname | awk '{print substr($0, 1, 30)}')"
 }
 
 Cap() {
 	cap=$(xset q | awk '/Caps Lock/ {print $4}')
-	echo -n "$bg$fg $cap $f$b"
+	echo -n "$Aqua $cap $b"
 }
 
 User() {
-	echo -n "$bg$fg "alana" $f$b"
+	echo -n "$Orange $(hostname) $b"
 }
 
 Workspaces() {
@@ -63,7 +59,7 @@ Workspaces() {
 
 	for desktop in $desktops; do
 		if [ "$desktop" = "$current" ]; then
-			output="$output $fg[$desktop]$f "
+			output="$output %{F#7f8d8a}[$desktop]%{F-} "
 		else
 			output="$output $desktop "
 		fi
@@ -73,21 +69,21 @@ Workspaces() {
 }
 
 Weather() {
-	apikey="${OPEN_WEATHER_MAP_KEY}"
+	apikey="a6ddb4c90df49648c247b53742d3eee5"
 	ciudadFix="Cúcuta"
 
 	url="https://api.openweathermap.org/data/2.5/weather?q=${ciudadFix},co&appid=${apikey}&units=metric&lang=es"
 	temperature=$(curl -s "$url" | jq '.main.temp' 2>/dev/null)
 
 	if [ -z "$temperature" ]; then
-		echo "$bg$fg Error $f$b"
+		echo "$Orange Error $b"
 	else
 		temp_integer=$(printf "%.0f" "$temperature")
-		echo "$bg$fg ${temp_integer}°C $f$b"
+		echo "$Orange ${temp_integer}°C $b"
 	fi
 }
 
 while true; do
 	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r}Temp $(Weather) Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
 	sleep 0.1s
-done | lemonbar -B "#141617" -F "#e2cca9" -f "GeistMono Nerd Font:style:Bold:size=7" -g 1920x20+0+0 &
+done | lemonbar -B "#101214" -F "#f2edd4" -f "MartianMono Nerd Font:style:Bold:size=7" -g 1920x20+0+0 &

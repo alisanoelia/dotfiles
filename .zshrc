@@ -12,7 +12,6 @@ export PATH="$HOME/bin:$PATH"
 export RUST_BACKTRACE=full
 export ANDROID_HOME=$HOME/Android/Sdk
 export TERM=xterm-256color
-export GEMINI_API_KEY="AIzaSyBn0eamrukK7CTE1s_Q4OXDIPTUCmP5qwU"
 
 eval "$(ssh-agent -s)" > /dev/null
 ssh-add ~/.ssh/alyssa > /dev/null 2>&1

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# background="#1d2021" | "#141617"
+
 SEP="|"
 
 b="%{B-}"
@@ -17,7 +19,7 @@ Volume() {
 	v=$(amixer get Master 2>/dev/null | awk '$0~/%/{print $4}' | tr -d '[]')
 
 	if [ "$state" = "off" ]; then
-		echo -n "$bg Muted $b"
+		echo -n "$bg$fg Muted $f$b"
 	elif [ -n "$v" ]; then
 		echo -n "$bg$fg $v $f$b"
 	else
@@ -42,7 +44,7 @@ Name() {
 	if [ -n "$window_name" ]; then
 		printf '%s' "$(echo "$window_name" | awk '{print substr($0, 1, 30)}')"
 	else
-		echo "No Window"
+		echo ""
 	fi
 }
 
@@ -63,7 +65,7 @@ Workspaces() {
 
 	for desktop in $desktops; do
 		if [ "$desktop" = "$current" ]; then
-			output="$output $fg[$desktop]$f "
+			output="$output [$desktop] "
 		else
 			output="$output $desktop "
 		fi
@@ -90,4 +92,4 @@ Weather() {
 while true; do
 	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r}Temp $(Weather) Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
 	sleep 0.1s
-done | lemonbar -B "#141617" -F "#e2cca9" -f "GeistMono Nerd Font:style:Bold:size=7" -g 1920x20+0+0 &
+done | lemonbar -B "#1d2021" -F "#e2cca9" -f "MartianMono Nerd Font:size=7.2" -g 1920x20+0+0 &

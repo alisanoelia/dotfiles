@@ -3,7 +3,7 @@
 return {
 	"nvzone/showkeys",
 	lazy = true,
-	event = "VeryLazy",
+	event = "CmdlineEnter",
 	cmd = "ShowkeysToggle",
 	opts = {
 		position = "bottom-center",

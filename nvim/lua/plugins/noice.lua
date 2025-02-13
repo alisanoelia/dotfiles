@@ -2,11 +2,8 @@
 
 return {
 	"folke/noice.nvim",
-	event = "VeryLazy",
 	enabled = true,
-	dependencies = {
-		"MunifTanjim/nui.nvim",
-	},
+	event = "VeryLazy",
 	opts = {
 		views = {
 			cmdline_popup = {
@@ -47,15 +44,17 @@ return {
 		},
 	},
 
-	{
-		"rcarriga/nvim-notify",
-		opts = {
-
-			fps = 75,
-			stages = "fade",
-			render = "minimal",
-			background_colour = "#1d2021",
-			timeout = 50,
+	dependencies = {
+		{ "MunifTanjim/nui.nvim" },
+		{
+			"rcarriga/nvim-notify",
+			opts = {
+				fps = 75,
+				stages = "fade",
+				render = "minimal",
+				background_colour = "#1d2021",
+				timeout = 50,
+			},
 		},
 	},
 }

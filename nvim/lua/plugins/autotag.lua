@@ -2,10 +2,9 @@
 
 return {
 	"windwp/nvim-ts-autotag",
-	event = "VeryLazy",
 	opts = {
-		aliases = {
-			["your language here"] = "html",
+		autotag = {
+			enable = true,
 		},
 	},
 }

@@ -1,6 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	event = "BufReadPost",
 	opts = {
 		ensure_installed = { "lua", "luadoc", "vim" },
 		sync_install = true,

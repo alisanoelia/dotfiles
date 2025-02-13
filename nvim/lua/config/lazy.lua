@@ -19,10 +19,10 @@ require("lazy").setup("plugins", {
 		missing = true,
 	},
 	checker = {
-		enabled = true,
+		enabled = false,
 		notify = false,
 	},
 	ui = {
-		border = "rounded",
+		border = "single",
 	},
 })

@@ -2,12 +2,14 @@
 
 return {
 	"saghen/blink.cmp",
-	dependencies = "rafamadriz/friendly-snippets",
+	dependencies = {
+		"L3MON4D3/LuaSnip",
+		"rafamadriz/friendly-snippets",
+	},
 	version = "*",
 	opts = {
 		keymap = {
-			preset = "enter",
-			-- ["<Cr>"] = { "accept", "fallback" },
+			["<cr>"] = { "accept", "fallback" },
 			["<Tab>"] = { "select_next", "fallback" },
 		},
 		completion = {
@@ -18,14 +20,14 @@ return {
 				},
 			},
 			menu = {
-				border = "rounded",
+				border = "single",
 				scrollbar = false,
 			},
 			documentation = {
 				auto_show = true,
-				auto_show_delay_ms = 200,
+				auto_show_delay_ms = 50,
 				window = {
-					border = "rounded",
+					border = "single",
 					scrollbar = false,
 				},
 			},

@@ -1,14 +1,25 @@
 ---@diagnostic disable: undefined-global
 
 local function setup_diagnostic_yank()
-	function YankDiagnosticError()
-		vim.diagnostic.open_float()
-		vim.diagnostic.open_float()
-		local win_id = vim.fn.win_getid()
-		vim.cmd("normal! j")
-		vim.cmd("normal! VG")
-		vim.cmd("normal! y")
-		vim.api.nvim_win_close(win_id, true)
+	function _G.YankDiagnosticError()
+		local bufnr = vim.api.nvim_get_current_buf()
+		local line_nr = vim.api.nvim_win_get_cursor(0)[1] - 1
+		local diagnostics = vim.diagnostic.get(bufnr, { lnum = line_nr })
+
+		if #diagnostics == 0 then
+			vim.notify("No hay diagnósticos en esta línea", vim.log.levels.WARN)
+			return
+		end
+
+		local messages = {}
+		for _, diag in ipairs(diagnostics) do
+			local severity = vim.diagnostic.severity[diag.severity] or "UNKNOWN"
+			table.insert(messages, string.format("[%s] %s", severity:sub(1, 1), diag.message))
+		end
+
+		local text = table.concat(messages, "\n")
+		vim.fn.setreg("+", text)
+		vim.notify(string.format("Copiados %d errores al portapapeles", #diagnostics))
 	end
 end
 
@@ -17,9 +28,9 @@ local function setup_lsp_keymaps()
 	map("n", "de", vim.diagnostic.open_float)
 	map("n", "gd", vim.lsp.buf.definition)
 	map("n", "gh", vim.lsp.buf.hover)
-	map("n", "g[", vim.diagnostic.goto_prev)
-	map("n", "g]", vim.diagnostic.goto_next)
-	map("n", "<leader>ce", [[:lua YankDiagnosticError()<CR>]], { noremap = true, silent = true })
+	map("n", "e[", vim.diagnostic.goto_prev)
+	map("n", "e]", vim.diagnostic.goto_next)
+	map("n", "<leader>ce", [[:lua YankDiagnosticError()<CR>]])
 end
 
 local function setup_diagnostics()
@@ -34,10 +45,10 @@ local function setup_diagnostics()
 	})
 end
 
-local function setup_mason()
-	require("mason").setup({
+local function mason()
+	return require("mason").setup({
 		ui = {
-			border = "rounded",
+			border = "single",
 			icons = {
 				package_installed = "✓",
 				package_pending = "➜",
@@ -55,9 +66,9 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	},
-
+	event = "BufReadPre",
 	config = function()
-		setup_mason()
+		mason()
 		setup_diagnostic_yank()
 		setup_lsp_keymaps()
 		setup_diagnostics()

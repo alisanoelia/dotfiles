@@ -1,11 +1,11 @@
+-- autotag config
+
 return {
 	"windwp/nvim-ts-autotag",
-	enabled = false,
-	config = function()
-		require("nvim-treesitter.configs").setup({
-			autotag = {
-				enable = true,
-			},
-		})
-	end,
+	event = "VeryLazy",
+	opts = {
+		aliases = {
+			["your language here"] = "html",
+		},
+	},
 }

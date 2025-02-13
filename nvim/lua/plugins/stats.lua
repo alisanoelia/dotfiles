@@ -1,5 +1,6 @@
 return {
 	"nvzone/typr",
+	lazy = true,
 	event = "VeryLazy",
 	cmd = "TyprStats",
 	dependencies = "nvzone/volt",

@@ -1,8 +1,7 @@
 return {
 	"onsails/lspkind.nvim",
 	event = "LspAttach",
-
-	config = function()
+	init = function()
 		require("lspkind").init({
 			mode = "symbol",
 			preset = "codicons",

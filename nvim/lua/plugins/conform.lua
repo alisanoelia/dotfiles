@@ -1,7 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	enabled = true,
-	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {

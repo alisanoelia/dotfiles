@@ -1,10 +1,18 @@
+-- dashboard config
+
 return {
 	"folke/snacks.nvim",
-	config = function()
-		require("snacks").setup({
-			dashboard = {
-				header = "asha",
+	event = "VimEnter",
+	opts = {
+		dashboard = {
+			pane_gap = 4,
+			preset = {
+				header = [[asha]],
 			},
-		})
-	end,
+			sections = {
+				{ section = "header" },
+				{ section = "startup" },
+			},
+		},
+	},
 }

@@ -66,7 +66,6 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	},
-	event = "BufReadPre",
 	config = function()
 		mason()
 		setup_diagnostic_yank()

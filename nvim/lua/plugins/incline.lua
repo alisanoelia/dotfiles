@@ -21,7 +21,7 @@ return {
 				" ",
 				guibg = "#d8a657",
 				guifg = "#101214",
-				gui = "italic",
+				gui = "bold",
 			}
 		end,
 	},

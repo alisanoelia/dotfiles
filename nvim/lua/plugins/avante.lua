@@ -1,4 +1,5 @@
 -- avante plugin
+---@diagnostic disable: undefined-global
 
 return {
 	"yetone/avante.nvim",
@@ -6,7 +7,7 @@ return {
 	build = "make",
 	opts = {
 		---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-		provider = "copilot", -- or "copilot", "gemini", "ollama", "openrouter"
+		provider = "gemini", -- or "copilot", "gemini", "ollama", "openrouter"
 		vendors = {
 			openrouter = {
 				__inherited_from = "openai",
@@ -15,17 +16,18 @@ return {
 				api_key_name = "OPENROUTER_API_KEY",
 				model = "deepseek/deepseek-r1",
 				-- model = "google/gemini-2.0-flash-thinking-exp:free",
+				-- model = "cognitivecomputations/dolphin3.0-r1-mistral-24b:free",
 				temperature = 0,
 				max_tokens = 8192,
 			},
 		},
 		copilot = {
-			model = "claude-3.5-sonnet", -- or "gpt-4o" | "o3-mini" | "claude-3.5-sonnet"
+			model = "o3-mini", -- or "gpt-4o" | "o3-mini" | "claude-3.5-sonnet"
 			temperature = 0,
 			max_tokens = 8192,
 		},
 		gemini = {
-			model = "gemini-2.0-flash", -- or "gemini-1.5-pro", "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-1.5-flash", "gemini-2.0-flash-exp", "gemini-2.0-flash-thinking-exp-01-21", "gemini-2.0-flash"
+			model = "gemini-2.0-pro-exp-02-05", -- or "gemini-1.5-pro", "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-1.5-flash", "gemini-2.0-flash-exp", "gemini-2.0-flash-thinking-exp-01-21", "gemini-2.0-flash"
 			temperature = 0,
 			max_tokens = 8192,
 		},

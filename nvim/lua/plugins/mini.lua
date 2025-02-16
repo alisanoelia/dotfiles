@@ -1,6 +1,5 @@
 return {
 	"echasnovski/mini.nvim",
-	event = "VeryLazy",
 	config = function()
 		require("mini.animate").setup()
 		require("mini.bracketed").setup()

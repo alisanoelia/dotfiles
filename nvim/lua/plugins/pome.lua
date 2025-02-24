@@ -147,7 +147,7 @@ return {
 
 						PreProc = { fg = colors.mauve },
 						PreCondit = { fg = colors.mauve },
-						Include = { fg = colors.text },
+						Include = { fg = colors.peach },
 						Define = { fg = colors.mauve },
 						Conditional = { fg = colors.red },
 						Repeat = { fg = colors.red },

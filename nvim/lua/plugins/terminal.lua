@@ -3,8 +3,9 @@
 return {
 	"akinsho/toggleterm.nvim",
 	event = "VeryLazy",
+	enabled = false,
 	lazy = true,
 	opts = {
-		direction = "horizontal", -- or vertical, horizontal
+		direction = "float", -- or vertical, horizontal, float
 	},
 }

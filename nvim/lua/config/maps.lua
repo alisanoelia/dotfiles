@@ -18,3 +18,11 @@ map("n", "tt", ":ToggleTerm <cr>")
 map("n", "<leader>bn", ":bn<cr>")
 map("n", "<leader>la", ":Lazy<cr>")
 map("n", "L", "%")
+
+-- move and resize windows
+map("n", "<leader>L", "<C-w>L")
+map("n", "<leader>H", "<C-w>H")
+map("n", "<leader>K", "<C-w>K")
+map("n", "<leader>J", "<C-w>J")
+map("n", "<leader>>", ":vertical resize +5<cr>")
+map("n", "<leader><", ":vertical resize -5<cr>")

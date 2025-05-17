@@ -33,11 +33,10 @@ return {
 		opts = {
 			prompts = prompts,
 			system_prompt = "soy `asha`, experta en programacion, especialmente en Javascript, React, Tawilindcss y demas tecnologias web.",
-			model = "o3-mini",
+			model = "claude-3.5-sonnet",
 			answer_header = "asha ",
 			window = {
 				layout = "vertical",
-				position = "left",
 				border = "single",
 				width = 0.2,
 			},

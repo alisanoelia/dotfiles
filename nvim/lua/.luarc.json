@@ -1,5 +1,6 @@
 {
     "diagnostics.globals": [
-        "config"
+        "config",
+        "setup_diagnostic_yank"
     ]
 }

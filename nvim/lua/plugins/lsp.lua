@@ -1,5 +1,10 @@
 ---@diagnostic disable: undefined-global
 
+vim.api.nvim_set_hl(0, "FloatBorder", {
+	fg = "#C3E88D", -- Color del borde (personaliza)
+	bg = "NONE",
+})
+
 local function setup_diagnostic_yank()
 	function _G.YankDiagnosticError()
 		local bufnr = vim.api.nvim_get_current_buf()
@@ -26,10 +31,11 @@ end
 local function setup_lsp_keymaps()
 	local map = vim.keymap.set
 	map("n", "de", vim.diagnostic.open_float)
+	-- map("n", "de", vim.lsp.buf.code_action, { buffer = true })
 	map("n", "gd", vim.lsp.buf.definition)
 	map("n", "gh", vim.lsp.buf.hover)
-	map("n", "e[", vim.diagnostic.goto_prev)
-	map("n", "e]", vim.diagnostic.goto_next)
+	map("n", "<leader>[", vim.diagnostic.goto_prev)
+	map("n", "<leader>]", vim.diagnostic.goto_next)
 	map("n", "<leader>ce", [[:lua YankDiagnosticError()<CR>]])
 end
 
@@ -42,6 +48,12 @@ local function setup_diagnostics()
 			prefix = "",
 			scope = "line",
 		},
+	})
+end
+
+local function setup_hover()
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		border = "single",
 	})
 end
 
@@ -71,14 +83,15 @@ return {
 		setup_diagnostic_yank()
 		setup_lsp_keymaps()
 		setup_diagnostics()
+		setup_hover()
 
 		require("mason-lspconfig").setup({})
 		local lspconfig = require("lspconfig")
 
-		require("mason-lspconfig").setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({})
-			end,
-		})
+		-- require("mason-lspconfig").setup_handlers({
+		-- 	function(server_name)
+		-- 		lspconfig[server_name].setup({})
+		-- 	end,
+		-- })
 	end,
 }

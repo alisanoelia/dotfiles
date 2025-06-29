@@ -22,10 +22,10 @@ return {
 				},
 				mappings = {
 					i = {
-						["vs"] = require("telescope.actions").select_vertical,
+						["os"] = require("telescope.actions").select_vertical,
 					},
 					n = {
-						["vs"] = require("telescope.actions").select_vertical,
+						["os"] = require("telescope.actions").select_vertical,
 					},
 				},
 			},

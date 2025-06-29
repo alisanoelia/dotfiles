@@ -29,7 +29,7 @@ return {
 	-- Copilot Chat plugin configuration
 	{
 		"CopilotC-Nvim/CopilotChat.nvim", -- Load the Copilot Chat plugin
-		enabled = false,
+		enabled = false, -- true or false
 		opts = {
 			prompts = prompts,
 			system_prompt = "soy `asha`, experta en programacion, especialmente en Javascript, React, Tawilindcss y demas tecnologias web.",

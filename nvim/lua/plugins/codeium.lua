@@ -5,7 +5,7 @@ return {
 	enabled = true,
 	event = "InsertEnter",
 	opts = {
-		enable_chat = true,
+		enable_chat = false,
 		enable_cmp_source = false,
 		virtual_text = {
 			enabled = true,

@@ -20,7 +20,8 @@ return {
 				filename,
 				" ",
 				guibg = "#d8a657",
-				guifg = "#101214",
+				-- guifg = "#101214",
+				guifg = "#1e1e1e",
 				gui = "bold",
 			}
 		end,

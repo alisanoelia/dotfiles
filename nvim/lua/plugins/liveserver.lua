@@ -1,6 +1,6 @@
 return {
 	"aurum77/live-server.nvim",
-	enabled = false,
+	enabled = true,
 	opts = {},
 	cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" },
 }

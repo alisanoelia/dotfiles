@@ -33,7 +33,7 @@ return {
 			end,
 		},
 		notifier = {
-			enabled = true,
+			enabled = false,
 			timeout = 3000,
 			style = "compact",
 			level = vim.log.levels.TRACE,

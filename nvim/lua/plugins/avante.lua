@@ -6,35 +6,39 @@ return {
 	enabled = true,
 	build = "make",
 	opts = {
-		---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
 		provider = "copilot", -- or "copilot", "gemini", "ollama", "openrouter"
-		vendors = {
+		providers = {
 			openrouter = {
 				__inherited_from = "openai",
-				disable_tools = true,
+				disable_tools = false,
 				endpoint = "https://openrouter.ai/api/v1",
 				api_key_name = "OPENROUTER_API_KEY",
+				model = "deepseek/deepseek-r1-0528",
 				-- model = "deepseek/deepseek-r1:free",
-				model = "google/gemini-2.5-pro-preview",
-				temperature = 0,
-				max_tokens = 8192,
+				-- model = "google/gemini-2.5-pro-preview",
+				-- model = "meta-llama/llama-4-maverick:free",
+				-- model = "deepseek/deepseek-v3-base:free",
+				extra_request_body = {
+					temperature = 1,
+					max_tokens = 8192,
+				},
 			},
-			groq = {
-				__inherited_from = "openai",
-				api_key_name = "GROQ_API_KEY",
-				endpoint = "https://api.groq.com/openai/v1/",
-				model = "qwen-2.5-coder-32b",
+			copilot = {
+				model = "claude-3.5-sonnet", -- or "gpt-4o" | "o3-mini" | "claude-3.5-sonnet" | "gpt-4.1"
+				-- model = "gpt-4.1-2025-04-14",
+				disable_tools = false,
+				extra_request_body = {
+					temperature = 0.5,
+					max_tokens = 8192,
+				},
 			},
-		},
-		copilot = {
-			model = "claude-3.5-sonnet", -- or "gpt-4o" | "o3-mini" | "claude-3.5-sonnet" | "gpt-4.1"
-			temperature = 1,
-			max_tokens = 8192,
-		},
-		gemini = {
-			model = "gemini-2.5-pro-exp-03-25", -- or "gemini-1.5-pro", "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-1.5-flash", "gemini-2.0-flash-exp", "gemini-2.0-flash-thinking-exp-01-21", "gemini-2.0-flash"
-			temperature = 0,
-			max_tokens = 8192,
+			gemini = {
+				model = "gemini-2.5-pro-preview-06-05", -- or "gemini-1.5-pro", "gemini-2.0-flash-exp", "gemini-exp-1206", "gemini-1.5-flash", "gemini-2.0-flash-exp", "gemini-2.0-flash-thinking-exp-01-21", "gemini-2.0-flash"
+				extra_request_body = {
+					-- temperature = 1,
+					-- max_tokens = 8192,
+				},
+			},
 		},
 		behaviour = {
 			auto_suggestions = false,
@@ -91,6 +95,7 @@ return {
 		},
 		{
 			"MeanderingProgrammer/render-markdown.nvim",
+			enabled = false,
 			opts = {},
 			ft = { "Avante", "markdown" },
 		},

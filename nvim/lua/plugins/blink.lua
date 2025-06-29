@@ -1,9 +1,11 @@
+-- blink.cmp
 ---@diagnostic disable: undefined-global
 
 return {
 	"saghen/blink.cmp",
 	dependencies = {
 		"rafamadriz/friendly-snippets",
+		"Kaiser-Yang/blink-cmp-dictionary",
 	},
 	version = "*",
 	opts = {
@@ -32,17 +34,30 @@ return {
 			},
 		},
 		appearance = {
-			use_nvim_cmp_as_default = true,
+			use_nvim_cmp_as_default = false,
 			nerd_font_variant = "mono",
 		},
 		sources = {
 			default = {
+				"snippets",
 				"lsp",
 				"path",
-				"snippets",
 				"buffer",
+				"dictionary",
+			},
+			providers = {
+				dictionary = {
+					module = "blink-cmp-dictionary",
+					name = "Dict",
+					score_offset = 20,
+					enabled = true,
+					max_items = 8,
+					min_keyword_length = 3,
+					opts = {
+						dictionary_directories = { vim.fn.expand("~/.config/nvim/dict") },
+					},
+				},
 			},
 		},
 	},
-	opts_extend = { "sources.default" },
 }

@@ -17,7 +17,12 @@ map("n", "<leader>r", ":RunCode<cr>")
 map("n", "tt", ":ToggleTerm <cr>")
 map("n", "<leader>bn", ":bn<cr>")
 map("n", "<leader>la", ":Lazy<cr>")
-map("n", "L", "%")
+map("n", "L", "$")
+map("n", "H", "^")
+map("n", "J", "5j")
+map("n", "K", "5k")
+map("v", "J", "5j")
+map("v", "K", "5k")
 
 -- move and resize windows
 map("n", "<leader>L", "<C-w>L")

@@ -31,7 +31,6 @@ end
 local function setup_lsp_keymaps()
 	local map = vim.keymap.set
 	map("n", "de", vim.diagnostic.open_float)
-	-- map("n", "de", vim.lsp.buf.code_action, { buffer = true })
 	map("n", "gd", vim.lsp.buf.definition)
 	map("n", "gh", vim.lsp.buf.hover)
 	map("n", "<leader>[", vim.diagnostic.goto_prev)
@@ -86,7 +85,7 @@ return {
 		setup_hover()
 
 		require("mason-lspconfig").setup({})
-		local lspconfig = require("lspconfig")
+		-- local lspconfig = require("lspconfig")
 
 		-- require("mason-lspconfig").setup_handlers({
 		-- 	function(server_name)

@@ -20,8 +20,8 @@ dotfiles used on Void Linux
 
 ## todo
 
-- [ ] update colorscheme
-- [ ] add new dmenu
-- [ ] add development environment for React Native
-- [ ] update zsh config
+- [x] update colorscheme
+- [x] add new dmenu
+- [x] add development environment for React Native
+- [x] update zsh config
 - [x] add weather for lemonbar

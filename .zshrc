@@ -5,7 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="alyssa"
 
-# export BROWSER=min
+export BROWSER=min
 export VISUAL=nvim
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"

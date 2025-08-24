@@ -1,0 +1,6 @@
+Section "Screen"
+    Identifier  "nvidiascreen"
+    Device      "nvidiagpu"
+    Option      "ConnectedMonitor" "HDMI-0,DP-0"
+    Option      "ModeValidation" "NoDFPNativeResolutionCheck,NoVirtualSizeCheck,NoMaxPClkCheck,NoHorizSyncCheck,NoVertRefreshCheck,NoWidthAlignmentCheck"
+EndSection

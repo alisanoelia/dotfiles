@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# background="#1d2021" | "#141617"
+# background="#1d2021" | "#141617" | "#1c2021" | "#111415"
 
 SEP="|"
 
@@ -54,7 +54,7 @@ Cap() {
 }
 
 User() {
-	echo -n "$bg$fg "alana" $f$b"
+	echo -n "$bg$fg "$(whoami)" $f$b"
 }
 
 Workspaces() {
@@ -74,22 +74,128 @@ Workspaces() {
 	echo "$output"
 }
 
-Weather() {
-	apikey="${OPEN_WEATHER_MAP_KEY}"
-	ciudadFix="Cúcuta"
+Battery() {
+    bat0=""
+    bat1=""
+    status=""
 
-	url="https://api.openweathermap.org/data/2.5/weather?q=${ciudadFix},co&appid=${apikey}&units=metric&lang=es"
-	temperature=$(curl -s "$url" | jq '.main.temp' 2>/dev/null)
+    if [ -f /sys/class/power_supply/BAT0/capacity ]; then
+        bat0="$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)%"
+    fi
+    if [ -f /sys/class/power_supply/BAT1/capacity ]; then
+        bat1="$(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null)%"
+    fi
+    if [ -f /sys/class/power_supply/AC/online ]; then
+        status="$(cat /sys/class/power_supply/AC/online 2>/dev/null)"
+        if [ "$status" = "1" ]; then
+            status="AC"
+        else
+            status="BAT"
+        fi
+    fi
 
-	if [ -z "$temperature" ]; then
-		echo "$bg$fg Error $f$b"
-	else
-		temp_integer=$(printf "%.0f" "$temperature")
-		echo "$bg$fg ${temp_integer}°C $f$b"
-	fi
+    echo -n "$bg$fg"
+    [ -n "$bat0" ] && echo -n " $bat0 "
+    [ -n "$bat1" ] && echo -n "$bat1 "
+    [ -n "$status" ] && echo -n "[$status]"
+    echo -n " $f$b"
 }
 
+NetworkStatus() {
+    # Check WiFi connection
+    ssid=$(iwgetid -r 2>/dev/null)
+    if [ -n "$ssid" ]; then
+        echo -n "$bg$fg $ssid $f$b"
+        return
+    fi
+    # Check Ethernet connection (common interface names: eth0, enp*)
+    eth_interface=$(ip -o link show | awk -F': ' '/state UP/ && $2 ~ /^(eth|enp)/ {print $2}' | head -n1)
+    if [ -n "$eth_interface" ]; then
+        # Check if interface has an IP address
+        ip_addr=$(ip addr show "$eth_interface" | awk '/inet / {print $2}')
+        if [ -n "$ip_addr" ]; then
+            echo -n "$bg$fg Cable $f$b"
+            return
+        fi
+    fi
+    # If neither, show 'Desconectado'
+    echo -n "$bg$fg Desconectado $f$b"
+}
+
+# Weather() {
+# 	apikey="${OPEN_WEATHER_MAP_KEY}"
+# 	ciudadFix="Cúcuta"
+#
+# 	url="https://api.openweathermap.org/data/2.5/weather?q=${ciudadFix},co&appid=${apikey}&units=metric&lang=es"
+# 	temperature=$(curl -s "$url" | jq '.main.temp' 2>/dev/null)
+#
+# 	if [ -z "$temperature" ]; then
+# 		echo "$bg$fg Error $f$b"
+# 	else
+# 		temp_integer=$(printf "%.0f" "$temperature")
+# 		echo "$bg$fg ${temp_integer}°C $f$b"
+# 	fi
+# }
+
+# Weather() {
+# 	apikey="${OPEN_WEATHER_MAP_KEY}"
+# 	ciudadFix="Cúcuta"
+#
+# 	url="https://api.openweathermap.org/data/2.5/weather?q=${ciudadFix},co&appid=${apikey}&units=metric&lang=es"
+# 	# Fetch temperature and weather condition description, defaulting to "null" if not found
+# 	weather_data=$(curl -s "$url" | jq -r '"\(.main.temp // "null")\t\(.weather[0].main // "null")"' 2>/dev/null)
+#
+# 	if [ -z "$weather_data" ]; then
+# 		# Error if curl failed or jq produced no output
+# 		echo "$bg$fg Weather Error $f$b"
+# 	else
+# 		temperature=$(echo "$weather_data" | awk -F'\t' '{print $1}')
+# 		condition=$(echo "$weather_data" | awk -F'\t' '{print $2}')
+#
+# 		if [ "$temperature" = "null" ] || [ "$temperature" = "" ]; then
+# 			# Error if temperature data is missing or "null"
+# 			echo "$bg$fg Weather Error $f$b"
+# 		else
+# 			temp_integer=$(printf "%.0f" "$temperature")
+# 			output_string="$bg$fg ${temp_integer}°C"
+#
+# 			condition_display=""
+# 			# Check weather condition if available and not "null"
+# 			if [ "$condition" != "null" ] && [ "$condition" != "" ]; then
+# 				case "$condition" in
+# 					Rain|Drizzle)
+# 						condition_display=" Lluvioso"
+# 						;;
+# 					Thunderstorm)
+# 						condition_display=" Tormenta"
+# 						;;
+# 					Clear)
+# 						condition_display=" Soleado"
+# 						;;
+# 					Clouds)
+# 						condition_display=" Nublado"
+# 						;;
+# 					Snow)
+# 						condition_display=" Snow"
+# 						;;
+# 					Mist|Fog|Haze|Smoke|Dust|Sand|Ash|Squall|Tornado) # Grouped various atmospheric conditions
+# 						condition_display=" Foggy" # Or a more generic term like "Atmosphere"
+# 						;;
+# 				esac
+# 			fi
+# 			echo "${output_string}${condition_display} $f$b"
+# 		fi
+# 	fi
+# }
+
+
+if xrandr | grep ' connected ' | grep -q '1920x1080'; then
+	GEOMETRY="1920x20+0+0"
+else
+	GEOMETRY="1366x20+0+0"
+fi
+
 while true; do
-	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r}Temp $(Weather) Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
+	echo "%{l}$(User) $(Workspaces) $(Name) %{c}$(Date)%{r}Net $(NetworkStatus) Bat $(Battery) Cpu $(Cpu) Mem $(Memory) Vol $(Volume) Cap $(Cap)"
 	sleep 0.1s
-done | lemonbar -B "#1d2021" -F "#e2cca9" -f "MartianMono Nerd Font:size=7.2" -g 1920x20+0+0 &
+done | lemonbar -B "#141617" -F "#e2cca9" -f "GeistMono Nerd Font:size=7.2" -g "$GEOMETRY" &
